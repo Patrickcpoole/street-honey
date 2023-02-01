@@ -2,6 +2,7 @@ import React from 'react'
 import { Product, FooterBanner, HeroBanner } from '../components'
 import {client} from '../lib/client';
 import { ProductTyping, BannerDataTyping } from "../typings";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 type Props = {
 	products: ProductTyping[],
@@ -11,10 +12,10 @@ type Props = {
 const Home = ({ products, bannerData}: Props) => (
   
     <>
-    <HeroBanner heroBanner={bannerData[0]}></HeroBanner>
+    <HeroBanner heroBanner={bannerData}></HeroBanner>
     <div className='products-heading'>
-      <h2>Best Selling Products</h2>
-      <p>Speakers of many variations</p>
+      <h2>Best Selling Prints</h2>
+      <p>Available in different sizes</p>
     </div>
     <div className='products-container'>
       {products?.map((product) => <Product key={product._id} product={product}/>)}
@@ -30,6 +31,7 @@ export const getServerSideProps = async () => {
 
   const bannerQuery = '*[_type == "banner"]';
   const bannerData = await client.fetch(bannerQuery);
+  console.log('banner Data', bannerData)
 
   return {
     props: {products, bannerData}

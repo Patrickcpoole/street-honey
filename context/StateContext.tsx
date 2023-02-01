@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { ContextTyping, ProductTyping, CartTyping } from "../typings";
 import { toast } from "react-hot-toast";
+import product from "../sanity-street-honey/schemas/product";
 
 interface Props {
 	children?: ReactNode;
@@ -21,6 +22,9 @@ export const StateContext = ({ children }: Props) => {
 	const [totalPrice, setTotalPrice] = useState<number>(0);
 	const [totalQuantities, setTotalQuantities] = useState<number>(0);
 	const [qty, setQty] = useState<number>(1);
+
+  let foundProduct;
+  let index;
 
 	const onAdd = (product:ProductTyping, quantity:number) => {
     console.log('on Add fired', product, quantity)
@@ -47,6 +51,31 @@ export const StateContext = ({ children }: Props) => {
     toast.success(`${qty} ${product.name} added to the cartItems.`);
 	};
 
+  const toggleCartItemQuantity = (id, value) => {
+    foundProduct = cartItems.find((item) => item._id === id);
+    index = cartItems.findIndex((product) => product._id === id);
+    
+    let newCartItems = cartItems.filter((item, i) => item._id === id)
+
+    if(value === 'inc') {
+      setCartItems([...newCartItems, {...foundProduct, 
+        quantity: foundProduct.quantity+1
+        }])
+      setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price)
+      setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1)
+    } else if(value === 'dec') {
+      if(foundProduct.quantity > 1){
+      let newCartItems = [...cartItems, {...foundProduct, 
+        quantity: foundProduct.quantity - 11
+        }]
+    
+        setCartItems(newCartItems)
+        setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price)
+        setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1)
+      }
+    }
+  }
+
 	const incQty = () => setQty((prevQty) => prevQty + 1);
 
 	const decQty = () => {
@@ -68,7 +97,8 @@ export const StateContext = ({ children }: Props) => {
 				qty,
 				incQty,
 				decQty,
-        onAdd
+        onAdd,
+        toggleCartItemQuantity
       
 			}}
 		>

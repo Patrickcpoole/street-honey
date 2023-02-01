@@ -23,16 +23,6 @@ export interface ProductTyping extends SanityBody {
   quantity: number;
 }
 
-export interface CartTyping {
-  cartItems: {_type: "Product",
-  image: Image,
-  name: string,
-  slug: string,
-  price: number,
-  details: string,
-  quantity: number}[]
-}
-
 export interface BannerDataTyping extends SanityBody {
   _type: "BannerData";
   buttonText: string;
@@ -48,6 +38,18 @@ export interface BannerDataTyping extends SanityBody {
   smallText: string;
 }
 
+export interface CartTyping {
+  cartItems: {_type: "Product",
+  image: Image,
+  name: string,
+  slug: string,
+  price: number,
+  details: string,
+  quantity: number}[]
+}
+
+
+
 export interface ContextTyping {
   showCart: boolean;
   cartItems: ProductTyping[];
@@ -56,6 +58,7 @@ export interface ContextTyping {
   qty: number;
   decQty: (qty: number) => void;
   incQty: (qty: number) => void;
-  onAdd: (product: ProductTyping, quantity: number) => void
-
+  setShowCart: (showCart: boolean) => void;
+  onAdd: (product: ProductTyping, quantity: number) => void;
+  toggleCartItemQuantity: (id: number, value: string) => void;
 }
