@@ -46,7 +46,7 @@ const ProductDetails = ({ product, products }: Props) => {
 					<div className="product-detail-desc">
 						<h1>{name}</h1>
 						<div className="reviews">
-							<div>
+							<div style={{display:'flex'}}>
 								<AiFillStar />
 								<AiFillStar />
 								<AiFillStar />
@@ -60,7 +60,8 @@ const ProductDetails = ({ product, products }: Props) => {
 						<p className="price">${price}</p>
 						<div className="quantity">
 							<h3>Quantity</h3>
-							<p className="quantity-desc">
+							<div style={{display:'flex'}}>
+							<div className="quantity-desc">
 								<span className="minus" onClick={decQty}>
 									<AiOutlineMinus />
 								</span>
@@ -70,7 +71,8 @@ const ProductDetails = ({ product, products }: Props) => {
 								<span className="plus" onClick={incQty}>
 									<AiOutlinePlus />
 								</span>
-							</p>
+							</div>
+							</div>
 						</div>
             <div className="buttons">
               <button type="button" className="add-to-cart" onClick={() => onAdd(product, qty)}>Add to Cart</button>
