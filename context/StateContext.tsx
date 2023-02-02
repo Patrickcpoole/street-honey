@@ -55,21 +55,37 @@ export const StateContext = ({ children }: Props) => {
     foundProduct = cartItems.find((item) => item._id === id);
     index = cartItems.findIndex((product) => product._id === id);
     
-    let newCartItems = cartItems.filter((item, i) => item._id === id)
+		console.log('found product', foundProduct);
+		console.log('index', index)
+
+    let currentCartItemsNotToggled = cartItems.filter((item, i) => item._id !== id)
+
+	
 
     if(value === 'inc') {
-      setCartItems([...newCartItems, {...foundProduct, 
-        quantity: foundProduct.quantity+1
-        }])
+			let newCartItems = [{...foundProduct, 
+        quantity: foundProduct.quantity + 1
+        }, ...currentCartItemsNotToggled]
+			let sortedNewCartItems = newCartItems.sort(function(a, b) {
+				const textA = a.name.toUpperCase();
+				const textB = b.name.toUpperCase();
+				return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+		});
+      setCartItems(sortedNewCartItems)
       setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price)
       setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1)
     } else if(value === 'dec') {
       if(foundProduct.quantity > 1){
-      let newCartItems = [...cartItems, {...foundProduct, 
-        quantity: foundProduct.quantity - 11
-        }]
-    
-        setCartItems(newCartItems)
+      let newCartItems = [{...foundProduct, 
+        quantity: foundProduct.quantity - 1
+        }, ...currentCartItemsNotToggled]
+				console.log('These are new cart items', newCartItems)
+				let sortedNewCartItems = newCartItems.sort(function(a, b) {
+					const textA = a.name.toUpperCase();
+					const textB = b.name.toUpperCase();
+					return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+			});
+        setCartItems(sortedNewCartItems)
         setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price)
         setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1)
       }

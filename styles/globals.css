@@ -644,6 +644,7 @@ padding: 30px 65px;
   transform:scale(1.1,1.1)
 }
 .quantity-desc{
+  display: flex;
   border: 1px solid gray;
 padding: 6px;
 }
