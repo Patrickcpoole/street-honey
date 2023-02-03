@@ -320,7 +320,6 @@ text-align: end;
   text-align: center;
   margin: 40px 0px;
  color: #333;
-
 }
 .products-heading h2{
   font-size: 40px;
@@ -567,6 +566,34 @@ padding: 30px 65px;
   width: 70px;
   height: 70px;
   cursor: pointer;
+}
+
+.about-header {
+  font-size:3em;
+  color:#333;
+  
+}
+
+.about-desc {
+  text-align: center;
+  width: 70%;
+}
+
+.about-image {
+  width: 400px;
+  height:600px;
+}
+
+.bio-header {
+  font-size: 2em;
+}
+
+.bio-desc {
+
+}
+
+.solid {
+  border-top: 3px solid black;
 }
 
 .selected-image{
@@ -882,3 +909,4 @@ margin-top: 160px;
   margin: auto;
 }
 }
+

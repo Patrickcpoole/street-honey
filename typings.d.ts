@@ -38,6 +38,16 @@ export interface BannerDataTyping extends SanityBody {
   smallText: string;
 }
 
+export interface AboutTyping extends SanityBody {
+  _type: "About";
+  bannerImage: Image,
+  mickDesc: string;
+  mickImage: Image;
+  patDesc: string;
+  patImage: Image;
+}
+
+
 export interface CartTyping {
   cartItems: {_type: "Product",
   image: Image,

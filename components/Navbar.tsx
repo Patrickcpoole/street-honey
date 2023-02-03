@@ -22,7 +22,7 @@ const Navbar = () => {
         <Link href={"/"}  style={{ textDecoration: 'none', color:'#333', marginRight: '10px' }}>Submissions</Link>
       </span>
       <span>
-        <Link href={"/"}  style={{ textDecoration: 'none', color:'#333', marginRight: '10px' }}>About Us</Link>
+        <Link href={"/about-us"}  style={{ textDecoration: 'none', color:'#333', marginRight: '10px' }}>About Us</Link>
       </span>
       </div>
       <div>
