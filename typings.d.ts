@@ -91,6 +91,8 @@ export interface ContextTyping {
   totalPrice: number;
   totalQuantities: number;
   qty: number;
+  toggleDrawer: boolean;
+  setToggleDrawer: (toggleDrawer: boolean) => void;
   decQty: (qty: number) => void;
   incQty: (qty: number) => void;
   setShowCart: (showCart: boolean) => void;

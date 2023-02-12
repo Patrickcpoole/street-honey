@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import NavDrawer from './NavDrawer'
 
 const Layout = ({children}) => {
   return (
@@ -13,6 +14,7 @@ const Layout = ({children}) => {
         <Navbar />
       </header>
       <main className="main-container">
+        <NavDrawer />
         {children}
       </main>
       <footer>
