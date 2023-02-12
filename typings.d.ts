@@ -13,6 +13,24 @@ interface Image {
   }
 }
 
+interface Geopoint {
+  _type: "geopoint";
+  asset: {
+    lat: string;
+    lng: string
+  }
+}
+
+export interface EventTyping extends SanityBody {
+  _type: "Event";
+  image: Image;
+  title: string;
+  shortDesc: string;
+  longDesc: string;
+  geopoint: Geopoint;
+  dateTime: Date;
+}
+
 export interface ProductTyping extends SanityBody {
   _type: "Product";
   image: Image;
@@ -22,6 +40,8 @@ export interface ProductTyping extends SanityBody {
   details: string;
   quantity: number;
 }
+
+
 
 export interface BannerDataTyping extends SanityBody {
   _type: "BannerData";
@@ -36,6 +56,11 @@ export interface BannerDataTyping extends SanityBody {
   product: string;
   saleTime: string;
   smallText: string;
+}
+
+export interface SideBannerDataTyping extends SanityBody {
+  _type: "SideBannerData";
+  image: Image;
 }
 
 export interface AboutTyping extends SanityBody {

@@ -50,7 +50,7 @@ const AboutUs = ({ about }: Props) => {
 						/>
 						<div className="about-image absolute opacity-0 hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white z-0 ">
 							<div className="flex flex-col items-center justify-center h-full">
-								<h3 className="text-3xl font-bold text-black opacity-100 mb-10">Mick Kail</h3>
+								<h3 className="text-3xl font-bold text-black opacity-100 mb-10">Patrick Poole</h3>
                 <p className="opacity-100 w-3/4 text-center">{about[0].mickDesc}</p>
 							</div>
               </div>

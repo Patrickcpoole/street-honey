@@ -16,7 +16,7 @@ const Navbar = () => {
         <Link href={"/"}  style={{ textDecoration: 'none', color:'#333', marginRight: '10px' }}>Shop</Link>
       </span>
       <span>
-        <Link href={"/"}  style={{ textDecoration: 'none', color:'#333', marginRight: '10px' }}>Events</Link>
+        <Link href={"/events"}  style={{ textDecoration: 'none', color:'#333', marginRight: '10px' }}>Events</Link>
       </span>
       <span>
         <Link href={"/"}  style={{ textDecoration: 'none', color:'#333', marginRight: '10px' }}>Submissions</Link>
