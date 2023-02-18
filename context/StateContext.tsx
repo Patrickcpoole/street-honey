@@ -18,6 +18,7 @@ const Context = React.createContext<ContextTyping | null>(null);
 
 export const StateContext = ({ children }: Props) => {
 	const [showCart, setShowCart] = useState<boolean>(false);
+	const [toggleDrawer, setToggleDrawer] = useState<boolean>(false);
 	const [cartItems, setCartItems] = useState <any>([]);
 	const [totalPrice, setTotalPrice] = useState<number>(0);
 	const [totalQuantities, setTotalQuantities] = useState<number>(0);
@@ -105,6 +106,8 @@ export const StateContext = ({ children }: Props) => {
 	return (
 		<Context.Provider
 			value={{
+				toggleDrawer,
+				setToggleDrawer,
 				showCart,
         setShowCart,
 				cartItems,

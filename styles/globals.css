@@ -10,6 +10,7 @@ body, * {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   box-sizing: border-box;
   text-decoration: none;
+  color:#333;
 
 }
 ::-webkit-scrollbar {
@@ -62,6 +63,69 @@ background-color: 	#FAF9F6;
   align-items: center;
   width: 4%;
 }
+
+.MuiDrawer-paper {
+  width:20%;
+  background-color: 	#FAF9F6;
+}
+
+.print-category-main-item {
+  text-align:left;
+  font-size: 1.55em;
+}
+
+.print-category-main-item:before {
+  content:"→";
+  position:absolute;
+  color:#383736;
+  left: 83%;
+  opacity: 0;
+  -webkit-transition: all 250ms cubic-bezier(0.680, -0.550, 0.265, 1.550); 
+}
+
+.print-category-main-item:hover:before{
+
+  opacity:1;
+}
+
+.print-category-main-item:hover {
+  width:170px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.print-category-item {
+  text-align:left;
+  font-size: 1.05em;
+  margin-bottom: 5px;
+}
+
+.print-category-item:before {
+  content:"→";
+  position:absolute;
+  color:#383736;
+  left: 83%;
+  opacity: 0;
+  -webkit-transition: all 250ms cubic-bezier(0.680, -0.550, 0.265, 1.550); 
+}
+
+.print-category-item:hover:before{
+
+  opacity:1;
+}
+
+.print-category-item:hover {
+  width:170px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.MuiDivider-root {
+  background-color: #333;
+}
+
+
+
 .marquee-text{
   font-size: 29px;
   font-weight: 600;
