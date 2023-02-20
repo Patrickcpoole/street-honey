@@ -50,7 +50,7 @@ function EventCard({eventData}: Props) {
         </DialogTitle>
         <DialogContent>
           <p className='form-text'>{eventData.longDesc}</p>
-         <Form/>
+         <Form title='events'/>
         </DialogContent>
         </div>
         </Dialog>

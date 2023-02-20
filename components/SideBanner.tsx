@@ -11,14 +11,9 @@ const SideBanner = ({ sideBanner }: Props) => {
 		<>
 			<div className="side-banner-container" style={{backgroundImage: `url(${urlFor(sideBanner.image)})`}}>
 				<h3 className="hero-banner-title text-6xl">
-					Community Events
+					{sideBanner.title}
 				</h3>
-				{/* <img
-					src={urlFor(sideBanner.image)}
-					alt="Side Banner Image"
-					className="side-banner-image"
-          style={{ background: 'linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7))'}}
-				/> */}
+		
         <div className="side-banner-image" >text</div>
 			</div>
 		</>
