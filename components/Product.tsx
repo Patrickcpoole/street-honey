@@ -13,8 +13,6 @@ const Product = ({ product: { image, name, slug, price, details } }) => {
 				<div className="product-card">
 					<img
 						src={urlFor(image && image[0])}
-						width={250}
-						height={300}
 						className="product-image"
 					/>
 					<div className="product-info-container">

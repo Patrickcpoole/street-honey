@@ -31,7 +31,7 @@ const Navbar = () => {
 				</span>
 				<span>
 					<Link
-						href={"/"}
+						href={"/submissions"}
 						style={{
 							textDecoration: "none",
 							color: "#333",
