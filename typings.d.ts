@@ -83,6 +83,15 @@ export interface CartTyping {
   quantity: number}[]
 }
 
+export interface SubmissionsTyping {
+  image: Image,
+  firstName: string,
+  lastName: string,
+  email: string,
+  instagramHandle: string,
+  notes: number
+}
+
 
 
 export interface ContextTyping {
