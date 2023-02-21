@@ -4,8 +4,8 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'submissionImage',
-      title: 'Submissions Image',
+      name: 'image',
+      title: 'Image',
       type: 'image',
       options: {
         hotspot: true,

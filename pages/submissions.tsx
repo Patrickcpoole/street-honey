@@ -5,6 +5,7 @@ import SideBanner from "../components/SideBanner";
 import Form from "../components/Form";
 import Card from "@mui/material/Card";
 
+
 type Props = {
 	sideBannerData: SideBannerDataTyping[];
   title: string;
@@ -30,7 +31,7 @@ const submissions = ({ sideBannerData }: Props) => (
 					be sold. If you would like to partner with Street Honey and sell your
 					prints on our website please reach out to streethoney@gmail.com
 				</p>
-        <blockquote className="instagram-media" 
+        {/* <blockquote className="instagram-media" 
         data-instgrm-permalink="https://www.instagram.com/streethoney/?utm_source=ig_embed&amp;utm_campaign=loading" 
         data-instgrm-version="14" 
         style={{ background:'#FFF', border:0, borderRadius:'3px', boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)', margin: '1px', maxWidth: '540px', minWidth:'326px', padding:0}}>
@@ -62,9 +63,9 @@ const submissions = ({ sideBannerData }: Props) => (
                   <div style={{width: 0, height: 0, borderTop: '2px solid transparent', borderLeft: '6px solid #f4f4f4', 
                   borderBottom: '2px solid transparent', transform: 'translateX(16px) translateY(-4px) rotate(30deg)'}}></div></div>
                   <div style={{marginLeft: 'auto'}}> 
-                  {/* <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> 
+                  <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> 
                   <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div>
-                   <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div> */}
+                   <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div>
                    </div></div> 
                    </a>
                      <p>
@@ -72,7 +73,7 @@ const submissions = ({ sideBannerData }: Props) => (
                    target="_blank" rel="noreferrer">Street Honey</a> (@<a href="https://www.instagram.com/streethoney/?utm_source=ig_embed&amp;utm_campaign=loading" 
        
                    target="_blank" rel="noreferrer">street_honey</a>) • Instagram photos and videos</p></div></blockquote>
-                    <script async src="//www.instagram.com/embed.js"></script>
+                    <script async src="//www.instagram.com/embed.js"></script> */}
 				<Card>
 					<Form title='submissions'/>
 				</Card>
