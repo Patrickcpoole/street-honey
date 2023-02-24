@@ -17,9 +17,10 @@ type Inputs = {
 
 type Props = {
 	title: string;
+	setToggleForm: Function;
 };
 
-function Form({ title }: Props) {
+function Form({ title, setToggleForm}: Props) {
 	const [imagesAssets, setImagesAssets] = useState(null);
 	const [wrongTypeOfImage, setWrongTypeOfImage] = useState(false);
 	const {
@@ -52,7 +53,7 @@ function Form({ title }: Props) {
 					},
 				},
 			];
-      console.log('submissions', submissions)
+			console.log("submissions", submissions);
 			submissionsUploader(submissions);
 		} else {
 			console.log("Error");
@@ -61,7 +62,7 @@ function Form({ title }: Props) {
 
 	const uploadImage = (e: { target: { files: any[] } }) => {
 		const selectedImage = e.target.files[0];
-    console.log('selected image', selectedImage)
+		console.log("selected image", selectedImage);
 		//to input an image to the upload field
 		if (
 			selectedImage.type === "image/png" ||
@@ -77,14 +78,14 @@ function Form({ title }: Props) {
 					filename: selectedImage.name,
 				})
 				.then((document) => {
-          console.log('about to fire', document)
+					console.log("about to fire", document);
 					setImagesAssets(document);
 				})
 				.catch((error) => {
 					console.log("Upload failed:", error.message);
 				});
 		} else {
-      console.log('upload failed')
+			console.log("upload failed");
 			setWrongTypeofImage(true);
 		}
 	};
@@ -92,8 +93,8 @@ function Form({ title }: Props) {
 	return (
 		<>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<div className="m-4 flex flex-row">
-					<div className="mb-4 w-1/2 mr-6">
+				<div className="mt-4 flex flex-row">
+					<div className="mx-4  w-1/2 mr-6">
 						<label className="block text-gray-700 text-sm font-bold mb-2 ">
 							First Name
 						</label>
@@ -105,7 +106,7 @@ function Form({ title }: Props) {
 							placeholder="First Name"
 						/>
 					</div>
-					<div className="mb-4 w-1/2 ml-6">
+					<div className="mx-4 w-1/2 ml-6">
 						<label className=" block text-gray-700 text-sm font-bold mb-2">
 							Last Name
 						</label>
@@ -119,7 +120,7 @@ function Form({ title }: Props) {
 					</div>
 				</div>
 
-				<div className="m-4 ">
+				<div className="mx-4 ">
 					<label className=" block text-gray-700 text-sm font-bold mb-2">
 						Email
 					</label>
@@ -131,7 +132,7 @@ function Form({ title }: Props) {
 						placeholder="example@gmail.com"
 					/>
 				</div>
-				<div className="m-4 ">
+				<div className="mx-4 ">
 					<label className=" block text-gray-700 text-sm font-bold mb-2">
 						Instagram Handle
 					</label>
@@ -143,7 +144,7 @@ function Form({ title }: Props) {
 						placeholder="@portra_pat"
 					/>
 				</div>
-				<div className="m-4 ">
+				<div className="mx-4 ">
 					<label className=" block text-gray-700 text-sm font-bold mb-2">
 						Notes
 					</label>
@@ -178,49 +179,56 @@ function Form({ title }: Props) {
             multiline
             fullWidth
           /> */}
-				{!imagesAssets ? (
-					<label>
-						<div className="flex flex-col items-center justify-center h-full">
-							<div className="flex flex-col justify-center items-center">
-								<p className="font-bold text-2xl">
-									<AiOutlineCloudUpload />
-								</p>
-								<p className="text-lg">Click to upload</p>
+				{title === 'submissions' ? (
+				<div>
+					{!imagesAssets ? (
+						<label>
+							<div className="flex flex-col items-center justify-center h-full">
+								<div className="flex flex-col justify-center items-center">
+									<p className="font-bold text-2xl">
+										<AiOutlineCloudUpload />
+									</p>
+									<p className="text-lg">Click to upload</p>
+								</div>
 							</div>
-						</div>
-						<input
-							{...register("image", { required: true })}
-							type="file"
-							name="image"
-							onChange={uploadImage}
-							className="hidden"
-						/>
-					</label>
-				) : (
-					<div className="relative h-full">
-						{/* <img
+							<input
+								{...register("image", { required: true })}
+								type="file"
+								name="image"
+								onChange={uploadImage}
+								className="hidden"
+							/>
+						</label>
+					) : (
+						<div className="relative h-full">
+							{/* <img
 							src={imagesAssets?.url}
 							alt="uploaded_image"
 							className="h-full w-full"
 						/> */}
-						<button
-							type="button"
-							className="absolute bottom-3 right-3 p-3 rounded-full bg-white text-xl cursor-pointer outline-none hover:shadow-md transition-all duration-500 ease-in-out"
-							onClick={() => setImagesAssets(null)}
-						>
-							<AiFillDelete />
-						</button>
-					</div>
-				)}
-
+							<button
+								type="button"
+								className="absolute bottom-3 right-3 p-3 rounded-full bg-white text-xl cursor-pointer outline-none hover:shadow-md transition-all duration-500 ease-in-out"
+								onClick={() => setImagesAssets(null)}
+							>
+								<AiFillDelete />
+							</button>
+						</div>
+					)}
+				</div>
+				): (
+					// return fragment if not submissions
+				<></>
+				)
+				}
 				{title === "submissions" ? (
-					<div className="flex items-center justify-between">
-						<Button type="submit">Submit</Button>
+					<div className="event-form-button-container">
+						<Button className='event-button' style={{backgroundColor: '#1985f1'}} type="submit">Submit</Button>
 					</div>
 				) : (
-					<div className="flex items-center justify-between">
-						<Button>Sign Up</Button>
-						<Button>Cancel</Button>
+					<div className="event-form-button-container">
+						<Button className='event-button' style={{backgroundColor: '#1985f1', marginRight: '1.5%'}}>Sign Up</Button>
+						<Button className='event-button' onClick={() => setToggleForm(false)} style={{backgroundColor: '#ed5e68', marginLeft: '1.5%'}}>Cancel</Button>
 					</div>
 				)}
 			</form>

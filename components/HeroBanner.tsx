@@ -13,7 +13,7 @@ type Props = {
 
 const HeroBanner = ({ heroBanner }: Props) => {
 	return (
-		<div>
+		<div style={{backgroundColor: 	'#FAF9F6'}}>
 			<Carousel fade interval={7000} controls={false}>
         {heroBanner?.map(banner => {
           console.log('dis is da banner', banner)
@@ -23,7 +23,7 @@ const HeroBanner = ({ heroBanner }: Props) => {
 					<div className="hero-banner-container">
             <h3 className="hero-banner-title">A Community and Collective of Film Photographers</h3>
             <div className="hero-banner-subtitle">
-            <h5 style={{marginRight: '5px', marginTop: '5px'}}>View Featured Photographers</h5><AiOutlineArrowRight size={25}/>
+            {/* <h5 style={{marginRight: '5px', marginTop: '5px'}}>View Featured Photographers</h5><AiOutlineArrowRight size={25}/> */}
             </div>
 						<img
 							src={urlFor(banner.image)}
