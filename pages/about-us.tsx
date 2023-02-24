@@ -23,7 +23,7 @@ const AboutUs = ({ about }: Props) => {
 						</Link> */}
 			</div>
 			<div className="flex flex-col items-center">
-				<h2 className="about-header my-10 underline underline-offset-4">
+				<h2 className="about-header my-10">
 					A Community and Collective of Online Photographers
 				</h2>
         <span className="solid"></span>
@@ -39,7 +39,7 @@ const AboutUs = ({ about }: Props) => {
 					volutpat eget.
 				</p>
         
-				<h2 className="about-header my-10 underline underline-offset-4">Meet The Team</h2>
+				<h2 className="about-header my-10">Meet The Team</h2>
         <div style={{ borderTop: "2px solid #333 ", marginLeft: 20, marginRight: 20, zIndex: 400 }}></div>
 				<div className="group relative cursor-pointer flex flex-row w-full" style={{ height:'65vh'}}>
 					<div className="w-1/2 flex flex-col items-end mr-10" >

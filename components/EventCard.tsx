@@ -29,10 +29,10 @@ function EventCard({eventData}: Props) {
         <h2 className='event-date-title'>{moment(eventData.dateTime).format('ddd MMM D')}</h2>
       </div>
       <div className="event-info-container">
-        <h3 className='text-3xl'>{eventData.title}</h3>
-        <h3 className='text-2xl'><span className='font-semibold mr-3'>When:</span>{moment(eventData.dateTime).format('ddd MMM D hh:mm A')}</h3>
-        <h3 className='text-2xl'><span className='font-semibold mr-3'>Where:</span>{`${eventData.geoPoint.lat}, ${eventData.geoPoint.lat}`}</h3>
-        <button type="button" className='event-button' onClick={() => setToggleForm(true)}>Sign Up</button>
+        <h3 className='text-3xl' style={{marginBottom: '5%', borderBottom: '1px solid #333'}}>{eventData.title}</h3>
+        <h3 className='text-lg'><span className='font-semibold mr-3'>When:</span>{moment(eventData.dateTime).format('ddd MMM D hh:mm A')}</h3>
+        <h3 className='text-lg'><span className='font-semibold mr-3'>Where:</span>Union Station</h3>
+        <button type="button" className='event-button' onClick={() => setToggleForm(true)}>More Info</button>
       </div>
     </div>
     <div>
@@ -41,7 +41,7 @@ function EventCard({eventData}: Props) {
         onClose={() => setToggleForm(false)}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
-        maxWidth='md'
+        
       >
         <div className='dialog-image-container' style={{backgroundImage: `url(${urlFor(eventData.image)})`}}></div>
       <div className="dialog-info">
@@ -50,7 +50,7 @@ function EventCard({eventData}: Props) {
         </DialogTitle>
         <DialogContent>
           <p className='form-text'>{eventData.longDesc}</p>
-         <Form title='events'/>
+         <Form title='events' setToggleForm={setToggleForm}/>
         </DialogContent>
         </div>
         </Dialog>

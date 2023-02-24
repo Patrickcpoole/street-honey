@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import NavDrawer from './NavDrawer'
+import FooterBanner from './FooterBanner'
 
 const Layout = ({children}) => {
   return (
@@ -18,6 +19,7 @@ const Layout = ({children}) => {
         {children}
       </main>
       <footer>
+      <FooterBanner></FooterBanner>
         <Footer />
       </footer>
     </div>
