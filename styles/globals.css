@@ -247,8 +247,15 @@ background-color: 	#FAF9F6;
   flex-direction: column;
   justify-content: center;
   align-items: center;
- 
 }
+
+.product-image{
+  max-height: 300px;
+  max-width: 400px;
+   transform: scale(1, 1);
+   transition: transform 0.5s ease;
+   box-shadow: 0px 5px 17px rgba(0,0,0,0.3);
+ }
 
 .produdct-info-container {
   display: flex;
@@ -279,13 +286,7 @@ background-color: 	#FAF9F6;
   color: black;
 }
 
-.product-image{
- max-height: 300px;
- max-width: 400px;
-  transform: scale(1, 1);
-  transition: transform 0.5s ease;
-  box-shadow: 0px 5px 17px rgba(0,0,0,0.3);
-}
+
 
 
 

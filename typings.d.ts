@@ -31,6 +31,8 @@ export interface EventTyping extends SanityBody {
   dateTime: Date;
 }
 
+
+
 export interface ProductTyping extends SanityBody {
   _type: "Product";
   image: Image;
@@ -39,6 +41,7 @@ export interface ProductTyping extends SanityBody {
   price: number;
   details: string;
   quantity: number;
+  tags: Array;
 }
 
 
