@@ -27,6 +27,8 @@ export const StateContext = ({ children }: Props) => {
   let foundProduct;
   let index;
 
+	
+
 	const onAdd = (product:ProductTyping, quantity:number) => {
     console.log('on Add fired', product, quantity)
 		const checkProductInCart = cartItems?.find((item:ProductTyping) => item._id === product._id
