@@ -1,95 +1,136 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
 	AiOutlineMinus,
 	AiOutlinePlus,
 	AiFillStar,
 	AiOutlineStar,
+	
 } from "react-icons/ai";
+
+import {HiOutlineLocationMarker} from 'react-icons/hi'
+import Image from "next/image";
 import { client, urlFor } from "../../lib/client";
 import { ProductTyping } from "../../typings";
-import {Product} from "../../components";
-import {useStateContext} from '../../context/StateContext'
+import { Product } from "../../components";
+import { useStateContext } from "../../context/StateContext";
 
 type Props = {
 	products: ProductTyping[];
 	product: ProductTyping[];
 };
 
-
+const imageStyle = {
+	width: "initial",
+	maxHeight: "800px",
+	maxWidth: "1000px",
+	boxShadow: "0px 5px 17px rgba(0,0,0,0.3)",
+};
 
 const ProductDetails = ({ product, products }: Props) => {
 	const { image, name, details, price } = product;
-  const [index, setIndex] = useState(0);
-  const {decQty, incQty, qty, onAdd} = useStateContext();
+	const [index, setIndex] = useState(0);
+	const [selectedSize, setSelectedSize] = useState('medium');
+	const [selectedDimesions, setSelectedDimensions] = useState('19.5in x 26in')
+	const { decQty, incQty, qty, onAdd } = useStateContext();
+
+	const handleChooseSize = (size: string) => {
+		console.log('this is the size', size)
+		setSelectedSize(size)
+		if(size === 'small') {
+			setSelectedDimensions('14.5in x 18.5in')
+		} else if(size === 'medium') {
+			setSelectedDimensions('19.5in x 26in')
+		} else {
+			setSelectedDimensions('24.5in x 33.5in')
+		}
+	}
 
 	return (
 		<div>
 			<div className="product-detail-container">
-				<div>
-					<div className="image-container">
-						<img
-							className="product-detail-image"
-							src={urlFor(image && image[0])}
-						/>
+				<div className="product-image-container">
+					<Image
+						src={urlFor(image && image[0]).url()}
+						style={imageStyle}
+						alt="Picture of the author"
+						width={1000}
+						height={800}
+					/>
+				</div>
+
+				<div className="product-description-container">
+					<h1>{name}</h1>
+					<div className="flex flex-row">
+						<div className="mt-1 mr-1">
+					<HiOutlineLocationMarker />
 					</div>
-					<div className="small-images container">
-            {image?.map((item, i) => (
-              <img 
-                src={urlFor(item)}
-                key={i}
-                className={i === index ? 'small-image selected-image' : 'small-image'}
-                onMouseEnter={() => setIndex(i)}
-              />
-            ))}
-          </div>
-          </div>
-					<div className="product-detail-desc">
-						<h1>{name}</h1>
-						<div className="reviews">
-							<div style={{display:'flex'}}>
-								<AiFillStar />
-								<AiFillStar />
-								<AiFillStar />
-								<AiFillStar />
-								<AiOutlineStar />
-							</div>
-							<p>(20)</p>
+						<p className="mr-2 font-semibold">
+							{details.split("-")[1]}
+						</p>
+						<span>|</span>
+						<p className="ml-2 italic underline underline-offset-4">
+							{details.split("-")[0]}
+						</p>
+					</div>
+					<div className="reviews">
+						<div style={{ display: "flex" }}>
+							<AiFillStar />
+							<AiFillStar />
+							<AiFillStar />
+							<AiFillStar />
+							<AiOutlineStar />
 						</div>
-						<h4>Details: </h4>
-						<p>{details}</p>
-						<p className="price">${price}</p>
-						<div className="quantity">
-							<h3>Quantity</h3>
-							<div style={{display:'flex'}}>
-							<div className="quantity-desc">
-								<span className="minus" onClick={decQty}>
-									<AiOutlineMinus />
-								</span>
-								<span className="num" >
-									{qty}
-								</span>
-								<span className="plus" onClick={incQty}>
-									<AiOutlinePlus />
-								</span>
-							</div>
-							</div>
+						<p>(20)</p>
+					</div>
+					<p className="price">${price}</p>
+					<div className="size-container">
+						<h5><span className="font-semibold">Dimensions:</span> {selectedDimesions} </h5>
+
+						<div className="size-options-container">
+						<button 
+						type="button" 
+						className="size-button" 
+						style={{backgroundColor : selectedSize === 'small' ? '#1985f1' : '#fff', color:  selectedSize === 'small' ? '#fff' : '#333' }} 
+						onClick={ () => handleChooseSize('small')}>
+							Small
+						</button>
+						<button 
+						type="button" 
+						className="size-button" 
+						style={{backgroundColor : selectedSize === 'medium' ? '#1985f1' : '#fff', color:  selectedSize === 'medium' ? '#fff' : '#333' }} 
+						onClick={ () => handleChooseSize('medium')}>
+							Medium
+						</button>
+						<button 
+						type="button" 
+						className="size-button" 
+						style={{backgroundColor : selectedSize === 'large' ? '#1985f1' : '#fff', color:  selectedSize === 'large' ? '#fff' : '#333' }} 
+						onClick={ () => handleChooseSize('large')}>
+							Large
+						</button>
 						</div>
-            <div className="buttons">
-              <button type="button" className="add-to-cart" onClick={() => onAdd(product, qty)}>Add to Cart</button>
-              <button type="button" className="buy-now" >Buy Now</button>
-            </div>
+					</div>
+					
+					
+					<div className="buttons">
+						<button
+							type="button"
+							className="event-button"
+							style={{
+								backgroundColor: "#fff",
+								color: "#333",
+								marginRight: "2%",
+							}}
+							onClick={() => onAdd(product, qty)}
+						>
+							Add to Cart
+						</button>
+						<button type="button" className="event-button">
+							Buy Now
+						</button>
 					</div>
 				</div>
-        <div className="maylike-products-wrapper">
-          <h2>You May Also Like</h2>
-          <div className="marquee">
-            <div className="maylike-products-container track">
-              {products.map((item) => ( 
-                <Product key={item._id} product={item}/>
-              ))}
-            </div>
-          </div>
-        </div>
+			</div>
 		</div>
 	);
 };

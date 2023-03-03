@@ -22,7 +22,7 @@ const Product = ({ product: { image, name, slug, price, details } }) => {
 				style={{ textDecoration: "none" }}
 			>
 				<div className="product-card">
-					{/* <img src={urlFor(image && image[0])} className="product-image" /> */}
+		
 				
 						<Image
 							src={urlFor(image && image[0]).url()}

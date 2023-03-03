@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Product, FooterBanner, HeroBanner } from '../components'
 import {client} from '../lib/client';
 import { ProductTyping, BannerDataTyping } from "../typings";
@@ -9,8 +9,24 @@ type Props = {
   bannerData: BannerDataTyping[]
 };
 
-const Home = ({ products, bannerData}: Props) => (
+const Home = ({ products, bannerData}: Props) => {
+
+  const [filteredProducts, setFilteredProducts] = useState(products)
+
+  useEffect(() => {
   
+    let newFilteredProducts: ProductTyping[] = []
+   
+      products.forEach(product => {
+    
+        product.tags.includes('best-seller') ? newFilteredProducts.push(product) : null
+        setFilteredProducts(newFilteredProducts)
+      })
+    }, [])
+    
+  
+
+  return (
     <>
     <HeroBanner heroBanner={bannerData}></HeroBanner>
     <div className='products-heading'>
@@ -18,11 +34,12 @@ const Home = ({ products, bannerData}: Props) => (
       <p>Available in different sizes</p>
     </div>
     <div className='products-container'>
-      {products?.map((product) => <Product key={product._id} product={product}/>)}
+      {filteredProducts?.map((filteredProduct) => <Product key={filteredProduct._id} product={filteredProduct}/>)}
       </div>
-      
+
     </>
   )
+  }
 
 export const getServerSideProps = async () => {
   const query = '*[_type == "product"]';
