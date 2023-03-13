@@ -1,6 +1,6 @@
 export default {
-  name: 'product',
-  title: 'Product',
+  name: 'photographer',
+  title: 'Photographer',
   type: 'document',
   fields: [
     {
@@ -27,29 +27,24 @@ export default {
       }
     },
     {
-      name: 'price',
-      title: 'Price',
-      type: 'number'
-    },
-    {
-      name: 'details',
-      title: 'Details',
+      name: 'bio',
+      title: 'Bio',
       type: 'string'
     },
     {
-      title: 'Photographer',
-      name: 'photographer',
-      type: 'reference',
-      to: [{type: 'photographer'}]
+      name: 'location',
+      title: 'Location',
+      type: 'string'
     },
     {
-      title: 'Tags',
-      name: 'tags',
-      type: 'array',
-      of: [{type: 'string'}],
-      options: {
-        layout: 'tags'
-      }
-    }
+      name: 'favoriteCamera',
+      title: 'Favorite Camera',
+      type: 'string'
+    },
+    {
+      name: 'instagram',
+      title: 'Instagram',
+      type: 'string'
+    },
   ]
 }
