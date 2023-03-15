@@ -1,9 +1,16 @@
 import React from "react";
 import { client, urlFor } from "../lib/client";
 import { AboutTyping } from "../typings";
+import Image from "next/image";
 
 type Props = {
 	about: AboutTyping;
+};
+
+const imageStyle = {
+	maxHeight: "95vh",
+	width: "100%",
+	boxShadow: "0px 5px 17px rgba(0,0,0,0.3)",
 };
 
 const AboutUs = ({ about }: Props) => {
@@ -12,11 +19,18 @@ const AboutUs = ({ about }: Props) => {
 			<div className="hero-banner-container">
 				<h3 className="hero-banner-title">About Us</h3>
 				<div className="hero-banner-subtitle"></div>
-				<img
+				{/* <img
 					src={urlFor(about[0].bannerImage)}
 					alt="About Us Banner Image"
 					className="hero-banner-image"
-				/>
+				/> */}
+				<Image
+						src={urlFor(about[0].bannerImage).url()}
+						style={imageStyle}
+						alt="Picture of the author"
+						width={1000}
+						height={800}
+					/>
 				<div className="hero-banner-info"></div>
 				{/* <Link href={`/product/${banner.product}`}>
 							<button type="button"> {banner.buttonText}</button>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
 	AiOutlineMinus,
 	AiOutlinePlus,
@@ -6,7 +6,7 @@ import {
 	AiOutlineStar,
 	
 } from "react-icons/ai";
-
+import Link from "next/link";
 import {HiOutlineLocationMarker} from 'react-icons/hi'
 import Image from "next/image";
 import { client, urlFor } from "../../lib/client";
@@ -27,11 +27,27 @@ const imageStyle = {
 };
 
 const ProductDetails = ({ product, products }: Props) => {
-	const { image, name, details, price } = product;
+	
+
+	const { image, name, details, price, photographer} = product;
 	const [index, setIndex] = useState(0);
 	const [selectedSize, setSelectedSize] = useState('medium');
-	const [selectedDimesions, setSelectedDimensions] = useState('19.5in x 26in')
+	const [selectedDimensions, setSelectedDimensions] = useState('19.5in x 26in')
 	const { decQty, incQty, qty, onAdd } = useStateContext();
+	const [photographerData, setPhotographerData] = useState(null)
+	
+	useEffect(() => {
+		async function fetchProductPhotographer() {
+			
+			if (photographer) {
+				const query = `*[_type == "photographer" && _id == "${photographer._ref}"]`;
+				const photographerResponse = await client.fetch(query);
+			
+				setPhotographerData(photographerResponse[0])
+			}
+		}
+		fetchProductPhotographer();
+	}, []);
 
 	const handleChooseSize = (size: string) => {
 		console.log('this is the size', size)
@@ -68,9 +84,12 @@ const ProductDetails = ({ product, products }: Props) => {
 							{details.split("-")[1]}
 						</p>
 						<span>|</span>
-						<p className="ml-2 italic underline underline-offset-4">
+						<Link
+						href={`/photographer/${photographerData ? photographerData.slug.current : null}`}
+						style={{ textDecoration: "none" }}
+					><p className="ml-2 italic underline underline-offset-4">
 							{details.split("-")[0]}
-						</p>
+						</p></Link>
 					</div>
 					<div className="reviews">
 						<div style={{ display: "flex" }}>
@@ -84,50 +103,48 @@ const ProductDetails = ({ product, products }: Props) => {
 					</div>
 					<p className="price">${price}</p>
 					<div className="size-container">
-						<h5><span className="font-semibold">Dimensions:</span> {selectedDimesions} </h5>
+						<h5><span className="font-semibold">Dimensions:</span> {selectedDimensions} </h5>
 
 						<div className="size-options-container">
 						<button 
 						type="button" 
 						className="size-button" 
-						style={{backgroundColor : selectedSize === 'small' ? '#1985f1' : '#fff', color:  selectedSize === 'small' ? '#fff' : '#333' }} 
-						onClick={ () => handleChooseSize('small')}>
+						style={{border : selectedSize === 'Small' ? 'solid 1px #333' : '#fff' }} 
+						onClick={ () => handleChooseSize('Small')}>
 							Small
 						</button>
 						<button 
 						type="button" 
 						className="size-button" 
-						style={{backgroundColor : selectedSize === 'medium' ? '#1985f1' : '#fff', color:  selectedSize === 'medium' ? '#fff' : '#333' }} 
-						onClick={ () => handleChooseSize('medium')}>
+						style={{border : selectedSize === 'Medium' ? 'solid 1px #333' : '#fff' }} 
+						onClick={ () => handleChooseSize('Medium')}>
 							Medium
 						</button>
 						<button 
 						type="button" 
 						className="size-button" 
-						style={{backgroundColor : selectedSize === 'large' ? '#1985f1' : '#fff', color:  selectedSize === 'large' ? '#fff' : '#333' }} 
-						onClick={ () => handleChooseSize('large')}>
+						style={{border : selectedSize === 'Large' ? 'solid 1px #333' : '#fff' }} 
+						onClick={ () => handleChooseSize('Large')}>
 							Large
 						</button>
 						</div>
 					</div>
 					
 					
-					<div className="buttons">
+					<div style={{display:'flex', justifyContent:'center', width: '65%'}}>
 						<button
 							type="button"
 							className="event-button"
 							style={{
-								backgroundColor: "#fff",
-								color: "#333",
+								backgroundColor: "#333",
+								color: "#ebebeb",
 								marginRight: "2%",
 							}}
-							onClick={() => onAdd(product, qty)}
+							onClick={() => onAdd(product, qty, selectedSize, selectedDimensions)}
 						>
 							Add to Cart
 						</button>
-						<button type="button" className="event-button">
-							Buy Now
-						</button>
+					
 					</div>
 				</div>
 			</div>
@@ -161,12 +178,10 @@ export const getStaticProps = async ({ params: { slug } }) => {
 	const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
 
 	const productsQuery = '*[_type == "product"]';
-
+	
 	const product = await client.fetch(query);
 	const products = await client.fetch(productsQuery);
-
-	console.log("this is product", product);
-	console.log("this is products", products);
+	console.log('products', products[0].photographer._ref)
 
 	const bannerQuery = '*[_type == "banner"]';
 	const bannerData = await client.fetch(bannerQuery);

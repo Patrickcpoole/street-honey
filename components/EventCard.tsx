@@ -3,7 +3,7 @@ import { EventTyping } from "../typings";
 import { urlFor } from "../lib/client";
 import moment from 'moment'
 import Form from './Form'
-
+import Image from "next/image";
 
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -15,7 +15,12 @@ type Props = {
   eventData: EventTyping
 };
 
-
+const imageStyle = {
+	height: "100%",
+	width: "100%",
+	boxShadow: "0px 5px 17px rgba(0,0,0,0.3)",
+  display:'absolute'
+};
 
 function EventCard({eventData}: Props) {
 
@@ -24,13 +29,19 @@ function EventCard({eventData}: Props) {
   return (
     <>
     <div className='event-container'>
-      <div className='event-image-container' style={{backgroundImage: `url(${urlFor(eventData.image)})`}}>
-        
+      <div className='event-image-container'>
+      <Image
+						src={urlFor(eventData.image).url()}
+						style={imageStyle}
+						alt="Image of the event"
+						width={1000}
+						height={800}
+					/>
         <h2 className='event-date-title'>{moment(eventData.dateTime).format('ddd MMM D')}</h2>
       </div>
       <div className="event-info-container">
-        <h3 className='text-3xl' style={{marginBottom: '5%', borderBottom: '1px solid #333'}}>{eventData.title}</h3>
-        <h3 className='text-lg'><span className='font-semibold mr-3'>When:</span>{moment(eventData.dateTime).format('ddd MMM D hh:mm A')}</h3>
+        <h3 className='text-3xl' style={{marginBottom: '2.5%'}}>{eventData.title}</h3>
+        <h3 className='text-lg'><span className='font-semibold mr-3'>When:</span>{moment(eventData.dateTime).format('dddd, MMM Do h:mm A')}</h3>
         <h3 className='text-lg'><span className='font-semibold mr-3'>Where:</span>Union Station</h3>
         <button type="button" className='event-button' onClick={() => setToggleForm(true)}>More Info</button>
       </div>

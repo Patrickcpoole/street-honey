@@ -1,15 +1,21 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { BannerDataTyping } from "../typings";
 import {AiOutlineArrowRight} from 'react-icons/ai'
 import Carousel from "react-bootstrap/Carousel";
-
+import Image from "next/image";
 import { urlFor } from "../lib/client";
 
 type Props = {
 	heroBanner: BannerDataTyping[];
 };
+
+const imageStyle = {
+	maxHeight: "95vh",
+	width: "100%",
+	boxShadow: "0px 5px 17px rgba(0,0,0,0.3)",
+};
+
 
 const HeroBanner = ({ heroBanner }: Props) => {
 	return (
@@ -23,13 +29,17 @@ const HeroBanner = ({ heroBanner }: Props) => {
 					<div className="hero-banner-container">
             <h3 className="hero-banner-title">A Community and Collective of Film Photographers</h3>
             <div className="hero-banner-subtitle">
-            {/* <h5 style={{marginRight: '5px', marginTop: '5px'}}>View Featured Photographers</h5><AiOutlineArrowRight size={25}/> */}
+
             </div>
-						<img
-							src={urlFor(banner.image)}
-							alt="headphones"
-							className="hero-banner-image"
-						/>
+					
+						<Image
+						src={urlFor(banner.image).url()}
+						style={imageStyle}
+						alt="Picture of the author"
+						width={1000}
+						height={800}
+					/>
+					
             <div className="hero-banner-info">
             <h5 className="hero-banner-desc">{banner.desc.split('-')[0]}</h5>
             <h6 className="hero-banner-name">{banner.desc.split('-')[1]}</h6>

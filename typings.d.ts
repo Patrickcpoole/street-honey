@@ -44,6 +44,17 @@ export interface ProductTyping extends SanityBody {
   tags: Array;
 }
 
+export interface PhotographerTyping extends SanityBody {
+  _type: "Product";
+  image: Image;
+  name: string;
+  slug: string;
+  bio: string;
+  location: string;
+  favoriteCamera: string;
+  instagram: string;
+}
+
 
 
 export interface BannerDataTyping extends SanityBody {
