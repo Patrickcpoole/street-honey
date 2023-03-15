@@ -22,23 +22,33 @@ export const StateContext = ({ children }: Props) => {
 	const [cartItems, setCartItems] = useState <any>([]);
 	const [totalPrice, setTotalPrice] = useState<number>(0);
 	const [totalQuantities, setTotalQuantities] = useState<number>(0);
+
 	const [qty, setQty] = useState<number>(1);
 
   let foundProduct;
   let index;
 
-	
+	const onRemove = (product:ProductTyping) => {
+		foundProduct = cartItems.find((item) => item._id === product._id);
 
-	const onAdd = (product:ProductTyping, quantity:number) => {
+		let currentCartItemsNotToggled = cartItems.filter((item, i) => item._id !== product._id)
+		let newCartItems = cartItems.filter((item) => item._id !== product._id)
+			setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price * foundProduct.quantity)
+			setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - foundProduct.quantity)
+			setCartItems(newCartItems)
+
+	}
+
+	const onAdd = (product:ProductTyping, quantity:number, size: string, dimensions: string) => {
     console.log('on Add fired', product, quantity)
-		const checkProductInCart = cartItems?.find((item:ProductTyping) => item._id === product._id
-		);
+		const checkProductInCart = cartItems?.find((item:ProductTyping) => item._id === product._id && item.size === product.size);
+		console.log('check product in cart', checkProductInCart)
 		setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * quantity);
 		setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
 
 		if (checkProductInCart) {
 			const updatedCartItems = cartItems?.map((cartProduct:ProductTyping) => {
-				if (cartProduct._id === product._id)
+				if (cartProduct._id === product._id && cartItems.size === product.size)
 					return {
 						...cartProduct,
 						quantity: cartProduct.quantity + quantity,
@@ -47,12 +57,19 @@ export const StateContext = ({ children }: Props) => {
 			setCartItems(updatedCartItems);
 			
 		} else {
+			let updatedCartItem = {
+				...product,
+				size: size,
+				dimensions: dimensions
+			}
       product.quantity = quantity;
-      setCartItems([...cartItems, {...product}])
+      setCartItems([...cartItems, {...updatedCartItem}])
 		}
     console.log('toast about to fire', qty, product.name)
     toast.success(`${qty} ${product.name} added to the cartItems.`);
 	};
+
+	
 
   const toggleCartItemQuantity = (id, value) => {
     foundProduct = cartItems.find((item) => item._id === id);
@@ -119,6 +136,7 @@ export const StateContext = ({ children }: Props) => {
 				incQty,
 				decQty,
         onAdd,
+				onRemove,
         toggleCartItemQuantity
       
 			}}

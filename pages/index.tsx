@@ -18,7 +18,7 @@ const Home = ({ products, bannerData}: Props) => {
     let newFilteredProducts: ProductTyping[] = []
    
       products.forEach(product => {
-    
+        console.log('this is the product!', product)
         product.tags.includes('best-seller') ? newFilteredProducts.push(product) : null
         setFilteredProducts(newFilteredProducts)
       })
