@@ -17,7 +17,7 @@ interface Geopoint {
   _type: "geopoint";
   asset: {
     lat: string;
-    lng: string
+    lng: string;
   }
 }
 
@@ -40,7 +40,6 @@ export interface ProductTyping extends SanityBody {
   slug: string;
   price: number;
   details: string;
-  quantity: number;
   tags: Array;
 }
 
@@ -79,7 +78,7 @@ export interface SideBannerDataTyping extends SanityBody {
 
 export interface AboutTyping extends SanityBody {
   _type: "About";
-  bannerImage: Image,
+  bannerImage: Image;
   mickDesc: string;
   mickImage: Image;
   patDesc: string;
@@ -98,12 +97,12 @@ export interface CartTyping {
 }
 
 export interface SubmissionsTyping {
-  image: Image,
-  firstName: string,
-  lastName: string,
-  email: string,
-  instagramHandle: string,
-  notes: number
+  image: Image;
+  firstName: string;
+  lastName: string;
+  email: string;
+  instagramHandle: string;
+  notes: string;
 }
 
 

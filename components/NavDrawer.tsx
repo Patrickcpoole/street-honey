@@ -31,8 +31,8 @@ function NavDrawer() {
 					<Image
 						src="/../public/street-honey-transparent-website-logo.png"
 						alt="Street Honey Logo"
-						width={250}
-						height={250}
+						width={175}
+						height={175}
 					/>
 				</div>
 				<Divider />
@@ -81,7 +81,7 @@ function NavDrawer() {
 				<Divider />
 				<div className="flex flex-col mx-5 mt-3">
 					<h3 style={{ fontSize: "1.55em" }}>Shop By Theme</h3>
-					<ul className="flex flex-col">
+					<ul className="flex flex-col my-2">
 					<Link
 						href={{
 							pathname: "/prints/",
@@ -177,7 +177,7 @@ function NavDrawer() {
 				<Divider />
 				<div className="flex flex-col mx-5 mt-3">
 					<h3 style={{ fontSize: "1.55em" }}>Shop By Region</h3>
-					<ul>
+					<ul className="flex flex-col mt-2 mb-2">
 					<Link
 						href={{
 							pathname: "/prints/",
