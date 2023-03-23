@@ -33,6 +33,8 @@ background-color: 	#FAF9F6;
 }
 .layout{
   background-color: 	#FAF9F6;
+  list-style-type: none;
+  height: 100vh;
 }
 
 .navbar-container{
@@ -97,6 +99,7 @@ background-color: 	#FAF9F6;
 }
 
 .print-category-item {
+  padding-left: 5%;
   text-align:left;
   font-size: 1.05em;
   margin-bottom: 5px;
@@ -125,8 +128,9 @@ background-color: 	#FAF9F6;
 
 .footer-content-item {
   text-align:center;
-  font-size: 1.05em;
+  font-size: 0.85em;
   text-decoration: none;
+  list-style-type: none;
   margin-bottom: 7.5px;
 }
 
@@ -561,21 +565,24 @@ text-align: end;
   font-weight: 200;
 }
 .footer-banner-container{
-  background-color: #333;
+  border-top: #dbdbdb solid 1px;
+  border-bottom: #dbdbdb solid 1px;
   position: relative;
-  height: 350px;
-  color: #FAF9F6;
+
+  background-color: #FAF9F6;
+  color: #333;
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .footer-banner-content-container {
   width:20%;
   height: 100%;
-  
+  padding-bottom:1%;
   display: flex;
+  background-color: #FAF9F6;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
@@ -643,14 +650,17 @@ text-align: end;
 
 .footer-container{
   color: #333;
+  background-color: #FAF9F6;
+  height: 100%;
+ padding-bottom: 1%;
+ padding-top: 1%;
   text-align: center;
-  margin-top: 20px;
-  padding: 30px 10px;
+  text-decoration: none;
+  list-style-type: none;
   font-weight: 700;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
   justify-content: center;
 
 }
@@ -740,6 +750,8 @@ padding: 20px 10px;
   cursor: pointer;
   background: transparent;
   border: none;
+ display: block;
+ float: right;
 }
 .cart-bottom{
   position: absolute;
@@ -867,9 +879,8 @@ padding: 30px 65px;
 }
 
 .about-header {
-  font-size:3em;
+  font-size:2.5em;
   color:#333;
-  border-bottom: 1px solid #333;
 }
 
 .about-desc {

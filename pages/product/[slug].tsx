@@ -52,9 +52,9 @@ const ProductDetails = ({ product, products }: Props) => {
 	const handleChooseSize = (size: string) => {
 		console.log('this is the size', size)
 		setSelectedSize(size)
-		if(size === 'small') {
+		if(size === 'Small') {
 			setSelectedDimensions('14.5in x 18.5in')
-		} else if(size === 'medium') {
+		} else if(size === 'Medium') {
 			setSelectedDimensions('19.5in x 26in')
 		} else {
 			setSelectedDimensions('24.5in x 33.5in')
@@ -140,7 +140,7 @@ const ProductDetails = ({ product, products }: Props) => {
 								color: "#ebebeb",
 								marginRight: "2%",
 							}}
-							onClick={() => onAdd(product, qty, selectedSize, selectedDimensions)}
+							onClick={() => onAdd(product, selectedSize, selectedDimensions)}
 						>
 							Add to Cart
 						</button>

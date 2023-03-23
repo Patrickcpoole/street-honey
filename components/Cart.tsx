@@ -88,8 +88,8 @@ const Cart = () => {
 										</div>
 										<h4>${item.price}</h4>
 									</div>
-									<div className="flex bottom">
-										<div>
+									<div className="flex bottom flex-row-reverse">
+										{/* <div>
 											<p className="quantity-desc">
 												<span
 													className="minus"
@@ -109,7 +109,7 @@ const Cart = () => {
 													<AiOutlinePlus />
 												</span>
 											</p>
-										</div>
+										</div> */}
 										<button type="button" className="remove-item" onClick={() => onRemove(item)}>
 											<TiDelete />
 										</button>
