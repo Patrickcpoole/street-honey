@@ -3,6 +3,7 @@ import {
 	AiOutlineInstagram,
 	AiOutlineShopping,
 	AiOutlineReddit,
+	AiOutlineMenu
 } from "react-icons/ai";
 import Image from "next/image";
 import { useStateContext } from "../context/StateContext";
@@ -14,9 +15,14 @@ const Navbar = () => {
 		useStateContext();
 
 	return (
-		<div className="navbar-container">
+		<nav className="flex flex-row justify-between items-center relative mx-4 h-20 flex-nowrap">
+			<motion.div className="block md:hidden cursor-pointer" onClick={() => setToggleDrawer(true)}>
+        
+          <AiOutlineMenu className="h-6 w-6" />
+        
+      </motion.div>
 			<motion.div
-				className="link-container"
+				className="hidden w-full flex-grow md:flex md:items-center md:w-auto"
 				initial={{
 					x: -500,
 					opacity: 0,
@@ -83,7 +89,7 @@ const Navbar = () => {
 				</h5>
 			</motion.div>
 			<motion.div
-				className="nav-icon-container"
+				className="flex flex-row justify-between items-center w-24 mr-1"
 				initial={{
 					x: 200,
 					opacity: 0,
@@ -125,7 +131,7 @@ const Navbar = () => {
 				</button>
 				{showCart && <Cart />}
 			</motion.div>
-		</div>
+		</nav>
 	);
 };
 

@@ -50,6 +50,7 @@ background-color: 	#FAF9F6;
 
 .link-container {
   font-weight: 600;
+  
 }
 
 
@@ -60,11 +61,13 @@ background-color: 	#FAF9F6;
   transform: translate(-50%, -50%);
   position: absolute;
   font-size:1.5em;
+
 }
 .nav-icon-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
+
   width: 6.5%;
 }
 
