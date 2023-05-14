@@ -14,7 +14,18 @@ interface Props {
 	// any props that come into the component
 }
 
-const Context = React.createContext<ContextTyping | null>(null);
+const Context = React.createContext<ContextTyping>({
+	showCart: false,
+  cartItems: [],
+  totalPrice: 0,
+  totalQuantities: 0,
+  qty: 1,
+  toggleDrawer: false,
+  setToggleDrawer: () => {},
+  setShowCart: () => {},
+  onAdd: () => {},
+	onRemove: () => {},
+});
 
 export const StateContext = ({ children }: Props) => {
 	const [showCart, setShowCart] = useState<boolean>(false);
@@ -25,15 +36,15 @@ export const StateContext = ({ children }: Props) => {
 
 	const [qty, setQty] = useState<number>(1);
 
-  let foundProduct;
+  let foundProduct: { price: number; quantity: number; };
   let index;
 
 	const onRemove = (product:ProductTyping) => {
 		console.log('this is the item were removing', product)
-		foundProduct = cartItems.find((item) => item._id === product._id && item.size === product.size);
+		foundProduct = cartItems.find((item: { _id: string; size: string; }) => item._id === product._id && item.size === product.size);
 		console.log('found product', foundProduct)
-		let currentCartItemsNotToggled = cartItems.filter((item, i) => item._id !== product._id)
-		let newCartItems = cartItems.filter((item) => item._id !== product._id || (item._id === product._id && item.size !== product.size))
+		let currentCartItemsNotToggled = cartItems.filter((item: { _id: string; }, i: any) => item._id !== product._id)
+		let newCartItems = cartItems.filter((item: { _id: string; size: string; }) => item._id !== product._id || (item._id === product._id && item.size !== product.size))
 		console.log('new cart items', newCartItems)
 			setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price * foundProduct.quantity)
 			setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - foundProduct.quantity)
@@ -63,58 +74,6 @@ export const StateContext = ({ children }: Props) => {
     toast.success(`${qty} ${product.name} added to the cartItems.`);
 	};
 
-	
-
-  // const toggleCartItemQuantity = (id, value) => {
-  //   foundProduct = cartItems.find((item) => item._id === id);
-  //   index = cartItems.findIndex((product) => product._id === id);
-    
-	// 	console.log('found product', foundProduct);
-	// 	console.log('index', index)
-
-  //   let currentCartItemsNotToggled = cartItems.filter((item, i) => item._id !== id)
-
-	
-
-  //   if(value === 'inc') {
-	// 		let newCartItems = [{...foundProduct, 
-  //       quantity: foundProduct.quantity + 1
-  //       }, ...currentCartItemsNotToggled]
-	// 		let sortedNewCartItems = newCartItems.sort(function(a, b) {
-	// 			const textA = a.name.toUpperCase();
-	// 			const textB = b.name.toUpperCase();
-	// 			return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-	// 	});
-  //     setCartItems(sortedNewCartItems)
-  //     setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price)
-  //     setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1)
-  //   } else if(value === 'dec') {
-  //     if(foundProduct.quantity > 1){
-  //     let newCartItems = [{...foundProduct, 
-  //       quantity: foundProduct.quantity - 1
-  //       }, ...currentCartItemsNotToggled]
-	// 			console.log('These are new cart items', newCartItems)
-	// 			let sortedNewCartItems = newCartItems.sort(function(a, b) {
-	// 				const textA = a.name.toUpperCase();
-	// 				const textB = b.name.toUpperCase();
-	// 				return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-	// 		});
-  //       setCartItems(sortedNewCartItems)
-  //       setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price)
-  //       setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1)
-  //     }
-  //   }
-  // }
-
-	// const incQty = () => setQty((prevQty) => prevQty + 1);
-
-	// const decQty = () => {
-	// 	setQty((prevQty) => {
-	// 		if (prevQty - 1 < 1) return 1;
-
-	// 		return prevQty - 1;
-	// 	});
-	// };
 
 	return (
 		<Context.Provider
@@ -127,12 +86,8 @@ export const StateContext = ({ children }: Props) => {
 				totalPrice,
 				totalQuantities,
 				qty,
-				// incQty,
-				// decQty,
         onAdd,
 				onRemove,
-        // toggleCartItemQuantity
-      
 			}}
 		>
 			{children}

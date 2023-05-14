@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import Link from "next/link";
+import { ContextTyping } from "../typings";
 import Image from "next/image";
 import {
 	AiOutlineMinus,
@@ -22,6 +23,8 @@ const imageStyle = {
 
 const Cart = () => {
 	const cartRef = useRef();
+
+
 	const {
 		totalPrice,
 		totalQuantities,

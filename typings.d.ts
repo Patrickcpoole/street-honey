@@ -40,6 +40,7 @@ export interface ProductTyping extends SanityBody {
   slug: string;
   price: number;
   details: string;
+  size: string;
   tags: Array;
 }
 
@@ -115,9 +116,7 @@ export interface ContextTyping {
   qty: number;
   toggleDrawer: boolean;
   setToggleDrawer: (toggleDrawer: boolean) => void;
-  decQty: (qty: number) => void;
-  incQty: (qty: number) => void;
   setShowCart: (showCart: boolean) => void;
-  onAdd: (product: ProductTyping, quantity: number) => void;
-  toggleCartItemQuantity: (id: number, value: string) => void;
+  onAdd: (product: ProductTyping, size: string, dimensions: string) => void;
+  onRemove: (product: ProductTyping, quantity: number) => void;
 }
