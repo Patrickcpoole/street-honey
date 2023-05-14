@@ -28,8 +28,8 @@ function EventCard({eventData}: Props) {
 
   return (
     <>
-    <div className='event-container'>
-      <div className='event-image-container'>
+    <div className='w-90 h-250 my-10 flex flex-col md:flex-row rounded-5 shadow-lg md:w-full'>
+      <div className='relative flex items-center justify-center bg-cover bg-center rounded-bl-5 rounded-tl-5 h-80 lg:w-30 lg:h-250'>
       <Image
 						src={urlFor(eventData.image).url()}
 						style={imageStyle}
@@ -39,7 +39,7 @@ function EventCard({eventData}: Props) {
 					/>
         <h2 className='event-date-title'>{moment(eventData.dateTime).format('ddd MMM D')}</h2>
       </div>
-      <div className="event-info-container">
+      <div className="w-70 h-250 flex flex-col justify-center items-center text-center text-gray-700">
         <h3 className='text-3xl' style={{marginBottom: '2.5%'}}>{eventData.title}</h3>
         <h3 className='text-lg'><span className='font-semibold mr-3'>When:</span>{moment(eventData.dateTime).format('dddd, MMM Do h:mm A')}</h3>
         <h3 className='text-lg'><span className='font-semibold mr-3'>Where:</span>Union Station</h3>

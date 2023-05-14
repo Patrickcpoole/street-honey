@@ -14,9 +14,9 @@ type Props = {
 
 const submissions = ({ sideBannerData }: Props) => (
 	<>
-		<div className="flex flex-row">
+		<div className="flex flex-col md:flex-row">
 			<SideBanner sideBanner={sideBannerData[2]} />
-			<div className="events-container">
+			<div className="flex flex-col justify-start items-center text-center w-full h-screen overflow-y-auto relative md:w-1/2 px-5">
 				<h3
 					className="text-4xl my-5"
 					style={{ color: "#333" }}

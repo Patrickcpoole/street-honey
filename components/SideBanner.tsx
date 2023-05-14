@@ -18,7 +18,7 @@ const imageStyle = {
 const SideBanner = ({ sideBanner }: Props) => {
 	return (
 		<>
-			<div className="side-banner-container" >
+			<div className="w-full md:w-1/2 text-center relative overflow-hidden bg-cover h-screen" >
 			<Image
 						src={urlFor(sideBanner.image).url()}
 						style={imageStyle}
