@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       colors: {
         "primary-color": "var(--primary-color)",
+          offWhite: '#FAF9F6',
         "secondary-color": "var(--secondary-color)"
       },
     },
