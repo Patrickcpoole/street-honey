@@ -31,7 +31,7 @@ function EventCard({eventData}: Props) {
     <div className='w-90 h-250 my-10 flex flex-col md:flex-row rounded-5 shadow-lg md:w-full'>
       <div className='relative flex items-center justify-center bg-cover bg-center rounded-bl-5 rounded-tl-5 h-80 lg:w-30 lg:h-250'>
       <Image
-						src={urlFor(eventData.image).url()}
+						src={urlFor(eventData.image.asset._ref).url()}
 						style={imageStyle}
 						alt="Image of the event"
 						width={1000}
@@ -54,7 +54,7 @@ function EventCard({eventData}: Props) {
         aria-describedby="alert-dialog-description"
         
       >
-        <div className='dialog-image-container' style={{backgroundImage: `url(${urlFor(eventData.image)})`}}></div>
+        <div className='dialog-image-container' style={{backgroundImage: `url(${urlFor(eventData.image.asset._ref).url()})`}}></div>
       <div className="dialog-info">
         <DialogTitle id="alert-dialog-title">
           {`${eventData.title} Sign Up `}

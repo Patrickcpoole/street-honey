@@ -35,13 +35,14 @@ export interface EventTyping extends SanityBody {
 
 export interface ProductTyping extends SanityBody {
   _type: "Product";
-  image: Image;
+  image: Image[]; // Changed from Image to Image[]
   name: string;
   slug: string;
   price: number;
   details: string;
   size: string;
-  tags: Array;
+  dimensions: string;
+  tags: Array<any>; // Updated Array type, you may replace 'any' with the appropriate type for tags
 }
 
 export interface PhotographerTyping extends SanityBody {
@@ -118,5 +119,5 @@ export interface ContextTyping {
   setToggleDrawer: (toggleDrawer: boolean) => void;
   setShowCart: (showCart: boolean) => void;
   onAdd: (product: ProductTyping, size: string, dimensions: string) => void;
-  onRemove: (product: ProductTyping, quantity: number) => void;
+  onRemove: (product: ProductTyping) => void;
 }

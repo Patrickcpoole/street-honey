@@ -22,7 +22,7 @@ const imageStyle = {
 };
 
 const Cart = () => {
-	const cartRef = useRef();
+	const cartRef = useRef<HTMLDivElement | null>(null);
 
 
 	const {
@@ -31,7 +31,6 @@ const Cart = () => {
 		cartItems,
 		onRemove,
 		setShowCart,
-		toggleCartItemQuantity,
 	} = useStateContext();
 
 	return (
@@ -72,7 +71,7 @@ const Cart = () => {
 									alt=""
 								/> */}
 								<Image
-									src={urlFor(item?.image[0]).url()}
+									src={urlFor(item.image[0].asset._ref).url()} 
 									style={imageStyle}
 									alt="Picture of the author"
 									width={1000}
@@ -92,27 +91,6 @@ const Cart = () => {
 										<h4>${item.price}</h4>
 									</div>
 									<div className="flex bottom flex-row-reverse">
-										{/* <div>
-											<p className="quantity-desc">
-												<span
-													className="minus"
-													onClick={() =>
-														toggleCartItemQuantity(item._id, "dec")
-													}
-												>
-													<AiOutlineMinus />
-												</span>
-												<span className="num">{item.quantity}</span>
-												<span
-													className="plus"
-													onClick={() =>
-														toggleCartItemQuantity(item._id, "inc")
-													}
-												>
-													<AiOutlinePlus />
-												</span>
-											</p>
-										</div> */}
 										<button type="button" className="remove-item" onClick={() => onRemove(item)}>
 											<TiDelete />
 										</button>

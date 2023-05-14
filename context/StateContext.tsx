@@ -46,8 +46,8 @@ export const StateContext = ({ children }: Props) => {
 		let currentCartItemsNotToggled = cartItems.filter((item: { _id: string; }, i: any) => item._id !== product._id)
 		let newCartItems = cartItems.filter((item: { _id: string; size: string; }) => item._id !== product._id || (item._id === product._id && item.size !== product.size))
 		console.log('new cart items', newCartItems)
-			setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price * foundProduct.quantity)
-			setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - foundProduct.quantity)
+			setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price)
+			setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1)
 			console.log('total quantities', totalQuantities)
 			setCartItems(newCartItems)
 
