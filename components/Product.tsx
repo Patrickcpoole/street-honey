@@ -28,7 +28,7 @@ const Product: React.FC<Props> = ({ product }) => {
 		}
 
 		fetchProductPhotographer();
-	}, []);
+	}, [product]);
 
 
 	const imageStyle = {
