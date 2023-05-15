@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import { Product, FooterBanner, HeroBanner } from '../components'
+import { Product, HeroBanner } from '../components'
 import {client} from '../lib/client';
 import { ProductTyping, BannerDataTyping, PhotographerTyping } from "../typings";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import photographer from '../sanity-street-honey/schemas/photographer';
+
 
 type Props = {
 	products: ProductTyping[],
@@ -24,7 +24,7 @@ const Home = ({ products, bannerData}: Props) => {
         product.tags.includes('best-seller') ? newFilteredProducts.push(product) : null
         setFilteredProducts(newFilteredProducts)
       })
-    }, [])
+    }, [products])
     
   
 

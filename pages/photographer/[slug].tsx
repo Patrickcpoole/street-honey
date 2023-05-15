@@ -33,7 +33,7 @@ const PhotographerDetails = ({ photographer }: Props) => {
 			
 		}
 		fetchPhotographerPhotos();
-	}, []);
+	}, [photographer]);
 
 	return (
 		<>

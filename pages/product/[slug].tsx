@@ -46,7 +46,7 @@ const ProductDetails = ({ product}: Props) => {
 			}
 		}
 		fetchProductPhotographer();
-	}, []);
+	}, [product]);
 
 	const handleChooseSize = (size: string) => {
 		console.log('this is the size', size)

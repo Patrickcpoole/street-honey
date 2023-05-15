@@ -30,7 +30,7 @@ const Prints = ({ products}: Props) => {
       setFilteredProducts(products)
     }
     
-  }, [router.query.tag])
+  }, [router, products])
 
 return  (
     <>
