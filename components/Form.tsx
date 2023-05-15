@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { client, submissionsUploader } from "../lib/client";
 import { AiFillDelete, AiOutlineCloudUpload } from "react-icons/ai";
-import { Image } from "../typings";
+import { Image, SubmissionsTyping, SanityImageAssetDocument } from "../typings";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 type Inputs = {
@@ -21,7 +21,7 @@ type Props = {
 };
 
 function Form({ title, setToggleForm}: Props) {
-	const [imagesAssets, setImagesAssets] = useState(null);
+	const [imagesAssets, setImagesAssets] = useState<Image | null>(null);
 	const [wrongTypeOfImage, setWrongTypeOfImage] = useState(false);
 	const {
 		register,
@@ -31,62 +31,78 @@ function Form({ title, setToggleForm}: Props) {
 	} = useForm<Inputs>();
 
 	const onSubmit: SubmitHandler<Inputs> = (data) => {
-		if (imagesAssets !== null) {
+		if (imagesAssets !== null && imagesAssets !== undefined) {
 			console.log("form data submitted", imagesAssets);
 			const sanityImageStructure = {
 				_type: "image",
 				asset: {
 					_type: "reference",
-					_ref: imagesAssets?._id,
+					_ref: imagesAssets._id,
 				},
 			};
-			const submissions = [
-				{
-					create: {
-						_type: "submissions",
-						firstName: data.firstName,
-						lastName: data.lastName,
-						email: data.email,
-						instagramHandle: data.instagramHandle,
-						notes: data.notes,
-						image: sanityImageStructure,
-					},
-				},
-			];
-			console.log("submissions", submissions);
-			submissionsUploader(submissions);
+			const submission: SubmissionsTyping = {
+				_type: "submissions",
+				firstName: data.firstName,
+				lastName: data.lastName,
+				email: data.email,
+				instagramHandle: data.instagramHandle,
+				notes: data.notes,
+				image: sanityImageStructure,
+			};
+			console.log("submission", submission);
+			submissionsUploader(submission); // Pass the submission directly without array wrapping
 		} else {
 			console.log("Error");
 		}
 	};
 
-	const uploadImage = (e: { target: { files: any[] } }) => {
-		const selectedImage = e.target.files[0];
-		console.log("selected image", selectedImage);
-		//to input an image to the upload field
-		if (
-			selectedImage.type === "image/png" ||
-			selectedImage.type === "image/svg" ||
-			selectedImage.type === "image/jpeg" ||
-			selectedImage.type === "image/gif" ||
-			selectedImage.type === "image/tiff"
-		) {
-			setWrongTypeOfImage(false);
-			client.assets
-				.upload("image", selectedImage, {
-					contentType: selectedImage.type,
-					filename: selectedImage.name,
-				})
-				.then((document) => {
-					console.log("about to fire", document);
-					setImagesAssets(document);
-				})
-				.catch((error) => {
-					console.log("Upload failed:", error.message);
-				});
+	const uploadImage: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+		const selectedImage = e.target.files && e.target.files[0];
+	
+		if (selectedImage) {
+			console.log("selected image", selectedImage);
+	
+			if (
+				selectedImage.type === "image/png" ||
+				selectedImage.type === "image/svg" ||
+				selectedImage.type === "image/jpeg" ||
+				selectedImage.type === "image/gif" ||
+				selectedImage.type === "image/tiff"
+			) {
+				setWrongTypeOfImage(false);
+	
+				client.assets
+					.upload("image", selectedImage, {
+						contentType: selectedImage.type,
+						filename: selectedImage.name,
+					})
+					.then((document: SanityImageAssetDocument | null) => {
+						if (document) {
+							console.log("about to fire", document);
+	
+							const image: Image = {
+								_type: "image",
+								_id: document._id,
+								asset: {
+									_ref: document._id,
+									_type: "reference",
+								},
+							};
+	
+							setImagesAssets(image);
+						} else {
+							console.log("Upload failed: Document is null");
+						}
+					})
+					.catch((error) => {
+						console.log("Upload failed:", error.message);
+					});
+			} else {
+				console.log("upload failed");
+				setWrongTypeOfImage(true);
+			}
 		} else {
-			console.log("upload failed");
-			setWrongTypeofImage(true);
+			console.log("No image selected");
 		}
 	};
 

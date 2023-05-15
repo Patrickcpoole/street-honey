@@ -15,6 +15,8 @@ const imageStyle = {
 	boxShadow: "0px 5px 17px rgba(0,0,0,0.3)",
 };
 
+
+
 const SideBanner = ({ sideBanner }: Props) => {
 	return (
 		<>

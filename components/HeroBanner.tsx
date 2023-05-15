@@ -16,11 +16,11 @@ const imageStyle = {
 	boxShadow: "0px 5px 17px rgba(0,0,0,0.3)",
 };
 
-const imageStyleMobile = {
-  width: "100%",
+const imageStyleMobile: React.CSSProperties = {
   height: "90vh",
+  width: "100%",
   objectFit: "cover"
-}
+};
 
 
 const HeroBanner = ({ heroBanner }: Props) => {
@@ -29,7 +29,7 @@ const HeroBanner = ({ heroBanner }: Props) => {
 			<Carousel fade interval={7000} controls={false}>
         {heroBanner?.map(banner => {
 					 const imageUrl = urlFor(banner.image).url();
-					 const mobileImageUrl = urlFor(banner.mobileImage || banner.image).url();
+			
           return (
          
           <Carousel.Item key={banner._id}>

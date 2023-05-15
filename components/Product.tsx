@@ -2,32 +2,33 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { client } from "../lib/client";
-
+import { PhotographerTyping, ProductTyping } from "../typings";
 import { urlFor } from "../lib/client";
 
-const Product = ({
-	product: { image, name, slug, price, details, photographer },
-}) => {
+
+type Props = {
+	product: ProductTyping;
+	photographerData: PhotographerTyping
+};
+
+const Product: React.FC<Props> = ({ product }) => {
 
  const [photographerData, setPhotographerData] = useState(null)
 
 	useEffect(() => {
+		console.log('product props', product)
 		async function fetchProductPhotographer() {
 			
-			if (photographer) {
-				const query = `*[_type == "photographer" && _id == "${photographer._ref}"]`;
+			if (product.photographer) {
+				const query = `*[_type == "photographer" && _id == "${product.photographer._ref}"]`;
 				const photographerResponse = await client.fetch(query);
-			
+				console.log('photographer response', photographerResponse)
 				setPhotographerData(photographerResponse[0])
 			}
 		}
 
-
-
 		fetchProductPhotographer();
 	}, []);
-
-	const imageSrc = urlFor(image[0]).url();
 
 
 	const imageStyle = {
@@ -37,15 +38,17 @@ const Product = ({
 		boxShadow: "0px 5px 17px rgba(0,0,0,0.3)",
 	};
 
+	const imageUrl = urlFor(product.image && product.image[0]?.asset?._ref).url();
+
 	return (
 		<div>
 			<div className="product-card">
 				<Link
-					href={`/product/${slug.current}`}
+					href={`/product/${product.slug.current}`}
 					style={{ textDecoration: "none" }}
 				>
 					<Image
-						src={urlFor(image && image[0]).url()}
+						 src={imageUrl}
 						style={imageStyle}
 						alt="Picture of the author"
 						width={400}
@@ -53,12 +56,12 @@ const Product = ({
 					/>
 				</Link>
 				<div className="product-info-container">
-					<p className="product-name">{name}</p>
+					<p className="product-name">{product.name}</p>
 					<Link
-						href={`/photographer/${photographerData ? photographerData.slug.current : null}`}
+						href={`/photographer/${photographerData ? (photographerData as PhotographerTyping).slug.current : null}`}
 						style={{ textDecoration: "none" }}
 					>
-						<p className="product-artist">{details.split("-")[0]}</p>
+						<p className="product-artist">{product.details.split("-")[0]}</p>
 					</Link>
 				</div>
 			</div>

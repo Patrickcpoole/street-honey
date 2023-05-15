@@ -7,10 +7,17 @@ interface SanityBody {
 
 interface Image {
   _type: "image";
+  _id: string;
   asset: {
     _ref: string;
-    _type: "reference"
+    _type: "reference";
+    
   }
+}
+
+interface SanityImageAssetDocument {
+  _id: string;
+  _type: string;
 }
 
 interface Geopoint {
@@ -36,8 +43,12 @@ export interface EventTyping extends SanityBody {
 export interface ProductTyping extends SanityBody {
   _type: "Product";
   image: Image[]; // Changed from Image to Image[]
+  photographer: PhotographerTyping;
   name: string;
-  slug: string;
+  slug: {
+    current: string;
+    _type: string;
+  };
   price: number;
   details: string;
   size: string;
@@ -46,10 +57,15 @@ export interface ProductTyping extends SanityBody {
 }
 
 export interface PhotographerTyping extends SanityBody {
-  _type: "Product";
+  _id: string; // Corrected from _ref
+  _type: "Photographer"; // Corrected from "Product"
+  _ref: string;
   image: Image;
   name: string;
-  slug: string;
+  slug: {
+    current: string;
+    _type: string;
+  };
   bio: string;
   location: string;
   favoriteCamera: string;
@@ -75,7 +91,8 @@ export interface BannerDataTyping extends SanityBody {
 
 export interface SideBannerDataTyping extends SanityBody {
   _type: "SideBannerData";
-  image: Image;
+  image: string;
+  title: string;
 }
 
 export interface AboutTyping extends SanityBody {
@@ -99,12 +116,19 @@ export interface CartTyping {
 }
 
 export interface SubmissionsTyping {
-  image: Image;
+  _type: string;
   firstName: string;
   lastName: string;
   email: string;
   instagramHandle: string;
   notes: string;
+  image: {
+    _type: string;
+    asset: {
+      _type: string;
+      _ref: string;
+    };
+  };
 }
 
 

@@ -10,13 +10,12 @@ import Link from "next/link";
 import {HiOutlineLocationMarker} from 'react-icons/hi'
 import Image from "next/image";
 import { client, urlFor } from "../../lib/client";
-import { ProductTyping } from "../../typings";
+import { ProductTyping, PhotographerTyping } from "../../typings";
 import { Product } from "../../components";
 import { useStateContext } from "../../context/StateContext";
 
 type Props = {
-	products: ProductTyping[];
-	product: ProductTyping[];
+	product: ProductTyping;
 };
 
 const imageStyle = {
@@ -26,14 +25,14 @@ const imageStyle = {
 	boxShadow: "0px 5px 17px rgba(0,0,0,0.3)",
 };
 
-const ProductDetails = ({ product, products }: Props) => {
+const ProductDetails = ({ product}: Props) => {
 	
 
 	const { image, name, details, price, photographer} = product;
 	const [index, setIndex] = useState(0);
 	const [selectedSize, setSelectedSize] = useState('medium');
 	const [selectedDimensions, setSelectedDimensions] = useState('19.5in x 26in')
-	const { decQty, incQty, qty, onAdd } = useStateContext();
+	const { onAdd } = useStateContext();
 	const [photographerData, setPhotographerData] = useState(null)
 	
 	useEffect(() => {
@@ -61,12 +60,14 @@ const ProductDetails = ({ product, products }: Props) => {
 		}
 	}
 
+	const imageUrl = urlFor(image && image[0]?.asset?._ref).url();
+
 	return (
 		<div>
 			<div className="product-detail-container">
 				<div className="product-image-container">
 					<Image
-						src={urlFor(image && image[0]).url()}
+						src={imageUrl}
 						style={imageStyle}
 						alt="Picture of the author"
 						width={1000}
@@ -85,7 +86,7 @@ const ProductDetails = ({ product, products }: Props) => {
 						</p>
 						<span>|</span>
 						<Link
-						href={`/photographer/${photographerData ? photographerData.slug.current : null}`}
+						href={`/photographer/${photographerData ? (photographerData as PhotographerTyping).slug.current : null}`}
 						style={{ textDecoration: "none" }}
 					><p className="ml-2 italic underline underline-offset-4">
 							{details.split("-")[0]}
@@ -162,7 +163,7 @@ export const getStaticPaths = async () => {
 
 	const products = await client.fetch(query);
 
-	const paths = products.map((product) => ({
+	const paths = products.map((product: ProductTyping) => ({
 		params: {
 			slug: product.slug.current,
 		},
@@ -174,7 +175,7 @@ export const getStaticPaths = async () => {
 	};
 };
 
-export const getStaticProps = async ({ params: { slug } }) => {
+export const getStaticProps = async ({ params: { slug } }: { params: { slug: string } }) => {
 	const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
 
 	const productsQuery = '*[_type == "product"]';
@@ -182,9 +183,6 @@ export const getStaticProps = async ({ params: { slug } }) => {
 	const product = await client.fetch(query);
 	const products = await client.fetch(productsQuery);
 	console.log('products', products[0].photographer._ref)
-
-	const bannerQuery = '*[_type == "banner"]';
-	const bannerData = await client.fetch(bannerQuery);
 
 	return {
 		props: { products, product },
