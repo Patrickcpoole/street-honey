@@ -12,6 +12,6 @@ module.exports = {
         "secondary-color": "var(--secondary-color)"
       },
     },
-  },
-  plugins: [require('tw-elements/dist/plugin')],
+  }
+
 }

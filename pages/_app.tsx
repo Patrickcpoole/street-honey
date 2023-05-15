@@ -7,12 +7,6 @@ import { Toaster } from "react-hot-toast";
 
 
 export default function App({ Component, pageProps }: AppProps) {
-	useEffect(() => {
-    const use = async () => {
-      (await import('tw-elements')).default;
-    };
-    use();
-  }, []);
 
 	return (
 		<StateContext>

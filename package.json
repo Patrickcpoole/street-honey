@@ -34,7 +34,6 @@
     "react-icons": "^4.7.1",
     "react-social-media-embed": "^2.3.4",
     "stripe": "^11.6.0",
-    "tw-elements": "^1.0.0-alpha13",
     "typescript": "4.9.4"
   },
   "devDependencies": {
