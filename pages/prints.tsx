@@ -34,7 +34,13 @@ const Prints = ({ products}: Props) => {
 return  (
     <>
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-8 px-2 md:px-0'>
-      {filteredProducts?.map((filteredProduct) => <Product key={filteredProduct._id} product={filteredProduct}/>)}
+      {filteredProducts?.map((filteredProduct) => (
+      <Product 
+        key={filteredProduct._id} 
+        product={filteredProduct} 
+        photographerData={filteredProduct.photographer} />
+      
+    ))}
       </div>
       </>
 )

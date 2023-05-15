@@ -3,6 +3,7 @@ import { Product, FooterBanner, HeroBanner } from '../components'
 import {client} from '../lib/client';
 import { ProductTyping, BannerDataTyping } from "../typings";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import photographer from '../sanity-street-honey/schemas/photographer';
 
 type Props = {
 	products: ProductTyping[],
@@ -34,7 +35,14 @@ const Home = ({ products, bannerData}: Props) => {
       <p>Available in different sizes</p>
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-10 gap-x-10 w-full p-2">
-      {filteredProducts?.map((filteredProduct) => <Product key={filteredProduct._id} product={filteredProduct}/>)}
+      {filteredProducts?.map((filteredProduct) => (
+      <Product 
+        key={filteredProduct._id} 
+        product={filteredProduct}
+        photographerData={filteredProduct.photographer}
+      />
+      )
+      )}
       </div>
 
     </>

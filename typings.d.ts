@@ -97,11 +97,11 @@ export interface SideBannerDataTyping extends SanityBody {
 
 export interface AboutTyping extends SanityBody {
   _type: "About";
-  bannerImage: Image;
+  bannerImage: string;
   mickDesc: string;
-  mickImage: Image;
+  mickImage: string;
   patDesc: string;
-  patImage: Image;
+  patImage: string;
 }
 
 

@@ -4,7 +4,7 @@ import { AboutTyping } from "../typings";
 import Image from "next/image";
 
 type Props = {
-	about: AboutTyping;
+	about: AboutTyping[];
 };
 
 const imageStyle = {
@@ -57,8 +57,8 @@ const AboutUs = ({ about }: Props) => {
         <div style={{ borderTop: "2px solid #333 ", marginLeft: 20, marginRight: 20, zIndex: 400 }}></div>
 				<div className="group relative cursor-pointer flex flex-col md:flex-row w-full" style={{ height:'65vh'}}>
   <div className="md:w-1/2 flex flex-col items-end mr-10 my-4 md:my-0">
-    <img
-      src={urlFor(about[0].mickImage)}
+    <Image
+      src={urlFor(about[0].mickImage).url()}
       alt="About Us Banner Image"
       className="about-image absolute object-cover filter hover:grayscale transition duration-300 ease-in-out "
     />
@@ -70,8 +70,8 @@ const AboutUs = ({ about }: Props) => {
     </div>
   </div>
   <div className="md:w-1/2 flex flex-col items-start ml-10 my-4 md:my-0">
-    <img
-      src={urlFor(about[0].patImage)}
+	<Image
+      src={urlFor(about[0].patImage).url()}
       alt="About Us Banner Image"
       className="about-image absolute object-cover filter hover:grayscale transition duration-300 ease-in-out "
     />
