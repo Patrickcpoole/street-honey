@@ -5,7 +5,13 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
-  },
-  plugins: [require('tw-elements/dist/plugin')],
+    extend: {
+      colors: {
+        "primary-color": "var(--primary-color)",
+          offWhite: '#FAF9F6',
+        "secondary-color": "var(--secondary-color)"
+      },
+    },
+  }
+
 }
