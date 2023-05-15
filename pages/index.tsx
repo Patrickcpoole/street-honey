@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import { Product, FooterBanner, HeroBanner } from '../components'
 import {client} from '../lib/client';
-import { ProductTyping, BannerDataTyping } from "../typings";
+import { ProductTyping, BannerDataTyping, PhotographerTyping } from "../typings";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import photographer from '../sanity-street-honey/schemas/photographer';
 
 type Props = {
 	products: ProductTyping[],
   bannerData: BannerDataTyping[]
+  photographerData: PhotographerTyping[]
 };
 
 const Home = ({ products, bannerData}: Props) => {
@@ -39,7 +40,7 @@ const Home = ({ products, bannerData}: Props) => {
       <Product 
         key={filteredProduct._id} 
         product={filteredProduct}
-        photographerData={filteredProduct.photographer}
+  
       />
       )
       )}

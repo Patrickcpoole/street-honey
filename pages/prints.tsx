@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { ProductTyping, BannerDataTyping } from "../typings";
+import { ProductTyping, PhotographerTyping} from "../typings";
 import { Product} from '../components';
 import {client} from '../lib/client';
 import { useRouter } from 'next/router'
@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 
 type Props = {
 	products: ProductTyping[],
+  photographerData: PhotographerTyping[]
 };
 
 const Prints = ({ products}: Props) => {
@@ -38,7 +39,7 @@ return  (
       <Product 
         key={filteredProduct._id} 
         product={filteredProduct} 
-        photographerData={filteredProduct.photographer} />
+        />
       
     ))}
       </div>

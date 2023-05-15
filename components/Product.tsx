@@ -8,7 +8,7 @@ import { urlFor } from "../lib/client";
 
 type Props = {
 	product: ProductTyping;
-	photographerData: PhotographerTyping
+	
 };
 
 const Product: React.FC<Props> = ({ product }) => {

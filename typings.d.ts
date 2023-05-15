@@ -57,10 +57,10 @@ export interface ProductTyping extends SanityBody {
 }
 
 export interface PhotographerTyping extends SanityBody {
-  _id: string; // Corrected from _ref
-  _type: "Photographer"; // Corrected from "Product"
+  _id: string;
+  _type: "Photographer";
   _ref: string;
-  image: Image;
+  image: string[];
   name: string;
   slug: {
     current: string;

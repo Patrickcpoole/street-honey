@@ -63,7 +63,13 @@ const PhotographerDetails = ({ photographer }: Props) => {
 			<h1 style={{fontSize: '2.5em', textAlign: 'center', paddingTop: '2%', paddingBottom: '1%', fontWeight: '700', color: '#333'}}>Photographer Gallery</h1>
 			<div className='products-container'>
 			
-      {photoData?.map((filteredProduct) => <Product key={filteredProduct._id} product={filteredProduct}/>)}
+      {photoData && photoData.length > 0 ? (
+  photoData.map((filteredProduct) => (
+    <Product product={filteredProduct} />
+  ))
+) : (
+  <p>No products found</p>
+)}
       </div>
 		</>
 	);
@@ -79,7 +85,7 @@ export const getStaticPaths = async () => {
 
 	const photographers = await client.fetch(query);
 
-	const paths = photographers.map((photographers) => ({
+	const paths = photographers.map((photographers: PhotographerTyping) => ({
 		params: {
 			slug: photographers.slug.current,
 		},
@@ -90,8 +96,7 @@ export const getStaticPaths = async () => {
 		fallback: "blocking",
 	};
 };
-
-export const getStaticProps = async ({ params: { slug } }) => {
+export const getStaticProps = async ({ params: { slug } }: { params: { slug: string } }) => {
 	console.log("this is slug static prop", slug);
 	const query = `*[_type == "photographer" && slug.current == '${slug}'][0]`;
 
