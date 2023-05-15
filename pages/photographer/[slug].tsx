@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Image from "next/image";
 import { client, urlFor } from "../../lib/client";
-import { PhotographerTyping } from "../../typings";
+import { PhotographerTyping, ProductTyping } from "../../typings";
 import { Product, } from '../../components'
 
 
@@ -18,13 +18,13 @@ const imageStyle = {
 
 const PhotographerDetails = ({ photographer }: Props) => {
 	const { image, name, bio, location, favoriteCamera } = photographer;
-	const [photoData, setPhotoData] = useState([])
+	const [photoData, setPhotoData] = useState<ProductTyping[]>([]);
 
 	useEffect(() => {
 		async function fetchPhotographerPhotos() {
 			console.log("photographer prop being passed", photographer);
 
-				const query = `*[_type == "product" && photographer._ref in *[_type=="photographer" && _id=="${photographer._id}"]._id ]`;
+				const query = `*[_type == "product" && photographer._ref in *[_type=="photographer" && _id=="${photographer._ref}"]._id ]`;
 				// Books by author.name (book.author is a reference)
       //*[_type == "book" && author._ref in *[_type=="author" && name=="John Doe"]._id ]{...}
 				const photoProductResponse = await client.fetch(query);
@@ -65,7 +65,7 @@ const PhotographerDetails = ({ photographer }: Props) => {
 			
       {photoData && photoData.length > 0 ? (
   photoData.map((filteredProduct) => (
-    <Product product={filteredProduct} />
+    <Product product={filteredProduct} key={filteredProduct._id}/>
   ))
 ) : (
   <p>No products found</p>
