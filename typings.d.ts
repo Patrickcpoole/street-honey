@@ -140,6 +140,8 @@ export interface ContextTyping {
   totalQuantities: number;
   qty: number;
   toggleDrawer: boolean;
+  setTotalPrice: (totalPrice: number) => void;
+  setCartItems: (cartItems: ProductTyping[]) => void;
   setToggleDrawer: (toggleDrawer: boolean) => void;
   setShowCart: (showCart: boolean) => void;
   onAdd: (product: ProductTyping, size: string, dimensions: string) => void;

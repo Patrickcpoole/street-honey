@@ -8,7 +8,7 @@ const FooterBanner = () => {
 			<div className="w-full md:w-1/5 h-full flex flex-col  justify-start items-center">
 				<Link href={"/"} >
 					<Image
-						src="/../public/street-honey-transparent-website-logo.png"
+						src="/street-honey-transparent-website-logo.png"
 						alt="Street Honey Logo"
 						width={250}
 						height={250}
@@ -16,9 +16,7 @@ const FooterBanner = () => {
 				</Link>
 			</div>
 			<div className="w-full md:w-1/5 h-full pb-1 flex flex-col bg-FAF9F6 justify-start items-center">
-				<h3
-					style={{ fontSize: "1.25em", marginTop: "5%", marginBottom: "2.5%" }}
-				>
+				<h3 className="md:mt-5 mb-2 text-2xl">
 					Shop By Theme
 				</h3>
 				<div
@@ -100,7 +98,7 @@ const FooterBanner = () => {
 				</div>
 			</div>
 			<div className="w-full md:w-1/5 h-full pb-1 flex flex-col bg-FAF9F6 justify-start items-center">
-				<h3 style={{ fontSize: "1.25em", marginTop: "5%", marginBottom: "2.5%" }}>Shop By Region</h3>
+			<h3 className="mt-5 mb-2 text-2xl">Shop By Region</h3>
 				<div className="list-none text-center flex flex-col justify-start items-center">
 					<Link
 					style={{ textDecoration: "none" }}
@@ -182,9 +180,7 @@ const FooterBanner = () => {
 				</div>
 			</div>
 			<div className="w-full md:w-1/5 h-full pb-1 flex flex-col bg-FAF9F6 justify-start items-center">
-				<h3
-					style={{ fontSize: "1.25em", marginTop: "5%", marginBottom: "2.5%" }}
-				>
+			<h3 className="mt-5 mb-2 text-2xl">
 					Company
 				</h3>
 				<div
@@ -211,9 +207,7 @@ const FooterBanner = () => {
 				</div>
 			</div>
 			<div className="w-full md:w-1/5 h-full pb-1 flex flex-col bg-FAF9F6 justify-start items-center">
-				<h3
-					style={{ fontSize: "1.25em", marginTop: "5%", textAlign: "center" }}
-				>
+			<h3 className="mt-5 mb-2 text-2xl">
 					Contact Us
 				</h3>
 				<div

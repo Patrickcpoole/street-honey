@@ -13,6 +13,12 @@ const imageStyle = {
 	boxShadow: "0px 5px 17px rgba(0,0,0,0.3)",
 };
 
+const avatarStyle = {
+	height: "12em",
+	width: "12em",
+	borderRadius: '50%'
+};
+
 const AboutUs = ({ about }: Props) => {
 	return (
 		<>
@@ -25,22 +31,23 @@ const AboutUs = ({ about }: Props) => {
 					className="hero-banner-image"
 				/> */}
 				<Image
-						src={urlFor(about[0].bannerImage).url()}
-						style={imageStyle}
-						alt="Picture of the author"
-						width={1000}
-						height={800}
-					/>
+					src={urlFor(about[0].bannerImage).url()}
+					style={imageStyle}
+					alt="Picture of the author"
+					width={1000}
+					height={800}
+				/>
 				<div className="hero-banner-info"></div>
 				{/* <Link href={`/product/${banner.product}`}>
 							<button type="button"> {banner.buttonText}</button>
 						</Link> */}
 			</div>
-			<div className="flex flex-col items-center">
-				<h2 className="about-header my-10">
+			<div className="flex flex-col items-center ">
+				
+				<h2 className="about-header my-10 mx-5">
 					A Community and Collective of Online Photographers
 				</h2>
-        <span className="solid"></span>
+				<span className="solid"></span>
 				<p className="about-desc">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
 					gravida lorem lorem, ac ullamcorper augue aliquam in. Sed nec enim
@@ -52,36 +59,34 @@ const AboutUs = ({ about }: Props) => {
 					blandit mollis. Nullam consectetur sodales lacus, feugiat pulvinar dui
 					volutpat eget.
 				</p>
-        
+				<div className="border-line"></div>
 				<h2 className="about-header my-10">Meet The Team</h2>
-        <div style={{ borderTop: "2px solid #333 ", marginLeft: 20, marginRight: 20, zIndex: 400 }}></div>
-				<div className="group relative cursor-pointer flex flex-col md:flex-row w-full" style={{ height:'65vh'}}>
-  <div className="md:w-1/2 flex flex-col items-end mr-10 my-4 md:my-0">
-    <Image
-      src={urlFor(about[0].mickImage).url()}
-      alt="About Us Banner Image"
-      className="about-image absolute object-cover filter hover:grayscale transition duration-300 ease-in-out "
-    />
-    <div className="about-image absolute opacity-0 hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white z-0 ">
-      <div className="flex flex-col items-center justify-center h-full">
-        <h3 className="text-3xl font-bold text-black opacity-100 mb-4 md:mb-10">Patrick Poole</h3>
-        <p className="opacity-100 w-3/4 text-center">{about[0].mickDesc}</p>
-      </div>
-    </div>
-  </div>
-  <div className="md:w-1/2 flex flex-col items-start ml-10 my-4 md:my-0">
-	<Image
-      src={urlFor(about[0].patImage).url()}
-      alt="About Us Banner Image"
-      className="about-image absolute object-cover filter hover:grayscale transition duration-300 ease-in-out "
-    />
-    <div className="about-image absolute opacity-0 hover:opacity-80 transition duration-300 ease-in-out group-hover:bg-white z-0">
-      <div className="flex flex-col items-center justify-center h-full">
-        <h3 className="text-3xl font-bold text-black opacity-100 mb-4 md:mb-10">Patrick Poole</h3>
-        <p className="opacity-100 w-3/4 text-center">{about[0].patDesc}</p>
-      </div>
-    </div>
-  </div>
+
+				<div
+					className="group relative cursor-pointer flex flex-col md:flex-row w-full"
+				>
+					<div className="md:w-1/2 flex flex-col items-center">
+						<Image
+							src={urlFor(about[0].patImage).url()}
+							alt="About Us Banner Image"
+							style={avatarStyle}
+							height={500}
+							width={500}
+						/>
+						<h2 className="text-3xl font-semibold mt-5">Patrick Poole</h2>
+						<p className="opacity-100 w-3/4 text-center mt-10 mb-20">{about[0].patDesc}</p>
+					</div>
+					<div className="md:w-1/2 flex flex-col items-center justify-center">
+						<Image
+							src={urlFor(about[0].patImage).url()}
+							alt="About Us Banner Image"
+							style={avatarStyle}
+							height={500}
+							width={500}
+						/>
+						<h2 className="text-3xl font-semibold mt-5">Patrick Poole</h2>
+						<p className="opacity-100 w-3/4 text-center mt-10 mb-20 ">{about[0].patDesc}</p>
+					</div>
 				</div>
 			</div>
 		</>
