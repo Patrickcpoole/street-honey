@@ -1,6 +1,7 @@
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
+const stripeSecretKey = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY : process.env.NEXT_PUBLIC_STRIPE_TEST_SECRET_KEY;
+const stripe = new Stripe(stripeSecretKey);
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -19,6 +20,7 @@ export default async function handler(req, res) {
           const newImage = img.replace('image-', 'https://cdn.sanity.io/images/m6h4sq13/production/').replace('-webp', '.webp');
 
           return {
+            
             price_data: {
               currency: 'usd',
               product_data: {
