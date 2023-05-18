@@ -80,7 +80,7 @@ const Navbar = () => {
 				<h5 className="navbar-title">
 					<Link href={"/"} style={{ textDecoration: "none", color: "#333" }}>
 						<Image
-							src="/../public/street-honey-transparent-website-logo.png"
+							src="/street-honey-transparent-website-logo.png"
 							alt="Street Honey Logo"
 							width={150}
 							height={150}

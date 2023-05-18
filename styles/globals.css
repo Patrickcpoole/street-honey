@@ -140,6 +140,7 @@ background-color: 	#FAF9F6;
   text-decoration: none;
   list-style-type: none;
   margin-bottom: 7.5px;
+  color:#383736;
 }
 
 
@@ -594,6 +595,12 @@ text-align: end;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+}
+
+.border-line {
+  margin-top:5%;
+  border: .5px solid #dbdbdb;
+  width: 100%;
 }
 
 .footer-banner-content-container {

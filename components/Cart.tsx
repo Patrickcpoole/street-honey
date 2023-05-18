@@ -10,7 +10,7 @@ import {
 } from "react-icons/ai";
 import { TiDelete } from "react-icons/ti";
 import toast from "react-hot-toast";
-
+import getStripe from '../lib/getStripe'
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
 
@@ -24,6 +24,29 @@ const imageStyle = {
 const Cart = () => {
 	const cartRef = useRef<HTMLDivElement | null>(null);
 
+	const handleCheckout = async () => {
+		const stripe = await getStripe();
+
+		const response = await fetch('/api/stripe', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(cartItems)
+		});
+
+		if (response.status === 500) {
+			const errorData = await response.json();
+			console.log('Error:', errorData);
+			return;
+		}
+
+		const data = await response.json()
+		console.log('STRIPE RESPONSE DATA', data)
+		toast.loading('Redirecting...')
+
+		stripe.redirectToCheckout({sessionId: data.id})
+	}
 
 	const {
 		totalPrice,
@@ -106,7 +129,7 @@ const Cart = () => {
 							<h3>${totalPrice.toFixed(2)}</h3>
 						</div>
 						<div className="btn-container">
-							<button type="button" className="btn">
+							<button type="button" className="btn" onClick={handleCheckout}>
 								checkout
 							</button>
 						</div>

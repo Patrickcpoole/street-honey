@@ -42,7 +42,7 @@ function NavDrawer() {
 			>
 				<div className="flex justify-center">
 					<Image
-						src="/../public/street-honey-transparent-website-logo.png"
+						src="/street-honey-transparent-website-logo.png"
 						alt="Street Honey Logo"
 						width={175}
 						height={175}
