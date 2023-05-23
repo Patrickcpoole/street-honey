@@ -49,7 +49,7 @@ const ProductDetails = ({ product}: Props) => {
 	}, [photographer]);
 
 	const handleChooseSize = (size: string) => {
-		console.log('this is the size', size)
+
 		setSelectedSize(size)
 		if(size === 'Small') {
 			setSelectedDimensions('14.5in x 18.5in')
@@ -182,7 +182,7 @@ export const getStaticProps = async ({ params: { slug } }: { params: { slug: str
 	
 	const product = await client.fetch(query);
 	const products = await client.fetch(productsQuery);
-	console.log('products', products[0].photographer._ref)
+
 
 	return {
 		props: { products, product },

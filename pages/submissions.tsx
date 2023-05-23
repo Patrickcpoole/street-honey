@@ -4,8 +4,6 @@ import { SideBannerDataTyping } from "../typings";
 import SideBanner from "../components/SideBanner";
 import Form from "../components/Form";
 import Card from "@mui/material/Card";
-import { InstagramEmbed } from 'react-social-media-embed';
-
 
 type Props = {
 	sideBannerData: SideBannerDataTyping[];
@@ -46,7 +44,6 @@ const submissions = ({ sideBannerData }: Props) => (
 export const getServerSideProps = async () => {
 	const query = '*[_type == "sideBanner"]';
 	const sideBannerData = await client.fetch(query);
-	console.log("this is products", sideBannerData);
 
 	return {
 		props: { sideBannerData },

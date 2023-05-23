@@ -5,24 +5,11 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Link from "next/link";
 import { useStateContext } from "../context/StateContext";
-import { useRouter } from "next/router";
 import Image from "next/image";
 import { AiOutlineClose } from "react-icons/ai";
-import { red } from "@mui/material/colors";
 
 function NavDrawer() {
 	const { toggleDrawer, setToggleDrawer } = useStateContext();
-
-	// const router = useRouter()
-
-	// const handleDrawerClick = (tag: string) => {
-	// 	if(!router.route.includes('/prints')) {
-	// 		router.push(`/prints/${tag}`)
-	// 	} else {
-	// 		router.push(`/prints/${tag}`, undefined, { shallow: true })
-	// 	}
-	// }
-
 	const theme = useTheme();
 	const isSmallerScreen = useMediaQuery(theme.breakpoints.down("md"));
 

@@ -16,13 +16,13 @@ const Product: React.FC<Props> = ({ product }) => {
  const [photographerData, setPhotographerData] = useState(null)
 
 	useEffect(() => {
-		console.log('product props', product)
+	
 		async function fetchProductPhotographer() {
 			
 			if (product.photographer) {
 				const query = `*[_type == "photographer" && _id == "${product.photographer._ref}"]`;
 				const photographerResponse = await client.fetch(query);
-				console.log('photographer response', photographerResponse)
+
 				setPhotographerData(photographerResponse[0])
 			}
 		}

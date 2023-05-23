@@ -1,7 +1,5 @@
 import React from "react";
-import Link from "next/link";
 import { BannerDataTyping } from "../typings";
-import {AiOutlineArrowRight} from 'react-icons/ai'
 import Carousel from "react-bootstrap/Carousel";
 import Image from "next/image";
 import { urlFor } from "../lib/client";

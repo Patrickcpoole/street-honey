@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from "next/link";
 import { AiFillInstagram, AiOutlineTwitter, AiOutlineReddit} from 'react-icons/ai'
 
 const Footer = () => {

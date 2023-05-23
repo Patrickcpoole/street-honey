@@ -17,7 +17,6 @@ const Prints = ({ products}: Props) => {
   const router = useRouter()
   
   useEffect(() => {
-    console.log('this is router in prints', router)
     const tag = router.query.tag
     let newFilteredProducts: ProductTyping[] = []
     if(Object.keys(router.query).length !== 0) {
@@ -50,10 +49,10 @@ return  (
 
 
 export const getServerSideProps = async (context:any) => {
-  console.log('context', context.params)
+
   const query = '*[_type == "product"]';
   const products = await client.fetch(query);
-  console.log('this is products', products)
+  
   return {
     props: {products}
   }
