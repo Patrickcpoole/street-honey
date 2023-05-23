@@ -1,7 +1,7 @@
 import Stripe from 'stripe';
 // dev redeploy
-console.log('env stripjs', process.env.NODE_ENV)
-const stripeSecretKey = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY : process.env.NEXT_PUBLIC_STRIPE_TEST_SECRET_KEY;
+console.log('env stripjs', process.env.NEXT_PUBLIC_NODE_ENV)
+const stripeSecretKey = process.env.NEXT_PUBLIC_NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY : process.env.NEXT_PUBLIC_STRIPE_TEST_SECRET_KEY;
 console.log('stripe secrete key', stripeSecretKey)
 const stripe = new Stripe(stripeSecretKey);
 
