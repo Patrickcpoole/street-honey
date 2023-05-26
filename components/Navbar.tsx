@@ -7,16 +7,16 @@ import {
 } from "react-icons/ai";
 import Image from "next/image";
 import { useStateContext } from "../context/StateContext";
-import { Cart } from "./";
 import { motion } from "framer-motion";
 
 const Navbar = () => {
-	const { showCart, setShowCart, totalQuantities, setToggleDrawer } =
+	const { showCart, setToggleCartDrawer, totalQuantities, setToggleNavDrawer } =
 		useStateContext();
 
 	return (
-		<nav className="flex flex-row justify-between items-center relative mx-4 h-20 flex-nowrap">
-			<motion.div className="block md:hidden cursor-pointer" onClick={() => setToggleDrawer(true)}>
+		<nav className=" h-20 z-50 bg-offWhite w-full flex-nowrap fixed top-0 left-0 right-0">
+			<div className="mx-4 flex flex-row justify-between items-center h-20">
+			<motion.div className="block md:hidden cursor-pointer" onClick={() => setToggleNavDrawer(true)}>
         
           <AiOutlineMenu className="h-6 w-6" />
         
@@ -39,7 +39,7 @@ const Navbar = () => {
 			>
 				<span
 					className="nav-item"
-					onClick={() => setToggleDrawer(true)}
+					onClick={() => setToggleNavDrawer(true)}
 					style={{
 						textDecoration: "none",
 						color: "#333",
@@ -70,6 +70,19 @@ const Navbar = () => {
 						}}
 					>
 						About Us
+					</Link>
+				</span>
+				<span>
+					<Link
+						className="nav-item"
+						href={"/merch"}
+						style={{
+							textDecoration: "none",
+							color: "#333",
+							marginRight: "10px",
+						}}
+					>
+						Merch
 					</Link>
 				</span>
 			</motion.div>
@@ -124,13 +137,14 @@ const Navbar = () => {
 				<button
 					type="button"
 					className="cart-icon"
-					onClick={() => setShowCart(true)}
+					onClick={() => setToggleCartDrawer(true)}
 				>
 					<AiOutlineShopping style={{ color: "#333" }} />
 					<span className="cart-item-qty">{totalQuantities}</span>
 				</button>
-				{showCart && <Cart />}
+	
 			</motion.div>
+			</div>
 		</nav>
 	);
 };

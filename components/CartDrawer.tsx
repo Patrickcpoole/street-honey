@@ -1,4 +1,7 @@
 import React, { useRef } from "react";
+import Drawer from "@mui/material/Drawer";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -11,6 +14,7 @@ import getStripe from '../lib/getStripe'
 import { useStateContext } from "../context/StateContext";
 import { urlFor } from "../lib/client";
 
+
 const imageStyle = {
 	width: "initial",
 	maxHeight: "150px",
@@ -18,7 +22,11 @@ const imageStyle = {
 	boxShadow: "0px 5px 17px rgba(0,0,0,0.3)",
 };
 
-const Cart = () => {
+
+const CartDrawer = () => {
+
+	const theme = useTheme();
+	const isSmallerScreen = useMediaQuery(theme.breakpoints.down("md"));
 	const cartRef = useRef<HTMLDivElement | null>(null);
 
 	const handleCheckout = async () => {
@@ -49,17 +57,32 @@ const Cart = () => {
 		totalPrice,
 		totalQuantities,
 		cartItems,
+		toggleCartDrawer,
+		setToggleCartDrawer,
 		onRemove,
 		setShowCart,
 	} = useStateContext();
 
 	return (
-		<div className="cart-wrapper" ref={cartRef}>
+		<Drawer
+				sx={{
+					width: isSmallerScreen ? "100%" : "25%", // adjust width based on screen size
+					flexShrink: 0,
+					"& .MuiDrawer-paper": {
+						width: isSmallerScreen ? "100%" : "25%", // adjust width of paper container
+					},
+				}}
+				anchor="right"
+				className="cart-wrapper" ref={cartRef}
+				open={toggleCartDrawer}
+				onClose={() => setToggleCartDrawer(false)}
+			>
+
 			<div className="cart-container">
 				<button
 					className="cart-heading"
 					type="button"
-					onClick={() => setShowCart(false)}
+					onClick={() => setToggleCartDrawer(false)}
 				>
 					<AiOutlineLeft />
 					<span className="heading">Your Cart</span>
@@ -67,13 +90,15 @@ const Cart = () => {
 				</button>
 				{cartItems.length < 1 && (
 					<div className="empty-cart">
-						<AiOutlineShopping size={150} />
+						<div className="flex column justify-center w-full">
+						<AiOutlineShopping size={100} />
+						</div>
 						<h3>Your cart is empty</h3>
-						<Link href="/">
+						<Link href="/prints">
 							<button
 								type="button"
 								className="btn"
-								onClick={() => setShowCart(false)}
+								onClick={() => setToggleCartDrawer(false)}
 							>
 								Continue Shopping
 							</button>
@@ -125,16 +150,15 @@ const Cart = () => {
 							<h3>Subototal</h3>
 							<h3>${totalPrice.toFixed(2)}</h3>
 						</div>
-						<div className="btn-container">
 							<button type="button" className="btn" onClick={handleCheckout}>
 								checkout
 							</button>
-						</div>
 					</div>
 				)}
 			</div>
-		</div>
+	
+		</Drawer>
 	);
 };
 
-export default Cart;
+export default CartDrawer;

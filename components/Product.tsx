@@ -50,7 +50,7 @@ const Product: React.FC<Props> = ({ product }) => {
 					<Image
 						 src={imageUrl}
 						style={imageStyle}
-						alt="Picture of the author"
+						alt="Image of the specified product"
 						width={400}
 						height={300}
 					/>
