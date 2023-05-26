@@ -23,7 +23,7 @@ const imageStyleMobile: React.CSSProperties = {
 
 const HeroBanner = ({ heroBanner }: Props) => {
 	return (
-		<div style={{backgroundColor: 	'#FAF9F6'}}>
+		<div className="bg-offWhite">
 			<Carousel fade interval={7000} controls={false}>
         {heroBanner?.map(banner => {
 					 const imageUrl = urlFor(banner.image).url();
@@ -31,9 +31,9 @@ const HeroBanner = ({ heroBanner }: Props) => {
           return (
          
           <Carousel.Item key={banner._id}>
-					<div className="text-center position-relative block px-2 w-full height-auto overflow-hidden">
-					<h3 className="text-4xl md:text-5xl lg:text-6xl sm:text-4xl absolute z-999 text-offWhite top-1/2 left-1/2 -translate-x-1/2 
-          -translate-y-1/2 text-shadow block">
+					<div className="text-center position-relative block px-2 w-full height-auto overflow-hidden bg-offWhite">
+					<h3 className="text-4xl drop-shadow-2xl md:text-5xl lg:text-6xl sm:text-4xl absolute z-999 text-offWhite top-1/2 left-1/2 -translate-x-1/2 
+          -translate-y-1/2 text-shadow block custom-text-shadow">
 							A Community and Collective of Film Photographers
 							</h3>
 						  <div >
