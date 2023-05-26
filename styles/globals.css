@@ -10,7 +10,7 @@ body, * {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   box-sizing: border-box;
   text-decoration: none;
-
+  
 }
 
 
@@ -160,7 +160,9 @@ background-color: 	#FAF9F6;
   background-color: #333;
 }
 
-
+.custom-text-shadow {
+  text-shadow: 2px 3px 5px rgba(0,0,0,0.3);
+}
 
 .marquee-text{
   font-size: 29px;
@@ -666,7 +668,6 @@ text-align: end;
 }
 .cart-container{
   height: 100vh;
-  width: 600px;
   background-color: #FAF9F6;
   float: right;
   padding: 40px 10px;
@@ -715,7 +716,7 @@ text-align: end;
   color: #333;
 }
 .empty-cart{
-  margin:40px;
+
   text-align:center;
 }
 .empty-cart h3{
@@ -788,10 +789,7 @@ padding: 30px 65px;
 
 }
 
-.btn-container{
-  width: 400px;
-  margin: auto;
-}
+
 .btn{
   width: 100%;
   max-width: 400px;

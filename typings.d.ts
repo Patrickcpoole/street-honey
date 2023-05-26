@@ -104,6 +104,15 @@ export interface AboutTyping extends SanityBody {
   patImage: string;
 }
 
+export interface MerchTyping extends SanityBody {
+  _type: "Merch";
+  image: Image[],
+  name: string,
+  description: string,
+  slug: string,
+  price: number,
+}
+
 
 export interface CartTyping {
   cartItems: {_type: "Product",
@@ -139,10 +148,12 @@ export interface ContextTyping {
   totalPrice: number;
   totalQuantities: number;
   qty: number;
-  toggleDrawer: boolean;
+  toggleNavDrawer: boolean;
+  toggleCartDrawer: boolean;
   setTotalPrice: (totalPrice: number) => void;
   setCartItems: (cartItems: ProductTyping[]) => void;
-  setToggleDrawer: (toggleDrawer: boolean) => void;
+  setToggleNavDrawer: (toggleDrawer: boolean) => void;
+  setToggleCartDrawer: (toggleDrawer: boolean) => void;
   setShowCart: (showCart: boolean) => void;
   onAdd: (product: ProductTyping, size: string, dimensions: string) => void;
   onRemove: (product: ProductTyping) => void;

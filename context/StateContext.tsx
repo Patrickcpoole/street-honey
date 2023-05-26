@@ -20,10 +20,12 @@ const Context = React.createContext<ContextTyping>({
   totalPrice: 0,
   totalQuantities: 0,
   qty: 1,
-  toggleDrawer: false,
+  toggleNavDrawer: false,
+	toggleCartDrawer: false,
 	setTotalPrice: () => {},
 	setCartItems: () => {},
-  setToggleDrawer: () => {},
+  setToggleNavDrawer: () => {},
+	setToggleCartDrawer: () => {},
   setShowCart: () => {},
   onAdd: () => {},
 	onRemove: () => {},
@@ -31,7 +33,8 @@ const Context = React.createContext<ContextTyping>({
 
 export const StateContext = ({ children }: Props) => {
 	const [showCart, setShowCart] = useState<boolean>(false);
-	const [toggleDrawer, setToggleDrawer] = useState<boolean>(false);
+	const [toggleCartDrawer, setToggleCartDrawer] = useState<boolean>(false);
+	const [toggleNavDrawer, setToggleNavDrawer] = useState<boolean>(false);
 	const [cartItems, setCartItems] = useState <any>([]);
 	const [totalPrice, setTotalPrice] = useState<number>(0);
 	const [totalQuantities, setTotalQuantities] = useState<number>(0);
@@ -80,8 +83,10 @@ export const StateContext = ({ children }: Props) => {
 	return (
 		<Context.Provider
 			value={{
-				toggleDrawer,
-				setToggleDrawer,
+				toggleNavDrawer,
+				setToggleNavDrawer,
+				toggleCartDrawer,
+				setToggleCartDrawer,
 				showCart,
         setShowCart,
 				setCartItems,

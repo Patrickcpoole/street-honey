@@ -27,11 +27,9 @@ const events = ({ sideBannerData, eventsData}: Props) => (
 export const getServerSideProps = async () => {
   const query = '*[_type == "sideBanner"]';
   const sideBannerData = await client.fetch(query);
-  console.log('this is side banner data', sideBannerData)
 
   const eventQuery = '*[_type == "event"]';
   const eventsData = await client.fetch(eventQuery);
-  console.log('event data', events)
 
   return {
     props: {sideBannerData, eventsData}

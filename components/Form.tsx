@@ -32,7 +32,6 @@ function Form({ title, setToggleForm}: Props) {
 
 	const onSubmit: SubmitHandler<Inputs> = (data) => {
 		if (imagesAssets !== null && imagesAssets !== undefined) {
-			console.log("form data submitted", imagesAssets);
 			const sanityImageStructure = {
 				_type: "image",
 				asset: {
@@ -49,7 +48,6 @@ function Form({ title, setToggleForm}: Props) {
 				notes: data.notes,
 				image: sanityImageStructure,
 			};
-			console.log("submission", submission);
 			submissionsUploader(submission); // Pass the submission directly without array wrapping
 		} else {
 			console.log("Error");

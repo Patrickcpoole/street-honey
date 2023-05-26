@@ -22,13 +22,13 @@ const PhotographerDetails = ({ photographer }: Props) => {
 
 	useEffect(() => {
 		async function fetchPhotographerPhotos() {
-			console.log("photographer prop being passed", photographer);
+			
 
 				const query = `*[_type == "product" && photographer._ref in *[_type=="photographer" && _id=="${photographer._ref}"]._id ]`;
 				// Books by author.name (book.author is a reference)
       //*[_type == "book" && author._ref in *[_type=="author" && name=="John Doe"]._id ]{...}
 				const photoProductResponse = await client.fetch(query);
-				console.log("photo product response", photoProductResponse);
+		
 				setPhotoData(photoProductResponse)
 			
 		}
@@ -97,12 +97,9 @@ export const getStaticPaths = async () => {
 	};
 };
 export const getStaticProps = async ({ params: { slug } }: { params: { slug: string } }) => {
-	console.log("this is slug static prop", slug);
+
 	const query = `*[_type == "photographer" && slug.current == '${slug}'][0]`;
-
 	const photographer = await client.fetch(query);
-
-	console.log("this is photographer", photographer);
 
 	return {
 		props: { photographer },

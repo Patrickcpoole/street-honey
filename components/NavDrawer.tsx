@@ -5,24 +5,11 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Link from "next/link";
 import { useStateContext } from "../context/StateContext";
-import { useRouter } from "next/router";
 import Image from "next/image";
 import { AiOutlineClose } from "react-icons/ai";
-import { red } from "@mui/material/colors";
 
 function NavDrawer() {
-	const { toggleDrawer, setToggleDrawer } = useStateContext();
-
-	// const router = useRouter()
-
-	// const handleDrawerClick = (tag: string) => {
-	// 	if(!router.route.includes('/prints')) {
-	// 		router.push(`/prints/${tag}`)
-	// 	} else {
-	// 		router.push(`/prints/${tag}`, undefined, { shallow: true })
-	// 	}
-	// }
-
+	const { toggleNavDrawer, setToggleNavDrawer } = useStateContext();
 	const theme = useTheme();
 	const isSmallerScreen = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -37,8 +24,8 @@ function NavDrawer() {
 					},
 				}}
 				anchor="left"
-				open={toggleDrawer}
-				onClose={() => setToggleDrawer(false)}
+				open={toggleNavDrawer}
+				onClose={() => setToggleNavDrawer(false)}
 			>
 				<div className="flex justify-center">
 					<Image
@@ -49,7 +36,7 @@ function NavDrawer() {
 					/>
 					<div className="absolute top-0 right-0 pt-4 pr-4">
 						<button
-							onClick={() => setToggleDrawer(false)}
+							onClick={() => setToggleNavDrawer(false)}
 							className="text-gray-600 hover:text-gray-800 focus:outline-none focus:text-gray-800"
 						>
 							<AiOutlineClose size={30} />
@@ -69,7 +56,7 @@ function NavDrawer() {
 					>
 						<h2
 							className="print-category-main-item"
-							onClick={() => setToggleDrawer(false)}
+							onClick={() => setToggleNavDrawer(false)}
 						>
 							Shop All Prints
 						</h2>
@@ -89,7 +76,7 @@ function NavDrawer() {
 					>
 						<h2
 							className="print-category-main-item"
-							onClick={() => setToggleDrawer(false)}
+							onClick={() => setToggleNavDrawer(false)}
 						>
 							New Prints
 						</h2>
@@ -109,7 +96,7 @@ function NavDrawer() {
 					>
 						<h2
 							className="print-category-main-item"
-							onClick={() => setToggleDrawer(false)}
+							onClick={() => setToggleNavDrawer(false)}
 						>
 							Best Sellers
 						</h2>
@@ -126,7 +113,7 @@ function NavDrawer() {
 					>
 						<h2
 							className="print-category-main-item"
-							onClick={() => setToggleDrawer(false)}
+							onClick={() => setToggleNavDrawer(false)}
 						>
 							About Us
 						</h2>
@@ -141,7 +128,7 @@ function NavDrawer() {
 					>
 						<h2
 							className="print-category-main-item"
-							onClick={() => setToggleDrawer(false)}
+							onClick={() => setToggleNavDrawer(false)}
 						>
 							Events
 						</h2>
@@ -156,7 +143,7 @@ function NavDrawer() {
 					>
 						<h2
 							className="print-category-main-item"
-							onClick={() => setToggleDrawer(false)}
+							onClick={() => setToggleNavDrawer(false)}
 						>
 							Submissions
 						</h2>
@@ -182,7 +169,7 @@ function NavDrawer() {
 						>
 							<li
 								className="print-category-item"
-								onClick={() => setToggleDrawer(false)}
+								onClick={() => setToggleNavDrawer(false)}
 							>
 								Beach
 							</li>
@@ -202,7 +189,7 @@ function NavDrawer() {
 						>
 							<li
 								className="print-category-item"
-								onClick={() => setToggleDrawer(false)}
+								onClick={() => setToggleNavDrawer(false)}
 							>
 								Mountains
 							</li>
@@ -222,7 +209,7 @@ function NavDrawer() {
 						>
 							<li
 								className="print-category-item"
-								onClick={() => setToggleDrawer(false)}
+								onClick={() => setToggleNavDrawer(false)}
 							>
 								Street
 							</li>
@@ -242,7 +229,7 @@ function NavDrawer() {
 						>
 							<li
 								className="print-category-item"
-								onClick={() => setToggleDrawer(false)}
+								onClick={() => setToggleNavDrawer(false)}
 							>
 								Automotive
 							</li>
@@ -262,7 +249,7 @@ function NavDrawer() {
 						>
 							<li
 								className="print-category-item"
-								onClick={() => setToggleDrawer(false)}
+								onClick={() => setToggleNavDrawer(false)}
 							>
 								{" "}
 								Minimal/Abstract
@@ -283,7 +270,7 @@ function NavDrawer() {
 						>
 							<li
 								className="print-category-item"
-								onClick={() => setToggleDrawer(false)}
+								onClick={() => setToggleNavDrawer(false)}
 							>
 								Portraits
 							</li>
@@ -309,7 +296,7 @@ function NavDrawer() {
 						>
 							<li
 								className="print-category-item"
-								onClick={() => setToggleDrawer(false)}
+								onClick={() => setToggleNavDrawer(false)}
 							>
 								Bay Area
 							</li>
@@ -329,7 +316,7 @@ function NavDrawer() {
 						>
 							<li
 								className="print-category-item"
-								onClick={() => setToggleDrawer(false)}
+								onClick={() => setToggleNavDrawer(false)}
 							>
 								Mid West
 							</li>
@@ -349,7 +336,7 @@ function NavDrawer() {
 						>
 							<li
 								className="print-category-item"
-								onClick={() => setToggleDrawer(false)}
+								onClick={() => setToggleNavDrawer(false)}
 							>
 								South West
 							</li>
@@ -369,7 +356,7 @@ function NavDrawer() {
 						>
 							<li
 								className="print-category-item"
-								onClick={() => setToggleDrawer(false)}
+								onClick={() => setToggleNavDrawer(false)}
 							>
 								East Coast
 							</li>
@@ -389,7 +376,7 @@ function NavDrawer() {
 						>
 							<li
 								className="print-category-item"
-								onClick={() => setToggleDrawer(false)}
+								onClick={() => setToggleNavDrawer(false)}
 							>
 								Southern CA
 							</li>
@@ -409,7 +396,7 @@ function NavDrawer() {
 						>
 							<li
 								className="print-category-item"
-								onClick={() => setToggleDrawer(false)}
+								onClick={() => setToggleNavDrawer(false)}
 							>
 								Europe
 							</li>
@@ -429,7 +416,7 @@ function NavDrawer() {
 						>
 							<li
 								className="print-category-item"
-								onClick={() => setToggleDrawer(false)}
+								onClick={() => setToggleNavDrawer(false)}
 							>
 								Asia
 							</li>

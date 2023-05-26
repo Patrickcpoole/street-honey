@@ -96,7 +96,6 @@ const AboutUs = ({ about }: Props) => {
 export const getServerSideProps = async () => {
 	const query = '*[_type == "about"]';
 	const about = await client.fetch(query);
-	console.log("this is about", about);
 
 	return {
 		props: { about },

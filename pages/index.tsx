@@ -20,7 +20,6 @@ const Home = ({ products, bannerData}: Props) => {
     let newFilteredProducts: ProductTyping[] = []
    
       products.forEach(product => {
-        console.log('this is the product!', product)
         product.tags.includes('best-seller') ? newFilteredProducts.push(product) : null
         setFilteredProducts(newFilteredProducts)
       })
@@ -53,11 +52,9 @@ const Home = ({ products, bannerData}: Props) => {
 export const getServerSideProps = async () => {
   const query = '*[_type == "product"]';
   const products = await client.fetch(query);
-  console.log('this is products', products)
 
   const bannerQuery = '*[_type == "banner"]';
   const bannerData = await client.fetch(bannerQuery);
-  console.log('banner Data', bannerData)
 
   return {
     props: {products, bannerData}

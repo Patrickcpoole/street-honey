@@ -1,6 +1,7 @@
 import Stripe from 'stripe';
-// dev deploy
-const stripeSecretKey = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY : process.env.NEXT_PUBLIC_STRIPE_TEST_SECRET_KEY;
+// dev redeploy
+
+const stripeSecretKey = process.env.NEXT_PUBLIC_NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY : process.env.NEXT_PUBLIC_STRIPE_TEST_SECRET_KEY;
 const stripe = new Stripe(stripeSecretKey);
 
 export default async function handler(req, res) {
