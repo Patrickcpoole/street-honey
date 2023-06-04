@@ -41,7 +41,7 @@ const ProductDetails = ({ product}: Props) => {
 			if (photographer) {
 				const query = `*[_type == "photographer" && _id == "${photographer._ref}"]`;
 				const photographerResponse = await client.fetch(query);
-			
+				
 				setPhotographerData(photographerResponse[0])
 			}
 		}
@@ -176,16 +176,23 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params: { slug } }: { params: { slug: string } }) => {
-	const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
-
+	const productQuery = `*[_type == "product" && slug.current == '${slug}'][0]`;
 	const productsQuery = '*[_type == "product"]';
-	
-	const product = await client.fetch(query);
+
+	const product = await client.fetch(productQuery);
 	const products = await client.fetch(productsQuery);
 
 
+	// Add this check to return a 404 page if the product is not found
+	if (!product) {
+		return {
+			notFound: true,
+		};
+	}
+
 	return {
-		props: { products, product },
+		props: { product, products },
+		revalidate: 1, // add revalidation time (in seconds)
 	};
 };
 
