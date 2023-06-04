@@ -26,10 +26,10 @@ const Merch: React.FC<Props> = ({ merch }) => {
 	return (
 		<div>
 			<div className="product-card">
-				<Link
-					href={`/merch/${merch.slug.current}`}
+				{/* <Link
+					href={`/photographer/${merch ? (merch as MerchTyping).slug.current : null}`}
 					style={{ textDecoration: "none" }}
-				>
+				> */}
 					<Image
 						 src={imageUrl}
 						style={imageStyle}
@@ -37,7 +37,7 @@ const Merch: React.FC<Props> = ({ merch }) => {
 						width={400}
 						height={300}
 					/>
-				</Link>
+				{/* </Link> */}
 				<div className="product-info-container">
 					<p className="product-name">{merch.name}</p>
 		
