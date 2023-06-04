@@ -11,7 +11,7 @@ import {HiOutlineLocationMarker} from 'react-icons/hi'
 import Image from "next/image";
 import { client, urlFor } from "../../lib/client";
 import { ProductTyping, PhotographerTyping } from "../../typings";
-import { Product } from "../../components";
+
 import { useStateContext } from "../../context/StateContext";
 
 type Props = {
