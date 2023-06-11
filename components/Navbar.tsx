@@ -3,6 +3,7 @@ import {
 	AiOutlineInstagram,
 	AiOutlineShopping,
 	AiOutlineReddit,
+	AiOutlineYoutube,
 	AiOutlineMenu
 } from "react-icons/ai";
 import Image from "next/image";
@@ -54,11 +55,11 @@ const Navbar = () => {
 						Events
 					</Link>
 				</span>
-				<span>
+				{/* <span>
 					<Link className="nav-item" href={"/submissions"} style={{}}>
 						Submissions
 					</Link>
-				</span>
+				</span> */}
 				<span>
 					<Link
 						className="nav-item"
@@ -69,10 +70,10 @@ const Navbar = () => {
 							marginRight: "10px",
 						}}
 					>
-						About Us
+						Team
 					</Link>
 				</span>
-				<span>
+				{/* <span>
 					<Link
 						className="nav-item"
 						href={"/merch"}
@@ -84,7 +85,7 @@ const Navbar = () => {
 					>
 						Merch
 					</Link>
-				</span>
+				</span> */}
 			</motion.div>
 			<motion.div
 				animate={{ x: 0 }}
@@ -102,7 +103,7 @@ const Navbar = () => {
 				</h5>
 			</motion.div>
 			<motion.div
-				className="flex flex-row justify-between items-center w-24 mr-1"
+				className="flex flex-row justify-between items-center mr-1 w-24"
 				initial={{
 					x: 200,
 					opacity: 0,
@@ -126,13 +127,21 @@ const Navbar = () => {
 					<AiOutlineInstagram style={{ color: "#333" }} />
 				</a>
 
-				<a
+				{/* <a
 					className="cart-icon"
 					target="_blank"
 					href="https://www.reddit.com/r/StreetHoney/"
 					rel="noopener noreferrer"
 				>
 					<AiOutlineReddit style={{ color: "#333" }} />
+				</a> */}
+				<a
+					className="cart-icon"
+					target="_blank"
+					href="https://www.youtube.com/@streethoneyfilm"
+					rel="noopener noreferrer"
+				>
+					<AiOutlineYoutube style={{ color: "#333" }} />
 				</a>
 				<button
 					type="button"

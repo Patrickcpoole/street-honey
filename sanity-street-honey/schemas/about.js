@@ -3,19 +3,7 @@ export default {
   title: 'About',
   type: 'document',
   fields: [
-    {
-      name: 'bannerImage',
-      title: 'Banner Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    },
-    {
-      name: 'mickDesc',
-      title: 'Mick Description',
-      type: 'string',
-    },
+
     {
       name: 'mickImage',
       title: 'Mick Image',
@@ -25,10 +13,14 @@ export default {
       },
     },
     {
-      name: 'patDesc',
-      title: 'Pat Description',
-      type: 'string',
+      name: 'jimmyImage',
+      title: 'Jimmy Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
     },
+
     {
       name: 'patImage',
       title: 'Patrick Image',

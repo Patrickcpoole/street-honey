@@ -15,7 +15,7 @@ const FooterBanner = () => {
 					/>
 				</Link>
 			</div>
-			<div className="w-full md:w-1/5 h-full pb-1 flex flex-col bg-FAF9F6 justify-start items-center">
+			{/* <div className="w-full md:w-1/5 h-full pb-1 flex flex-col bg-FAF9F6 justify-start items-center">
 				<h3 className="sm:mt-0 md:mt-3 mb-2 text-2xl">
 					Shop By Theme
 				</h3>
@@ -96,8 +96,8 @@ const FooterBanner = () => {
 						<li className="footer-content-item">Portraits</li>
 					</Link>
 				</div>
-			</div>
-			<div className="w-full md:w-1/5 h-full pb-1 flex flex-col bg-FAF9F6 justify-start items-center">
+			</div> */}
+			{/* <div className="w-full md:w-1/5 h-full pb-1 flex flex-col bg-FAF9F6 justify-start items-center">
 			<h3 className="mt-3 mb-2 text-2xl">Shop By Region</h3>
 				<div className="list-none text-center flex flex-col justify-start items-center">
 					<Link
@@ -178,7 +178,7 @@ const FooterBanner = () => {
 						<li className="footer-content-item">Asia</li>
 					</Link>
 				</div>
-			</div>
+			</div> */}
 			<div className="w-full md:w-1/5 h-full pb-1 flex flex-col bg-FAF9F6 justify-start items-center">
 			<h3 className="mt-3 mb-2 text-2xl">
 					Company
@@ -220,7 +220,7 @@ const FooterBanner = () => {
 						alignItems: "center",
 					}}
 				>
-					<li className="footer-content-item">Email: streethoney@gmail.com</li>
+					<li className="footer-content-item">Email: streethoneyphoto@gmail.com </li>
 					<li className="footer-content-item">Phone: 303-888-8909</li>
 				</div>
 			</div>
