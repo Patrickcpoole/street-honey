@@ -66,7 +66,12 @@ export interface PhotographerTyping extends SanityBody {
     current: string;
     _type: string;
   };
-  bio: string;
+  question1: string;
+  answer1: string;
+  question2: string;
+  answer2: string;
+  question3: string;
+  answer3: string;
   location: string;
   favoriteCamera: string;
   instagram: string;
@@ -97,11 +102,9 @@ export interface SideBannerDataTyping extends SanityBody {
 
 export interface AboutTyping extends SanityBody {
   _type: "About";
-  bannerImage: string;
-  mickDesc: string;
   mickImage: string;
-  patDesc: string;
   patImage: string;
+  jimmyImage: string;
 }
 
 export interface MerchTyping extends SanityBody {

@@ -11,24 +11,24 @@ type Props = {
 
 const imageStyle = {
 	width: "initial",
-	maxHeight: "600px",
-	maxWidth: "400px",
+	maxHeight: "40em",
+	maxWidth: "28em",
 	boxShadow: "0px 5px 17px rgba(0,0,0,0.3)",
 };
 
 const PhotographerDetails = ({ photographer }: Props) => {
-	const { image, name, bio, location, favoriteCamera } = photographer;
+	const { image, name, location, favoriteCamera, question1, answer1, question2, answer2, question3, answer3 } = photographer;
 	const [photoData, setPhotoData] = useState<ProductTyping[]>([]);
 
 	useEffect(() => {
 		async function fetchPhotographerPhotos() {
-			
+				console.log('photographer props', photographer)
 
-				const query = `*[_type == "product" && photographer._ref in *[_type=="photographer" && _id=="${photographer._ref}"]._id ]`;
+				const query = `*[_type == "product" && photographer._ref in *[_type=="photographer" && _id=="${photographer._id}"]._id ]`;
 				// Books by author.name (book.author is a reference)
       //*[_type == "book" && author._ref in *[_type=="author" && name=="John Doe"]._id ]{...}
 				const photoProductResponse = await client.fetch(query);
-		
+				console.log('photo product response', photoProductResponse)
 				setPhotoData(photoProductResponse)
 			
 		}
@@ -37,30 +37,36 @@ const PhotographerDetails = ({ photographer }: Props) => {
 
 	return (
 		<>
-			<div className="photographer-detail-container">
-				<div className="photographer-image-container">
+			<div className="flex flex-col md:flex-row text-gray-800 mt-10 border-b border-gray-800 pb-10 ">
+				<div className="flex flex-col items-center justify-start relative w-full md:w-1/2">
 					<Image
 						src={urlFor(image && image[0]).url()}
 						style={imageStyle}
 						alt="Picture of the author"
 						width={1000}
 						height={800}
+						layout="responsive"
 					/>
 				</div>
-				<div className="photographer-description-container">
-					<h1>{name}</h1>
-					<h4 className="mr-2 font-semibold">{location}</h4>
-					<h5 className="mr-2 font-semibold">
+				<div className="w-full md:w-1/2  px-5 md:px-0 md:pr-20 flex flex-col justify-center">
+					<h1 className="text-4xl font-semibold text-center md:text-left mt-10 md:mt-0">{name}</h1>
+					<h4 className="mr-2 mt-4 text-lg font-semibold text-center md:text-left">Location: {location}</h4>
+					<h4 className="mr-2 text-lg font-semibold text-center md:text-left">
 						Favorite Camera: {favoriteCamera}
-					</h5>
-					<p className="mt-5">{bio}</p>
+					</h4>
+					<p className="mt-6 font-bold">{question1}</p>
+					<p className="mt-2 mb-5">{answer1}</p>
+					<p className="mt-3 font-bold">{question2}</p>
+					<p className="mt-2 mb-5">{answer2}</p>
+					<p className="mt-3 font-bold">{question3}</p>
+					<p className="mt-2 mb-5">{answer3}</p>
 					<div>
 					
 					</div>
 				</div>
 				
 			</div>
-			<h1 style={{fontSize: '2.5em', textAlign: 'center', paddingTop: '2%', paddingBottom: '1%', fontWeight: '700', color: '#333'}}>Photographer Gallery</h1>
+			<h1 style={{fontSize: '2.5em', textAlign: 'center', paddingTop: '2%', paddingBottom: '1%', fontWeight: '600', color: '#333'}}>Photographer Gallery</h1>
 			<div className='products-container'>
 			
       {photoData && photoData.length > 0 ? (

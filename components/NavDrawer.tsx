@@ -150,8 +150,8 @@ function NavDrawer() {
 					</Link>
 				</div>
 				</div>
-				<Divider />
-				<div className="flex flex-col mx-5 mt-3">
+				{/* <Divider /> */}
+				{/* <div className="flex flex-col mx-5 mt-3">
 					<h3 style={{ fontSize: "1.55em" }}>Shop By Theme</h3>
 					<ul className="flex flex-col my-2">
 						<Link
@@ -276,10 +276,10 @@ function NavDrawer() {
 							</li>
 						</Link>
 					</ul>
-				</div>
+				</div> */}
 				<Divider />
-				<div className="flex flex-col mx-5 mt-3">
-					<h3 style={{ fontSize: "1.55em" }}>Shop By Region</h3>
+				{/* <div className="flex flex-col mx-5 mt-3"> */}
+					{/* <h3 style={{ fontSize: "1.55em" }}>Shop By Region</h3>
 					<ul className="flex flex-col mt-2 mb-2">
 						<Link
 							href={{
@@ -422,7 +422,7 @@ function NavDrawer() {
 							</li>
 						</Link>
 					</ul>
-				</div>
+				</div> */}
 			</Drawer>
 		</>
 	);

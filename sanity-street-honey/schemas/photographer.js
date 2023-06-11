@@ -26,9 +26,35 @@ export default {
         maxLength: 90
       }
     },
+  
     {
-      name: 'bio',
-      title: 'Bio',
+      name: 'question1',
+      title: 'Question 1',
+      type: 'string'
+    },
+    {
+      name: 'answer1',
+      title: 'Answer 1',
+      type: 'string'
+    },
+    {
+      name: 'question2',
+      title: 'Question 2',
+      type: 'string'
+    },
+    {
+      name: 'answer2',
+      title: 'Answer 2',
+      type: 'string'
+    },
+    {
+      name: 'question3',
+      title: 'Question 3',
+      type: 'string'
+    },
+    {
+      name: 'answer3',
+      title: 'Answer 3',
       type: 'string'
     },
     {
