@@ -30,8 +30,9 @@ const ProductDetails = ({ product}: Props) => {
 
 	const { image, name, details, price, photographer} = product;
 	const [index, setIndex] = useState(0);
-	const [selectedSize, setSelectedSize] = useState('medium');
-	const [selectedDimensions, setSelectedDimensions] = useState('19.5in x 26in')
+	const [selectedSize, setSelectedSize] = useState('Small');
+	const [selectedDimensions, setSelectedDimensions] = useState('8in x 10in');
+	const [selectedPrice, setSelectedPrice] = useState(65)
 	const { onAdd } = useStateContext();
 	const [photographerData, setPhotographerData] = useState(null)
 	
@@ -52,11 +53,14 @@ const ProductDetails = ({ product}: Props) => {
 
 		setSelectedSize(size)
 		if(size === 'Small') {
-			setSelectedDimensions('14.5in x 18.5in')
+			setSelectedPrice(80)
+			setSelectedDimensions('8in x 10in')
 		} else if(size === 'Medium') {
-			setSelectedDimensions('19.5in x 26in')
+			setSelectedDimensions('12in x 15in')
+			setSelectedPrice(100)
 		} else {
-			setSelectedDimensions('24.5in x 33.5in')
+			setSelectedDimensions('16in x 20in')
+			setSelectedPrice(150)
 		}
 	}
 
@@ -87,12 +91,12 @@ const ProductDetails = ({ product}: Props) => {
 						<span>|</span>
 						<Link
 						href={`/photographer/${photographerData ? (photographerData as PhotographerTyping).slug.current : null}`}
-						style={{ textDecoration: "none" }}
-					><p className="ml-2 italic underline underline-offset-4">
+						style={{ textDecoration: "none", color:"#333" }}
+					><p className="ml-2 underline underline-offset-4 text-decoration-none">
 							{details.split("-")[0]}
 						</p></Link>
 					</div>
-					<div className="reviews">
+					{/* <div className="reviews">
 						<div style={{ display: "flex" }}>
 							<AiFillStar />
 							<AiFillStar />
@@ -101,10 +105,11 @@ const ProductDetails = ({ product}: Props) => {
 							<AiOutlineStar />
 						</div>
 						<p>(20)</p>
-					</div>
-					<p className="price">${price}</p>
+					</div> */}
+					
 					<div className="size-container">
-						<h5><span className="font-semibold">Dimensions:</span> {selectedDimensions} </h5>
+					<h5><span className="font-semibold text-lg">Price:</span> ${selectedPrice}</h5>
+						<h5><span className="font-semibold text-lg">Dimensions:</span> {selectedDimensions} </h5>
 
 						<div className="size-options-container">
 						<button 
@@ -141,7 +146,7 @@ const ProductDetails = ({ product}: Props) => {
 								color: "#ebebeb",
 								marginRight: "2%",
 							}}
-							onClick={() => onAdd(product, selectedSize, selectedDimensions)}
+							onClick={() => onAdd(product, selectedSize, selectedDimensions, selectedPrice)}
 						>
 							Add to Cart
 						</button>

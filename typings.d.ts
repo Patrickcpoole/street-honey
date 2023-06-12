@@ -158,6 +158,6 @@ export interface ContextTyping {
   setToggleNavDrawer: (toggleDrawer: boolean) => void;
   setToggleCartDrawer: (toggleDrawer: boolean) => void;
   setShowCart: (showCart: boolean) => void;
-  onAdd: (product: ProductTyping, size: string, dimensions: string) => void;
+  onAdd: (product: ProductTyping, size: string, dimensions: string, price: number) => void;
   onRemove: (product: ProductTyping) => void;
 }
