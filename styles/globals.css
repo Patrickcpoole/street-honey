@@ -347,7 +347,7 @@ background-color: 	#FAF9F6;
 
 .hero-banner-subtitle {
   position: absolute;
-  z-index: 999;
+  z-index: 9;
   color: #FAF9F6;
   top: 55%;
   left: 50%;
@@ -361,10 +361,10 @@ background-color: 	#FAF9F6;
 .hero-banner-info {
   position: absolute;
   transform: translate(-50%, -50%);
-  z-index: 999;
+  z-index: 9;
   color: #FAF9F6;
   width:10%;
-  top: 96%;
+  top: 97.5%;
   left: 7.5%;
   transform: translate(-50%, -50%);
   text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
@@ -374,7 +374,7 @@ background-color: 	#FAF9F6;
 .hero-banner-info-mobile {
   position: absolute;
   transform: translate(-50%, -50%);
-  z-index: 999;
+  z-index: 9;
   color: #FAF9F6;
   width:10%;
   top: 92.5%;
@@ -389,7 +389,7 @@ font-size:1em;
 }
 
 .hero-banner-info h6 {
-  font-size:.8em;
+  font-size:1em;
   }
 
 
@@ -596,7 +596,7 @@ text-align: end;
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .border-line {

@@ -5,16 +5,7 @@ import Image from "next/image";
 const FooterBanner = () => {
 	return (
 		<div className="footer-banner-container border-top border-bottom border-gray-300 bg-gray-50 text-gray-700 flex flex-col md:flex-row lg:flex-row xl:flex-row justify-center items-start py-4 px-4 sm:px-6 lg:px-8">
-			<div className="w-full md:w-1/5 h-full flex flex-col  justify-start items-center">
-				<Link href={"/"} >
-					<Image
-						src="/street-honey-transparent-website-logo.png"
-						alt="Street Honey Logo"
-						width={250}
-						height={250}
-					/>
-				</Link>
-			</div>
+			
 			{/* <div className="w-full md:w-1/5 h-full pb-1 flex flex-col bg-FAF9F6 justify-start items-center">
 				<h3 className="sm:mt-0 md:mt-3 mb-2 text-2xl">
 					Shop By Theme
@@ -196,9 +187,9 @@ const FooterBanner = () => {
 					<Link style={{ textDecoration: "none" }} href={"/about-us/"}>
 						<li className="footer-content-item">About Us</li>
 					</Link>
-					<Link style={{ textDecoration: "none" }} href={"/submissions/"}>
+					{/* <Link style={{ textDecoration: "none" }} href={"/submissions/"}>
 						<li className="footer-content-item">Submissions</li>
-					</Link>
+					</Link> */}
 					<Link style={{ textDecoration: "none" }} href={"/events/"}>
 						<li className="footer-content-item">Events</li>
 					</Link>
@@ -206,7 +197,17 @@ const FooterBanner = () => {
 					<li className="footer-content-item">privacy Policy</li>
 				</div>
 			</div>
-			<div className="w-full md:w-1/5 h-full pb-1 flex flex-col bg-FAF9F6 justify-start items-center">
+		
+				<Link href={"/"} >
+					<Image
+						src="/street-honey-transparent-website-logo.png"
+						alt="Street Honey Logo"
+						width={200}
+						height={200}
+					/>
+				</Link>
+	
+			<div className="w-full md:w-1/5 h-full pb-1 flex flex-col bg-FAF9F6 justify-center items-center">
 			<h3 className="mt-3 mb-2 text-2xl">
 					Contact Us
 				</h3>
