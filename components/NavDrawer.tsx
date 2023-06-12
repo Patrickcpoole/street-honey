@@ -82,12 +82,7 @@ function NavDrawer() {
 						</h2>
 					</Link>
 					<Link
-						href={{
-							pathname: "/prints/",
-							query: {
-								tag: "best-seller",
-							},
-						}}
+						href={"/merch"}
 						style={{
 							textDecoration: "none",
 							color: "#333",
@@ -98,7 +93,7 @@ function NavDrawer() {
 							className="print-category-main-item"
 							onClick={() => setToggleNavDrawer(false)}
 						>
-							Best Sellers
+							Merch
 						</h2>
 					</Link>
 				</div>

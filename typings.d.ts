@@ -112,7 +112,10 @@ export interface MerchTyping extends SanityBody {
   image: Image[],
   name: string,
   description: string,
-  slug: string,
+  slug: {
+    current: string;
+    _type: string;
+  };
   price: number,
 }
 
@@ -159,5 +162,6 @@ export interface ContextTyping {
   setToggleCartDrawer: (toggleDrawer: boolean) => void;
   setShowCart: (showCart: boolean) => void;
   onAdd: (product: ProductTyping, size: string, dimensions: string, price: number) => void;
+  onAddMerch: (mercht: MerchTyping) => void;
   onRemove: (product: ProductTyping) => void;
 }

@@ -5,7 +5,7 @@ import React, {
 	useState,
 	useEffect,
 } from "react";
-import { ContextTyping, ProductTyping, CartTyping } from "../typings";
+import { ContextTyping, ProductTyping, CartTyping, MerchTyping } from "../typings";
 import { toast } from "react-hot-toast";
 import product from "../sanity-street-honey/schemas/product";
 
@@ -28,6 +28,7 @@ const Context = React.createContext<ContextTyping>({
 	setToggleCartDrawer: () => {},
   setShowCart: () => {},
   onAdd: () => {},
+	onAddMerch: () => {},
 	onRemove: () => {},
 });
 
@@ -80,6 +81,25 @@ export const StateContext = ({ children }: Props) => {
     toast.success(`${qty} ${product.name} added to the cartItems.`);
 	};
 
+	const onAddMerch = (merch:MerchTyping) => {
+
+		// const checkProductInCart = cartItems?.find((item:ProductTyping) => item._id === product._id && item.size === product.size);
+		setTotalPrice((prevTotalPrice) => prevTotalPrice + merch.price);
+		setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
+
+		
+			let updatedCartItem = {
+				...merch,
+				quantity: qty,
+				size: 'One size fits all'
+			}
+      
+      setCartItems([...cartItems, {...updatedCartItem}])
+		
+    
+    toast.success(`${qty} ${merch.name} added to the cartItems.`);
+	};
+
 
 	return (
 		<Context.Provider
@@ -97,6 +117,7 @@ export const StateContext = ({ children }: Props) => {
 				totalQuantities,
 				qty,
         onAdd,
+				onAddMerch,
 				onRemove,
 			}}
 		>

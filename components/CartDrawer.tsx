@@ -17,8 +17,8 @@ import { urlFor } from "../lib/client";
 
 const imageStyle = {
 	width: "initial",
-	maxHeight: "150px",
-	maxWidth: "300px",
+	height: "20%",
+	maxWidth: "30%",
 	boxShadow: "0px 5px 17px rgba(0,0,0,0.3)",
 };
 
@@ -53,6 +53,8 @@ const CartDrawer = () => {
 		stripe.redirectToCheckout({sessionId: data.id})
 	}
 
+	
+
 	const {
 		totalPrice,
 		totalQuantities,
@@ -66,10 +68,10 @@ const CartDrawer = () => {
 	return (
 		<Drawer
 				sx={{
-					width: isSmallerScreen ? "100%" : "25%", // adjust width based on screen size
+					width: isSmallerScreen ? "100%" : "500px", // adjust width based on screen size
 					flexShrink: 0,
 					"& .MuiDrawer-paper": {
-						width: isSmallerScreen ? "100%" : "25%", // adjust width of paper container
+						width: isSmallerScreen ? "100%" : "500px", // adjust width of paper container
 					},
 				}}
 				anchor="right"
@@ -106,7 +108,7 @@ const CartDrawer = () => {
 					</div>
 				)}
 
-				<div className="product-container">
+				<div className="product-container" >
 					{cartItems.length >= 1 &&
 						cartItems.map((item, index) => (
 							<div className="product" key={index}>
@@ -125,17 +127,23 @@ const CartDrawer = () => {
 								<div className="item-desc ml-5">
 									<div className="flex top">
 										<div>
-											<h5>{item.name}</h5>
-											<h6 className="italic underline underline-offset-4 text-sm">
-												{item.details.split("-")[0]}
+											<h5 >{item.name}</h5>
+											<h6  className="italic underline underline-offset-4 text-sm">
+												{item.details ? item.details.split("-")[0] : ""}
 											</h6>
-											<div className="flex mt-2" style={{ width:'175px'}}>
-												<h6>{item.size}</h6> | <h6>{item.dimensions}</h6>
-											</div>
-										</div>
-										<h4>${item.price}</h4>
+											{item.size === "One size fits all" ?
+											<div className="flex mt-2">
+											<h6 >{item.size}</h6> 
+										</div> :
+										<div className="flex mt-2" style={{ width:'175px'}}>
+										<h6 >{item.size}</h6> | <h6 >{item.dimensions}</h6>
 									</div>
-									<div className="flex bottom flex-row-reverse">
+											}
+											
+										</div>
+										<h4 >${item.price}</h4>
+									</div>
+									<div className="flex bottom flex-row-reverse" >
 										<button type="button" className="remove-item" onClick={() => onRemove(item)}>
 											<TiDelete />
 										</button>
@@ -150,9 +158,11 @@ const CartDrawer = () => {
 							<h3>Subtotal</h3>
 							<h3>${totalPrice}</h3>
 						</div>
+						<div className="w-full flex justify-center">
 							<button type="button" className="btn" onClick={handleCheckout}>
 								checkout
 							</button>
+							</div>
 					</div>
 				)}
 			</div>

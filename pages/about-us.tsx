@@ -48,7 +48,7 @@ const AboutUs = ({ about }: Props) => {
 					className="group relative mx-20"
 				>
 					<Image
-						src={urlFor(about[0].patImage).url()}
+						src={urlFor(about[0].mickImage).url()}
 						alt="Image of Street Honey Team Member Mickail Cain"
 						style={avatarStyle}
 						height={500}
