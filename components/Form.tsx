@@ -31,78 +31,81 @@ function Form({ title, setToggleForm}: Props) {
 	} = useForm<Inputs>();
 
 	const onSubmit: SubmitHandler<Inputs> = (data) => {
-		if (imagesAssets !== null && imagesAssets !== undefined) {
-			const sanityImageStructure = {
-				_type: "image",
-				asset: {
-					_type: "reference",
-					_ref: imagesAssets._id,
-				},
-			};
+		// if (imagesAssets !== null && imagesAssets !== undefined) {
+		// 	const sanityImageStructure = {
+		// 		_type: "image",
+		// 		asset: {
+		// 			_type: "reference",
+		// 			_ref: imagesAssets._id,
+		// 		},
+		// 	};
 			const submission: SubmissionsTyping = {
 				_type: "submissions",
+				submissionType: title,
 				firstName: data.firstName,
 				lastName: data.lastName,
 				email: data.email,
 				instagramHandle: data.instagramHandle,
 				notes: data.notes,
-				image: sanityImageStructure,
+				// image: sanityImageStructure,
 			};
+			
+			console.log('this is the submission', submission)
 			submissionsUploader(submission); // Pass the submission directly without array wrapping
-		} else {
-			console.log("Error");
-		}
+		// } else {
+		// 	console.log("Error");
+		// }
 	};
 
-	const uploadImage: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-		const selectedImage = e.target.files && e.target.files[0];
+	// const uploadImage: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+	// 	const selectedImage = e.target.files && e.target.files[0];
 	
-		if (selectedImage) {
-			console.log("selected image", selectedImage);
+	// 	if (selectedImage) {
+	// 		console.log("selected image", selectedImage);
 	
-			if (
-				selectedImage.type === "image/png" ||
-				selectedImage.type === "image/svg" ||
-				selectedImage.type === "image/jpeg" ||
-				selectedImage.type === "image/gif" ||
-				selectedImage.type === "image/tiff"
-			) {
-				setWrongTypeOfImage(false);
+	// 		if (
+	// 			selectedImage.type === "image/png" ||
+	// 			selectedImage.type === "image/svg" ||
+	// 			selectedImage.type === "image/jpeg" ||
+	// 			selectedImage.type === "image/gif" ||
+	// 			selectedImage.type === "image/tiff"
+	// 		) {
+	// 			setWrongTypeOfImage(false);
 	
-				client.assets
-					.upload("image", selectedImage, {
-						contentType: selectedImage.type,
-						filename: selectedImage.name,
-					})
-					.then((document: SanityImageAssetDocument | null) => {
-						if (document) {
-							console.log("about to fire", document);
+	// 			client.assets
+	// 				.upload("image", selectedImage, {
+	// 					contentType: selectedImage.type,
+	// 					filename: selectedImage.name,
+	// 				})
+	// 				.then((document: SanityImageAssetDocument | null) => {
+	// 					if (document) {
+	// 						console.log("about to fire", document);
 	
-							const image: Image = {
-								_type: "image",
-								_id: document._id,
-								asset: {
-									_ref: document._id,
-									_type: "reference",
-								},
-							};
+	// 						const image: Image = {
+	// 							_type: "image",
+	// 							_id: document._id,
+	// 							asset: {
+	// 								_ref: document._id,
+	// 								_type: "reference",
+	// 							},
+	// 						};
 	
-							setImagesAssets(image);
-						} else {
-							console.log("Upload failed: Document is null");
-						}
-					})
-					.catch((error) => {
-						console.log("Upload failed:", error.message);
-					});
-			} else {
-				console.log("upload failed");
-				setWrongTypeOfImage(true);
-			}
-		} else {
-			console.log("No image selected");
-		}
-	};
+	// 						setImagesAssets(image);
+	// 					} else {
+	// 						console.log("Upload failed: Document is null");
+	// 					}
+	// 				})
+	// 				.catch((error) => {
+	// 					console.log("Upload failed:", error.message);
+	// 				});
+	// 		} else {
+	// 			console.log("upload failed");
+	// 			setWrongTypeOfImage(true);
+	// 		}
+	// 	} else {
+	// 		console.log("No image selected");
+	// 	}
+	// };
 
 	return (
 		<>
@@ -155,7 +158,7 @@ function Form({ title, setToggleForm}: Props) {
 						className=" w-full shadow appearance-none border rounded py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
 						id="instagram"
 						type="text"
-						placeholder="@portra_pat"
+						placeholder="@streethoney"
 					/>
 				</div>
 				<div className="mx-4 ">
@@ -205,13 +208,13 @@ function Form({ title, setToggleForm}: Props) {
 									<p className="text-lg">Click to upload</p>
 								</div>
 							</div>
-							<input
+							{/* <input
 								{...register("image", { required: true })}
 								type="file"
 								name="image"
 								onChange={uploadImage}
 								className="hidden"
-							/>
+							/> */}
 						</label>
 					) : (
 						<div className="relative h-full">
@@ -241,7 +244,7 @@ function Form({ title, setToggleForm}: Props) {
 					</div>
 				) : (
 					<div className="event-form-button-container">
-						<Button className='event-button' style={{backgroundColor: '#1985f1', marginRight: '1.5%'}}>Sign Up</Button>
+						<Button className='event-button' style={{backgroundColor: '#1985f1', marginRight: '1.5%'}} type="submit">Sign Up</Button>
 						<Button className='event-button' onClick={() => setToggleForm(false)} style={{backgroundColor: '#ed5e68', marginLeft: '1.5%'}}>Cancel</Button>
 					</div>
 				)}

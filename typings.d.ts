@@ -129,18 +129,19 @@ export interface CartTyping {
 
 export interface SubmissionsTyping {
   _type: string;
+  submissionType: string;
   firstName: string;
   lastName: string;
   email: string;
   instagramHandle: string;
   notes: string;
-  image: {
-    _type: string;
-    asset: {
-      _type: string;
-      _ref: string;
-    };
-  };
+  // image: {
+  //   _type: string;
+  //   asset: {
+  //     _type: string;
+  //     _ref: string;
+  //   };
+  // };
 }
 
 
