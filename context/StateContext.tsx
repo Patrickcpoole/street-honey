@@ -58,11 +58,11 @@ export const StateContext = ({ children }: Props) => {
 
 	}
 
-	const onAdd = (product:ProductTyping, size: string, dimensions: string) => {
+	const onAdd = (product:ProductTyping, size: string, dimensions: string, price: number) => {
     console.log('on Add fired', product, size, dimensions)
 		// const checkProductInCart = cartItems?.find((item:ProductTyping) => item._id === product._id && item.size === product.size);
 		
-		setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price);
+		setTotalPrice((prevTotalPrice) => prevTotalPrice + price);
 		setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
 
 		
@@ -70,7 +70,8 @@ export const StateContext = ({ children }: Props) => {
 				...product,
 				size: size,
 				dimensions: dimensions,
-				quantity: qty
+				quantity: qty,
+				price: price
 			}
       
       setCartItems([...cartItems, {...updatedCartItem}])
