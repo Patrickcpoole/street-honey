@@ -24,7 +24,7 @@ const imageStyleMobile: React.CSSProperties = {
 const HeroBanner = ({ heroBanner }: Props) => {
 	return (
 		<div className="bg-offWhite">
-			<Carousel fade interval={7000} controls={false}>
+			<Carousel controls={false}>
         {heroBanner?.map(banner => {
 					 const imageUrl = urlFor(banner.image).url();
 			
@@ -67,12 +67,10 @@ const HeroBanner = ({ heroBanner }: Props) => {
                 </div> */}
 					
             <div className="hero-banner-info hidden md:block">
-            <h5 className="">{banner.desc.split('-')[0]}</h5>
-            <h6 className="">{banner.desc.split('-')[1]}</h6>
+            <h6>{banner.desc}</h6>
             </div>
             <div className="hero-banner-info-mobile md:hidden block">
-            <h5 className="">{banner.desc.split('-')[0]}</h5>
-            <h6 className="">{banner.desc.split('-')[1]}</h6>
+            <h6>{banner.desc}</h6>
             </div>
 						{/* <Link href={`/product/${banner.product}`}>
 							<button type="button"> {banner.buttonText}</button>

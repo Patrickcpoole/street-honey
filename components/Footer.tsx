@@ -1,5 +1,5 @@
 import React from 'react'
-import { AiFillInstagram, AiOutlineTwitter, AiOutlineReddit} from 'react-icons/ai'
+import { AiFillInstagram, AiFillYoutube} from 'react-icons/ai'
 
 const Footer = () => {
   return (
@@ -14,16 +14,14 @@ const Footer = () => {
 				>
 					<AiFillInstagram style={{ color: '#333' }}/>
 				</a>
-        <a
+				<a
 					className="cart-icon"
 					target="_blank"
-					href="https://www.reddit.com/r/StreetHoney/"
+					href="https://www.youtube.com/@streethoneyfilm"
 					rel="noopener noreferrer"
 				>
-					<AiOutlineReddit style={{ color: '#333' }}/>
+					<AiFillYoutube style={{ color: "#333" }} />
 				</a>
-
-        <AiOutlineTwitter />
       </p>
     </div>
   )

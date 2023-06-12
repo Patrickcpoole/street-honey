@@ -25,9 +25,9 @@ const Navbar = () => {
 			<motion.div
 				className="hidden w-full flex-grow md:flex md:items-center md:w-auto"
 				initial={{
-					x: -500,
+					x: -200,
 					opacity: 0,
-					scale: 0.5,
+					scale: 0.75,
 				}}
 				animate={{
 					x: 0,
@@ -105,9 +105,9 @@ const Navbar = () => {
 			<motion.div
 				className="flex flex-row justify-between items-center mr-1 w-24"
 				initial={{
-					x: 200,
+					x: 0,
 					opacity: 0,
-					scale: 0.5,
+					scale: 0.75,
 				}}
 				animate={{
 					x: 0,
