@@ -188,7 +188,7 @@ const ProductDetails = ({ product }: Props) => {
 								About the Artist
 							</AccordionSummary>
 							<AccordionDetails>
-							{photographerData !== null ? photographerData.answer1 : ""}
+							
 							</AccordionDetails>
 						</Accordion>
 						<Accordion
