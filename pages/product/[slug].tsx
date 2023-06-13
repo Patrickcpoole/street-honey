@@ -24,7 +24,6 @@ type Props = {
 };
 
 const imageStyle = {
-	
 	height: "50em",
 	width: "38em",
 	boxShadow: "0px 5px 17px rgba(0,0,0,0.3)",
@@ -81,7 +80,7 @@ const ProductDetails = ({ product }: Props) => {
 				</div>
 
 				<div className="w-full h-screen  md:w-2/5">
-					<h1 style={{fontSize: '2.5em', fontWeight: 700}}>{name}</h1>
+					<h1 style={{ fontSize: "2.5em", fontWeight: 700 }}>{name}</h1>
 					<div className="flex flex-row">
 						<div className="mt-1 mr-1">
 							<HiOutlineLocationMarker />
@@ -113,11 +112,11 @@ const ProductDetails = ({ product }: Props) => {
 					</div> */}
 
 					<div className="size-container mt-5">
-						<h5 style={{fontSize: '1.1em'}}>
+						<h5 style={{ fontSize: "1.1em" }}>
 							<span className="font-semibold text-lg">Price:</span> $
 							{selectedPrice}
 						</h5>
-						<h5 style={{fontSize: '1.1em'}}>
+						<h5 style={{ fontSize: "1.1em" }}>
 							<span className="font-semibold text-lg">Dimensions:</span>{" "}
 							{selectedDimensions}{" "}
 						</h5>
@@ -187,9 +186,7 @@ const ProductDetails = ({ product }: Props) => {
 							>
 								About the Artist
 							</AccordionSummary>
-							<AccordionDetails>
-							
-							</AccordionDetails>
+							<AccordionDetails></AccordionDetails>
 						</Accordion>
 						<Accordion
 							disableGutters
@@ -203,10 +200,7 @@ const ProductDetails = ({ product }: Props) => {
 							>
 								Sizing
 							</AccordionSummary>
-							<AccordionDetails>
-							
-								
-							</AccordionDetails>
+							<AccordionDetails></AccordionDetails>
 						</Accordion>
 						<Accordion
 							disableGutters
@@ -241,12 +235,17 @@ const ProductDetails = ({ product }: Props) => {
 							</AccordionSummary>
 							<AccordionDetails>
 								<ul>
-								<li><span className="font-semibold">Shipping:</span> Items are made to order and typically ship within 3-5
-								business days. </li>
-								<li><span className="font-semibold">Returns:</span> As every order is made custom for you,
-								we are not able to accepts returns at this time. In the rare
-								instance there's a damage during shipping - just reach out to us
-								- we'll make it right.</li>
+									<li>
+										<span className="font-semibold">Shipping:</span> Items are
+										made to order and typically ship within 3-5 business days.{" "}
+									</li>
+									<li>
+										<span className="font-semibold">Returns:</span> As every
+										order is made custom for you, we are not able to accept
+										returns at this time. In the rare instance there&apos;s a
+										damage during shipping - just reach out to us - we&apos;ll
+										make it right.
+									</li>
 								</ul>
 							</AccordionDetails>
 						</Accordion>
