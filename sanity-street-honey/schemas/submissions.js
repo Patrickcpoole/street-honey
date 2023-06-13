@@ -3,17 +3,22 @@ export default {
   title: 'Submissions',
   type: 'document',
   fields: [
+    // {
+    //   name: 'image',
+    //   title: 'Image',
+    //   type: 'image',
+    //   options: {
+    //     hotspot: true,
+    //   },
+    // },
     {
-      name: 'image',
-      title: 'Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      name: 'submissionType',
+      title: 'Submission Type',
+      type: 'string',
     },
     {
       name: 'firstName',
-      title: 'first Name',
+      title: 'First Name',
       type: 'string',
     },
     {

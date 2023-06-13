@@ -5,7 +5,7 @@ import { SubmissionsTyping } from "../typings";
 export const client = sanityClient({
   projectId: 'm6h4sq13',
   dataset: 'production',
-  apiVersion: '2023-01-11',
+  apiVersion: '2023-06-07',
   useCdn: true,
   token: process.env.NEXT_PUBLIC_SANITY_TOKEN
 })
@@ -16,16 +16,20 @@ console.log('builder', builder)
 export const urlFor = (source:string) => builder.image
 (source);
 
-export const submissionsUploader = (mutations: SubmissionsTyping) => {
+export const submissionsUploader = (submission: SubmissionsTyping) => {
   console.log('this is client', client)
   
-  fetch(`https://${client.config().projectId}.api.sanity.io/v2023-02-20/data/mutate/${client.config().dataset}`, {
+  fetch(`https://${client.config().projectId}.api.sanity.io/v2023-06-07/data/mutate/${client.config().dataset}`, {
     method: 'post',
     headers: {
       'Content-type': 'application/json',
       Authorization: `Bearer ${client.config().token}`
     },
-    body: JSON.stringify({mutations})
+    body: JSON.stringify({
+      mutations: [{
+        create: submission
+      }]
+    })
   })
     .then(response => response.json())
     .then(result => console.log(result))
