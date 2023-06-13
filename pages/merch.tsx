@@ -38,7 +38,7 @@ const merch = ({ merchData}: Props) => {
     // }
     // </>
     <>
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-8 px-2 md:px-0'>
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-8 px-2 my-5 md:px-0'>
     {merchData?.map((merch: MerchTyping) => (
       <Merch
         key={merch._id} 

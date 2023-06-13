@@ -365,26 +365,25 @@ background-color: 	#FAF9F6;
 
 .hero-banner-info {
   position: absolute;
-  transform: translate(-50%, -50%);
+
   z-index: 9;
   color: #FAF9F6;
   width:10%;
-  top: 97.5%;
-  left: 7.5%;
-  transform: translate(-50%, -50%);
-  text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
+  top: 885px;
+  left: 35px;
+
   text-align: left;
 }
 
 .hero-banner-info-mobile {
   position: absolute;
-  transform: translate(-50%, -50%);
+
   z-index: 9;
   color: #FAF9F6;
   width:10%;
-  top: 92.5%;
-  left: 10%;
-  transform: translate(-50%, -50%);
+  top: 800px;
+  left: 35px;
+
   text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
   text-align: left;
 }
@@ -520,7 +519,7 @@ font-size:1em;
   border-radius: 5px;
   color:#333;
   margin-right: 2.5%;
-  box-shadow: 0px 5px 17px rgba(0,0,0,0.3);
+  box-shadow: 2px 0px 6px  rgba(0,0,0,0.2);
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -667,7 +666,7 @@ text-align: end;
   height: 100vh;
   background-color: #FAF9F6;
   float: right;
-  padding: 40px 10px;
+  padding: 2% 1%;
   position: relative;
   
 }
@@ -700,6 +699,7 @@ text-align: end;
   font-weight: 500;
   cursor: pointer;
   gap: 2px;
+  margin-top:10px;
   margin-left: 10px;
   border: none;
   background-color: transparent;
@@ -724,7 +724,6 @@ text-align: end;
   cursor: pointer;
 }
 .product-container{
-  margin-top: 15px;
   width: 100%;
 max-height: 70vh;
 padding: 20px 10px;
@@ -732,17 +731,20 @@ padding: 20px 10px;
 .product{
   display: flex;
  width: 100%;
-  padding: 20px;
+margin-top: 5%;
 }
-.product .cart-product-image{
-  width:180px ;
-  height: 150px;
-    border-radius: 15px;
- background-color: #ebebeb;
+
+.accordion-container {
+  width: 70%;
+  margin-top:10%;
 }
+
 
 .item-desc {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .item-desc .flex{
   display: flex;
@@ -821,7 +823,12 @@ padding: 30px 65px;
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  width: 65%;
+  width: 60%;
+  height: 100vh;
+}
+
+.product-description-container {
+  width: 40%;
   height: 100vh;
 }
 
@@ -831,10 +838,7 @@ padding: 30px 65px;
   transition: .3s ease-in-out;
 }
 
-.product-description-container {
-  width: 35%;
-  height: 100vh;
-}
+
 
 .photographer-detail-container {
   display: flex;
@@ -872,8 +876,13 @@ padding: 30px 65px;
   font-weight: 700;
 }
 
-.size-container {
+.merch-size-container {
   margin-top:5%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 
