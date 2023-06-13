@@ -284,8 +284,8 @@ export const getStaticProps = async ({
 }: {
 	params: { slug: string };
 }) => {
-	const productQuery = `*[_type == "product" && slug.current == '${slug}'][0]`;
-	const productsQuery = '*[_type == "product"]';
+	const productQuery = `*[_type == "product" && slug.current == "${slug}"][0]`;
+	const productsQuery = `*[_type == "product"]`;
 
 	const product = await client.fetch(productQuery);
 	const products = await client.fetch(productsQuery);
