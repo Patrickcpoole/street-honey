@@ -68,7 +68,7 @@ const ProductDetails = ({ product }: Props) => {
 
 	return (
 		<div>
-			<div className="flex flex-col md:flex-row text-gray-800 mt-10  pb-10 ">
+			<div className="flex flex-col md:flex-row text-gray-800 mt-5  pb-10 ">
 				<div className="flex flex-col justify-start items-center relative w-full h-screen md:w-3/5">
 					<Image
 						src={imageUrl}
@@ -111,7 +111,7 @@ const ProductDetails = ({ product }: Props) => {
 						<p>(20)</p>
 					</div> */}
 
-					<div className="size-container mt-5">
+					<div className="size-container mt-3">
 						<h5 style={{ fontSize: "1.1em" }}>
 							<span className="font-semibold text-lg">Price:</span> $
 							{selectedPrice}

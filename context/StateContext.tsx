@@ -22,13 +22,18 @@ const Context = React.createContext<ContextTyping>({
   qty: 1,
   toggleNavDrawer: false,
 	toggleCartDrawer: false,
+	increaseQuantity: () => {},
+	decreaseQuantity: () => {},
 	setTotalPrice: () => {},
 	setCartItems: () => {},
   setToggleNavDrawer: () => {},
 	setToggleCartDrawer: () => {},
+	increaseMerchQuantity: () => {},
+	decreaseMerchQuantity: () => {},
   setShowCart: () => {},
   onAdd: () => {},
 	onAddMerch: () => {},
+	onRemoveMerch: () => {},
 	onRemove: () => {},
 });
 
@@ -52,21 +57,29 @@ export const StateContext = ({ children }: Props) => {
 		let currentCartItemsNotToggled = cartItems.filter((item: { _id: string; }, i: any) => item._id !== product._id)
 		let newCartItems = cartItems.filter((item: { _id: string; size: string; }) => item._id !== product._id || (item._id === product._id && item.size !== product.size))
 		console.log('new cart items', newCartItems)
-			setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price)
-			setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1)
+			setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price * foundProduct.quantity)
+			setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - foundProduct.quantity)
 			console.log('total quantities', totalQuantities)
 			setCartItems(newCartItems)
 
 	}
 
 	const onAdd = (product:ProductTyping, size: string, dimensions: string, price: number) => {
-    console.log('on Add fired', product, size, dimensions)
-		// const checkProductInCart = cartItems?.find((item:ProductTyping) => item._id === product._id && item.size === product.size);
+		console.log('on Add fired', product, size, dimensions)
+	
+		// Find the item in the cart
+		const existingProductIndex = cartItems.findIndex((item: ProductTyping) => item._id === product._id && item.size === size);
 		
-		setTotalPrice((prevTotalPrice) => prevTotalPrice + price);
-		setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
-
-		
+		// If the item exists, update its quantity
+		if (existingProductIndex !== -1) {
+			const updatedCartItems = [...cartItems];
+			updatedCartItems[existingProductIndex] = {
+				...updatedCartItems[existingProductIndex],
+				quantity: updatedCartItems[existingProductIndex].quantity + qty
+			};
+			setCartItems(updatedCartItems);
+		} else {
+			// If the item does not exist, add it to the cart
 			let updatedCartItem = {
 				...product,
 				size: size,
@@ -74,12 +87,17 @@ export const StateContext = ({ children }: Props) => {
 				quantity: qty,
 				price: price
 			}
-      
-      setCartItems([...cartItems, {...updatedCartItem}])
-		
-    console.log('toast about to fire', qty, product.name)
-    toast.success(`${qty} ${product.name} added to the cartItems.`);
+	
+			setCartItems([...cartItems, {...updatedCartItem}])
+		}
+	
+		setTotalPrice((prevTotalPrice) => prevTotalPrice + price);
+		setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
+	
+		console.log('toast about to fire', qty, product.name)
+		toast.success(`${qty} ${product.name} added to the cartItems.`);
 	};
+	
 
 	const onAddMerch = (merch:MerchTyping) => {
 
@@ -88,16 +106,88 @@ export const StateContext = ({ children }: Props) => {
 		setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
 
 		
+		const existingMerchIndex = cartItems.findIndex((item: MerchTyping) => item._id === merch._id);
+		
+		// If the item exists, update its quantity
+		if (existingMerchIndex !== -1) {
+			const updatedCartItems = [...cartItems];
+			updatedCartItems[existingMerchIndex] = {
+				...updatedCartItems[existingMerchIndex],
+				quantity: updatedCartItems[existingMerchIndex].quantity + qty
+			};
+			setCartItems(updatedCartItems);
+		} else {
+			// If the item does not exist, add it to the cart
 			let updatedCartItem = {
 				...merch,
+				size: "One size fits all",
 				quantity: qty,
-				size: 'One size fits all'
+				price: merch.price
 			}
-      
-      setCartItems([...cartItems, {...updatedCartItem}])
+	
+			setCartItems([...cartItems, {...updatedCartItem}])
+		}
 		
     
     toast.success(`${qty} ${merch.name} added to the cartItems.`);
+	};
+
+	const onRemoveMerch = (merch: MerchTyping) => {
+		const foundMerch = cartItems.find((item: MerchTyping) => item._id === merch._id);
+		
+		const newCartItems = cartItems.filter((item: MerchTyping) => item._id !== merch._id || item._id === merch._id )
+	
+		setTotalPrice((prevTotalPrice) => prevTotalPrice - foundMerch.price * foundMerch.quantity)
+		setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - foundMerch.quantity)
+		setCartItems(newCartItems)
+	}
+	
+	const increaseMerchQuantity = (merch: MerchTyping) => {
+		const merchIndex = cartItems.findIndex((item: MerchTyping) => item._id === merch._id );
+		
+		if (merchIndex !== -1) {
+			const updatedCartItems = [...cartItems];
+			updatedCartItems[merchIndex].quantity += 1;
+			setCartItems(updatedCartItems);
+		}
+		setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
+		setTotalPrice((prevTotalPrice) => prevTotalPrice + merch.price);
+	};
+	
+	const decreaseMerchQuantity = (merch: MerchTyping) => {
+		const merchIndex = cartItems.findIndex((item: MerchTyping) => item._id === merch._id);
+		
+		if (merchIndex !== -1 && cartItems[merchIndex].quantity > 1) {
+			const updatedCartItems = [...cartItems];
+			updatedCartItems[merchIndex].quantity -= 1;
+			setCartItems(updatedCartItems);
+		}
+		setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1);
+		setTotalPrice((prevTotalPrice) => prevTotalPrice - merch.price);
+	};
+
+	const increaseQuantity = (product:ProductTyping) => {
+		const productIndex = cartItems.findIndex((item: ProductTyping) => item._id === product._id && item.size === product.size);
+		
+		if (productIndex !== -1) {
+			const updatedCartItems = [...cartItems];
+			updatedCartItems[productIndex].quantity += 1;
+			setCartItems(updatedCartItems);
+		}
+		setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
+		setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price);
+	};
+	
+	const decreaseQuantity = (product:ProductTyping) => {
+		const productIndex = cartItems.findIndex((item: ProductTyping) => item._id === product._id && item.size === product.size);
+		
+		if (productIndex !== -1 && cartItems[productIndex].quantity > 1) {
+			const updatedCartItems = [...cartItems];
+			updatedCartItems[productIndex].quantity -= 1;
+			setCartItems(updatedCartItems);
+		}
+		setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1);
+		setTotalPrice((prevTotalPrice) => prevTotalPrice - product.price);
 	};
 
 
@@ -115,9 +205,14 @@ export const StateContext = ({ children }: Props) => {
 				cartItems,
 				totalPrice,
 				totalQuantities,
+				increaseQuantity,
+				decreaseQuantity,
 				qty,
         onAdd,
 				onAddMerch,
+				onRemoveMerch,
+				increaseMerchQuantity,
+				decreaseMerchQuantity,
 				onRemove,
 			}}
 		>
