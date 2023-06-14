@@ -5,7 +5,13 @@ import {
 	AiFillStar,
 	AiOutlineStar,
 	AiOutlineCaretDown,
+	AiOutlineCamera,
+	AiOutlineCheckCircle
 } from "react-icons/ai";
+
+import {FaFlagUsa} from "react-icons/fa"
+
+import {MdOutlineAttachMoney} from "react-icons/md"
 
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -249,6 +255,29 @@ const ProductDetails = ({ product }: Props) => {
 								</ul>
 							</AccordionDetails>
 						</Accordion>
+					</div>
+					<div className="flex flex-col mt-5" style={{width:'70%'}}>
+						<div className="flex">
+							<div className="flex flex-col items-center w-1/3 text-center">
+								<AiOutlineCamera size={"2em"} />
+								<h3 className="text-md font-semibold leading-tight">Photographer Backed</h3>
+								<p className="text-sm mt-1">Support a photographer with every purchase. </p>
+							</div>
+							<div className="flex flex-col items-center  text-center w-1/3">
+							<AiOutlineCheckCircle size={"2em"} />
+							<h3 className="text-md font-semibold leading-tight">Gallery <br/> Quality</h3>
+							<p className="text-sm mt-1 px-2">Giclée Fine Art Certified </p>
+							</div>
+							<div className="flex flex-col items-center  text-center w-1/3">
+							<FaFlagUsa size={"2em"} />
+							<h3 className="text-md font-semibold leading-tight">Made in the <br/>USA</h3>
+							<p className="text-sm mt-1 px-4">Arrives ready-to-hang</p>
+							</div>
+						</div>
+						<div className="flex mt-5">
+						
+							
+						</div>
 					</div>
 				</div>
 			</div>
