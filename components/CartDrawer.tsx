@@ -102,7 +102,7 @@ const CartDrawer = () => {
 					</div>
 				)}
 
-				<div className="product-container">
+				<div className="flex-grow overflow-y-auto">
 					{cartItems.length >= 1 &&
 						cartItems.map((item, index) => (
 							<div className="product" key={index}>

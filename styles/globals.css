@@ -725,7 +725,7 @@ text-align: end;
 }
 .product-container{
   width: 100%;
-max-height: 70vh;
+height: 80%;
 padding: 20px 10px;
 }
 .product{
@@ -736,7 +736,7 @@ margin-top: 5%;
 
 .accordion-container {
   width: 70%;
-  margin-top:10%;
+  margin-top:5%;
 }
 
 
@@ -780,9 +780,6 @@ margin-top: 5%;
  float: right;
 }
 .cart-bottom{
-  position: absolute;
-  bottom: 12px;
-  right: 5px;
 width: 100%;
 padding: 30px 65px;
 
