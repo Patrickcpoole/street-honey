@@ -25,21 +25,21 @@ const SizeTable = () => {
       <tbody>
         <tr>
           <td className="py-2 border-b border-gray-300 ">Small</td>
-          <td className="py-2 border-b border-gray-300 bg-gray-200 text-center">8″ x 10″</td>
+          <td className="py-2 border-b border-gray-300 bg-gray-200 text-center">8&quot; x 10&quot;</td>
           <td className="py-2 border-b border-gray-300 text-center">6 x 9</td>
           <td className="py-2 border-b border-gray-300 text-center">6.75 x 9</td>
           <td className="py-2 border-b border-gray-300 text-center">7.2 x 9</td>
         </tr>
         <tr>
           <td className="py-2 border-b border-gray-300 ">Medium</td>
-          <td className="py-2 border-b border-gray-300 bg-gray-200 text-center">12" x 15"</td>
+          <td className="py-2 border-b border-gray-300 bg-gray-200 text-center">12&quot; x 15&quot;</td>
           <td className="py-2 border-b border-gray-300 text-center">9.33 x 14</td>
           <td className="py-2 border-b border-gray-300 text-center">10.5 x 14</td>
           <td className="py-2 border-b border-gray-300 text-center">11.2 x 14</td>
         </tr>
         <tr>
           <td className="py-2 border-b border-gray-300">Large</td>
-          <td className="py-2 border-b border-gray-300 bg-gray-200 text-center">16″ x 20″</td>
+          <td className="py-2 border-b border-gray-300 bg-gray-200 text-center">16&quot; x 20&quot;</td>
           <td className="py-2 border-b border-gray-300 text-center">12.67 x 19</td>
           <td className="py-2 border-b border-gray-300 text-center">14.25 x 19</td>
           <td className="py-2 border-b border-gray-300 text-center">15.2 x 19</td>
@@ -61,17 +61,17 @@ const SizeTable = () => {
       <tbody>
         <tr>
           <td className="py-2 border-b border-gray-300">Small</td>
-          <td className="py-2 border-b border-gray-300 bg-gray-200 text-center">8″ x 8″</td>
+          <td className="py-2 border-b border-gray-300 bg-gray-200 text-center">8&quot; x 8&quot;</td>
           <td className="py-2 border-b border-gray-300 text-center">7 x 7</td>
         </tr>
         <tr>
           <td className="py-2 border-b border-gray-300">Medium</td>
-          <td className="py-2 border-b border-gray-300 bg-gray-200 text-center">12″ x 12″</td>
+          <td className="py-2 border-b border-gray-300 bg-gray-200 text-center">12&quot; x 12&quot;</td>
           <td className="py-2 border-b border-gray-300 text-center">11 x 11</td>
         </tr>
         <tr>
           <td className="py-2 border-b border-gray-300">Large</td>
-          <td className="py-2 border-b border-gray-300 bg-gray-200 text-center">16″ x 16″</td>
+          <td className="py-2 border-b border-gray-300 bg-gray-200 text-center">16&quot; x 16&quot;</td>
           <td className="py-2 border-b border-gray-300 text-center">15 x 15</td>
         </tr>
       </tbody>

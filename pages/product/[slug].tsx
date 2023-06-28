@@ -90,7 +90,7 @@ const ProductDetails = ({ product }: Props) => {
 					/>
 				</div>
 
-				<div className="w-full mt-5 md:mt-0  md:w-1/2 flex flex-col  md:items-baseline items-center">
+				<div className="w-full mt-5 md:mt-0  md:w-1/2 flex flex-col  md:items-stretch items-center ">
 					<h1 style={{ fontSize: "2.5em", fontWeight: 700 }}>{name}</h1>
 					<div className="flex flex-row w-full items-center justify-center md:justify-start md:items-stretch ">
 						<div className="mt-1 mr-1">
