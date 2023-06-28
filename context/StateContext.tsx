@@ -49,7 +49,7 @@ export const StateContext = ({ children }: Props) => {
 
   let foundProduct: { price: number; quantity: number; };
   let index;
-// deploying to dev!
+// deploying to dev!!
 	const onRemove = (product:ProductTyping) => {
 		console.log('this is the item were removing', product)
 		foundProduct = cartItems.find((item: { _id: string; size: string; }) => item._id === product._id && item.size === product.size);
