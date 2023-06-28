@@ -26,6 +26,11 @@ export default {
         maxLength: 90
       }
     },
+    {
+      name: 'bio',
+      title: 'Bio',
+      type: 'string'
+    },
   
     {
       name: 'question1',

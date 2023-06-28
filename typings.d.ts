@@ -8,6 +8,7 @@ interface SanityBody {
 interface Image {
 	_type: "image";
 	_id: string;
+	_key: string;
 	asset: {
 		_ref: string;
 		_type: "reference";
@@ -64,6 +65,7 @@ export interface PhotographerTyping extends SanityBody {
 		current: string;
 		_type: string;
 	};
+	bio: string;
 	question1: string;
 	answer1: string;
 	question2: string;

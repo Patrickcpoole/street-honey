@@ -47,8 +47,13 @@ const Events = ({ sideBannerData, eventsData }: Props) => {
               Previous
             </button>
           </div>
-          {filteredEvents.map(event => (
+          {filteredEvents.length === 0 ? 
+            <h1 className='text-4xl mt-5 text-secondary-color'>No Events</h1>
+          : 
+            filteredEvents.map(event => (
+            
             <EventCard pastEvent={showPastEvents} eventData={event} key={event._id} />
+            
           ))}
         </div>
       </div>

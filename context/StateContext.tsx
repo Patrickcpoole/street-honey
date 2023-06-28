@@ -129,7 +129,7 @@ export const StateContext = ({ children }: Props) => {
 		}
 		
     
-    toast.success(`${qty} ${merch.name} added to the cartItems.`);
+    toast.success(`${qty} ${merch.name} added to the cart.`);
 	};
 
 	const onRemoveMerch = (merch: MerchTyping) => {

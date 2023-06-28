@@ -33,7 +33,11 @@ const Prints = ({ products}: Props) => {
 
 return  (
     <>
-    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-8 px-2 md:px-0 my-5'>
+    <div className='w-full flex justify-center'>
+    <h3 className='text-5xl text-secondary-color mt-5'>Prints</h3>
+    </div>
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-8 px-2 md:px-0 my-10'>
+      
       {filteredProducts?.map((filteredProduct) => (
       <Product 
         key={filteredProduct._id} 

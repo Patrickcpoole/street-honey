@@ -9,6 +9,8 @@ import {
 	AiOutlineCheckCircle
 } from "react-icons/ai";
 
+import SizeTable from "../../components/SizeTable"
+
 import {FaFlagUsa} from "react-icons/fa"
 
 import {MdOutlineAttachMoney} from "react-icons/md"
@@ -24,14 +26,16 @@ import { client, urlFor } from "../../lib/client";
 import { ProductTyping, PhotographerTyping } from "../../typings";
 
 import { useStateContext } from "../../context/StateContext";
+import { flexbox } from "@mui/system";
 
 type Props = {
 	product: ProductTyping;
+	photographerData: PhotographerTyping;
 };
 
 const imageStyle = {
-	height: "50em",
-	width: "38em",
+
+	maxWidth: "38em",
 	boxShadow: "0px 5px 17px rgba(0,0,0,0.3)",
 };
 
@@ -49,7 +53,7 @@ const ProductDetails = ({ product }: Props) => {
 			if (photographer) {
 				const query = `*[_type == "photographer" && _id == "${photographer._ref}"]`;
 				const photographerResponse = await client.fetch(query);
-
+				console.log('this is the photographer response', photographerResponse)
 				setPhotographerData(photographerResponse[0]);
 			}
 		}
@@ -75,19 +79,20 @@ const ProductDetails = ({ product }: Props) => {
 	return (
 		<div>
 			<div className="flex flex-col md:flex-row text-gray-800 mt-5  pb-10 ">
-				<div className="flex flex-col justify-start items-center relative w-full h-screen md:w-3/5">
+			<div className="flex flex-col items-center justify-start relative w-full md:w-1/2 mr-5">
 					<Image
 						src={imageUrl}
 						style={imageStyle}
 						alt="Picture of the author"
-						width={1000}
+						width={800}
 						height={800}
+						layout="responsive"
 					/>
 				</div>
 
-				<div className="w-full h-screen  md:w-2/5">
+				<div className="w-full mt-5 md:mt-0  md:w-1/2 flex flex-col  md:items-baseline items-center">
 					<h1 style={{ fontSize: "2.5em", fontWeight: 700 }}>{name}</h1>
-					<div className="flex flex-row">
+					<div className="flex flex-row w-full items-center justify-center md:justify-start md:items-stretch ">
 						<div className="mt-1 mr-1">
 							<HiOutlineLocationMarker />
 						</div>
@@ -116,18 +121,19 @@ const ProductDetails = ({ product }: Props) => {
 						</div>
 						<p>(20)</p>
 					</div> */}
-
-					<div className="size-container mt-3">
+					
+					<div className="w-full flex flex-col justify-center md:text-left text-center items-stretch mt-3">
 						<h5 style={{ fontSize: "1.1em" }}>
 							<span className="font-semibold text-lg">Price:</span> $
 							{selectedPrice}
 						</h5>
+						
 						<h5 style={{ fontSize: "1.1em" }}>
 							<span className="font-semibold text-lg">Dimensions:</span>{" "}
 							{selectedDimensions}{" "}
 						</h5>
-
-						<div className="size-options-container">
+						<div className="flex flex-row text-center justify-center items-center md:justify-start ">
+						
 							<button
 								type="button"
 								className="size-button"
@@ -159,11 +165,9 @@ const ProductDetails = ({ product }: Props) => {
 								Large
 							</button>
 						</div>
-					</div>
-
-					<div
-						style={{ display: "flex", justifyContent: "center", width: "65%" }}
-					>
+				
+						
+						<div className="w-full">
 						<button
 							type="button"
 							className="event-button"
@@ -178,8 +182,9 @@ const ProductDetails = ({ product }: Props) => {
 						>
 							Add to Cart
 						</button>
-					</div>
-					<div className="accordion-container">
+						</div>
+					
+					<div className="mt-5 w-full md:w-4/5 text-left">
 						<Accordion
 							disableGutters
 							elevation={0}
@@ -192,7 +197,10 @@ const ProductDetails = ({ product }: Props) => {
 							>
 								About the Artist
 							</AccordionSummary>
-							<AccordionDetails></AccordionDetails>
+							<AccordionDetails>
+								{photographerData
+									? (photographerData as PhotographerTyping).bio : 'No bio'}
+							</AccordionDetails>
 						</Accordion>
 						<Accordion
 							disableGutters
@@ -203,10 +211,15 @@ const ProductDetails = ({ product }: Props) => {
 								expandIcon={<AiOutlineCaretDown color="#333" />}
 								aria-controls="panel2a-content"
 								id="panel2a-header"
-							>
-								Sizing
+							>Sizing
 							</AccordionSummary>
-							<AccordionDetails></AccordionDetails>
+							<AccordionDetails>
+							<div className="flex flex-col">
+								<p className="font-semibold">Different format analog cameras can produce different sized photographs</p>
+								<p className="font-semibold">All formats will include a minimum 1 inch border width adjusted border width outlined below</p>
+								<SizeTable />
+								</div>
+							</AccordionDetails>
 						</Accordion>
 						<Accordion
 							disableGutters
@@ -256,29 +269,28 @@ const ProductDetails = ({ product }: Props) => {
 							</AccordionDetails>
 						</Accordion>
 					</div>
-					<div className="flex flex-col mt-5" style={{width:'70%'}}>
+					<div className="flex flex-col mt-5 md:w-4/5 w-full">
 						<div className="flex">
-							<div className="flex flex-col items-center w-1/3 text-center">
+							<div className="flex flex-col items-center w-1/3 text-center ml-5">
 								<AiOutlineCamera size={"2em"} />
 								<h3 className="text-md font-semibold leading-tight">Photographer Backed</h3>
 								<p className="text-sm mt-1">Support a photographer with every purchase. </p>
 							</div>
-							<div className="flex flex-col items-center  text-center w-1/3">
+							<div className="flex flex-col items-center  text-center w-1/3 ">
 							<AiOutlineCheckCircle size={"2em"} />
 							<h3 className="text-md font-semibold leading-tight">Gallery <br/> Quality</h3>
 							<p className="text-sm mt-1 px-2">Giclée Fine Art Certified </p>
 							</div>
-							<div className="flex flex-col items-center  text-center w-1/3">
+							<div className="flex flex-col items-center  text-center w-1/3 mr-5">
 							<FaFlagUsa size={"2em"} />
 							<h3 className="text-md font-semibold leading-tight">Made in the <br/>USA</h3>
 							<p className="text-sm mt-1 px-4">Arrives ready-to-hang</p>
 							</div>
 						</div>
 						<div className="flex mt-5">
-						
-							
 						</div>
 					</div>
+				</div>
 				</div>
 			</div>
 		</div>
@@ -330,5 +342,25 @@ export const getStaticProps = async ({
 		revalidate: 1, // add revalidation time (in seconds)
 	};
 };
+
+<style jsx>{`
+        .image-container {
+          position: relative;
+          width: 100%;
+          padding-bottom: 100%; /* Maintain aspect ratio (1:1 for square) */
+        }
+
+        .image-container > :global(img) {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+        }
+
+        @media (max-width: 768px) {
+          .image-container {
+            padding-bottom: 60%; /* Adjust the aspect ratio for smaller screens */
+          }
+        }
+      `}</style>
 
 export default ProductDetails;

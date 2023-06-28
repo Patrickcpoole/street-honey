@@ -22,7 +22,7 @@ const avatarStyle = {
 const AboutUs = ({ about }: Props) => {
 	return (
 		<>
-			<h2 className="about-header my-5">Team</h2>
+			<h3 className='text-5xl  text-secondary-color my-5 text-center'>Team</h3>
 
 			<div className="group relative flex flex-col md:flex-row w-full justify-center items-center mb-10">
 				<Link
