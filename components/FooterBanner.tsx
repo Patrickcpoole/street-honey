@@ -5,7 +5,6 @@ import Image from "next/image";
 const FooterBanner = () => {
 	return (
 		<div className="footer-banner-container border-top border-bottom border-gray-300 bg-gray-50 text-gray-700 flex flex-col md:flex-row lg:flex-row xl:flex-row justify-center items-start py-4 px-4 sm:px-6 lg:px-8">
-			
 			{/* <div className="w-full md:w-1/5 h-full pb-1 flex flex-col bg-FAF9F6 justify-start items-center">
 				<h3 className="sm:mt-0 md:mt-3 mb-2 text-2xl">
 					Shop By Theme
@@ -171,9 +170,7 @@ const FooterBanner = () => {
 				</div>
 			</div> */}
 			<div className="w-full md:w-1/5 h-full pb-1 flex flex-col bg-FAF9F6 justify-start items-center">
-			<h3 className="mt-3 mb-2 text-2xl">
-					Company
-				</h3>
+				<h3 className="mt-3 mb-2 text-2xl">Company</h3>
 				<div
 					style={{
 						listStyleType: "none",
@@ -197,20 +194,18 @@ const FooterBanner = () => {
 					<li className="footer-content-item">privacy Policy</li>
 				</div>
 			</div>
-		
-				<Link href={"/"} >
-					<Image
-						src="/street-honey-transparent-website-logo.png"
-						alt="Street Honey Logo"
-						width={200}
-						height={200}
-					/>
-				</Link>
-	
+
+			<Link href={"/"}>
+				<Image
+					src="/street-honey-transparent-website-logo.png"
+					alt="Street Honey Logo"
+					width={200}
+					height={200}
+				/>
+			</Link>
+
 			<div className="w-full md:w-1/5 h-full pb-1 flex flex-col bg-FAF9F6 justify-center items-center">
-			<h3 className="mt-3 mb-2 text-2xl">
-					Contact Us
-				</h3>
+				<h3 className="mt-3 mb-2 text-2xl">Contact Us</h3>
 				<div
 					style={{
 						listStyleType: "none",
@@ -221,8 +216,11 @@ const FooterBanner = () => {
 						alignItems: "center",
 					}}
 				>
-					<li className="footer-content-item">Email: streethoneyphoto@gmail.com </li>
-					<li className="footer-content-item">Phone: 303-888-8909</li>
+					<li>
+						<a href="mailto:streethoneyphoto@gmail.com" className="footer-content-item">
+							streethoneyphoto@gmail.com
+						</a>
+					</li>
 				</div>
 			</div>
 		</div>
