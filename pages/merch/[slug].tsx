@@ -3,8 +3,21 @@ import React from "react";
 import Image from "next/image";
 import { client, urlFor } from "../../lib/client";
 import { MerchTyping } from "../../typings";
-import Carousel from "react-bootstrap/Carousel";
 import { useStateContext } from "../../context/StateContext";
+
+import dynamic from 'next/dynamic'
+import { CarouselProps, CarouselItemProps } from 'react-bootstrap';
+
+const Carousel = dynamic<CarouselProps>(
+  () => import('react-bootstrap/Carousel'),
+  { ssr: false }
+);
+
+const CarouselItem = dynamic<CarouselItemProps>(
+  () => import('react-bootstrap/CarouselItem'),
+  { ssr: false }
+);
+
 
 type Props = {
 	merch: MerchTyping;
@@ -32,7 +45,7 @@ const MerchDetails = ({ merch }: Props) => {
 			<Carousel controls={true} slide={false} variant="dark">
 				{image?.map((merchImage) => {
 					return (
-						<Carousel.Item key={merchImage._key}>
+						<CarouselItem key={merchImage._key}>
 			<Image
 						src={urlFor(merchImage && merchImage?.asset?._ref).url()}
 						style={imageStyle}
@@ -41,7 +54,7 @@ const MerchDetails = ({ merch }: Props) => {
 						height={300}
 						
 					/>
-					</Carousel.Item>
+					</CarouselItem>
 					)})}
 					</Carousel>
 					</div>
