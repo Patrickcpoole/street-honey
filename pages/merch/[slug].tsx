@@ -4,19 +4,8 @@ import Image from "next/image";
 import { client, urlFor } from "../../lib/client";
 import { MerchTyping } from "../../typings";
 import { useStateContext } from "../../context/StateContext";
-
-import dynamic from 'next/dynamic'
-import { CarouselProps, CarouselItemProps } from 'react-bootstrap';
-
-const Carousel = dynamic<CarouselProps>(
-  () => import('react-bootstrap/Carousel'),
-  { ssr: false }
-);
-
-const CarouselItem = dynamic<CarouselItemProps>(
-  () => import('react-bootstrap/CarouselItem'),
-  { ssr: false }
-);
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import carousel styles
+import { Carousel } from 'react-responsive-carousel';
 
 
 type Props = {
@@ -45,21 +34,19 @@ const MerchDetails = ({ merch }: Props) => {
 <div className="flex flex-col md:flex-row text-gray-800 mt-5  pb-10 ">
 			<div className="flex flex-col items-center justify-start relative w-full md:w-1/2 mr-5">
 			<div className="bg-offWhite">
-			<Carousel controls={true} slide={false} variant="dark">
-				{image?.map((merchImage) => {
-					return (
-						<CarouselItem key={merchImage._key}>
-			<Image
-						src={urlFor(merchImage && merchImage?.asset?._ref).url()}
-						style={imageStyle}
-						alt="Picture of the author"
-						width={500}
-						height={300}
-						
-					/>
-					</CarouselItem>
-					)})}
-					</Carousel>
+			<Carousel>
+							{image?.map((merchImage) => (
+								  <div key={merchImage._key} >
+									<Image
+										src={urlFor(merchImage && merchImage?.asset?._ref).url()}
+										style={imageStyle}
+										alt="Picture of the author"
+										width={300}
+										height={300}
+									/>
+								</div>
+							))}
+						</Carousel>
 					</div>
 					
 				</div>
