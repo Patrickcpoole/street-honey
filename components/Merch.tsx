@@ -16,8 +16,6 @@ const Merch: React.FC<Props> = ({ merch }) => {
 
 	const imageStyle = {
 		width: "initial",
-		maxHeight: "300px",
-		maxWidth: "400px",
 		boxShadow: "0px 5px 17px rgba(0,0,0,0.3)",
 	};
 
@@ -37,7 +35,7 @@ const Merch: React.FC<Props> = ({ merch }) => {
 						 src={imageUrl}
 						style={imageStyle}
 						alt="Image of the specified product"
-						width={400}
+						width={300}
 						height={300}
 					/>
 					</Link>

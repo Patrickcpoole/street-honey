@@ -1,13 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-	AiOutlineMinus,
-	AiOutlinePlus,
-	AiFillStar,
-	AiOutlineStar,
-	
-} from "react-icons/ai";
-import Link from "next/link";
-import {HiOutlineLocationMarker} from 'react-icons/hi'
+import React from "react";
+
 import Image from "next/image";
 import { client, urlFor } from "../../lib/client";
 import { MerchTyping } from "../../typings";
@@ -19,7 +11,7 @@ type Props = {
 };
 
 const imageStyle = {
-	maxWidth: "26em",
+
 	boxShadow: "0px 5px 17px rgba(0,0,0,0.3)",
 };
 
@@ -31,7 +23,6 @@ const MerchDetails = ({ merch }: Props) => {
 	const { onAddMerch } = useStateContext();
 
 
-	const imageUrl = urlFor(image && image[0]?.asset?._ref).url();
 
 	return (
 		<div>
@@ -40,17 +31,15 @@ const MerchDetails = ({ merch }: Props) => {
 			<div className="bg-offWhite">
 			<Carousel controls={true} slide={false} variant="dark">
 				{image?.map((merchImage) => {
-			
-
 					return (
 						<Carousel.Item key={merchImage._key}>
 			<Image
 						src={urlFor(merchImage && merchImage?.asset?._ref).url()}
 						style={imageStyle}
 						alt="Picture of the author"
-						width={800}
-						height={800}
-						layout="responsive"
+						width={500}
+						height={300}
+						
 					/>
 					</Carousel.Item>
 					)})}

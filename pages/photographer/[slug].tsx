@@ -10,9 +10,7 @@ type Props = {
 };
 
 const imageStyle = {
-	width: "initial",
-	maxHeight: "40em",
-	maxWidth: "28em",
+
 	boxShadow: "0px 5px 17px rgba(0,0,0,0.3)",
 };
 
@@ -43,9 +41,9 @@ const PhotographerDetails = ({ photographer }: Props) => {
 						src={urlFor(image && image[0]).url()}
 						style={imageStyle}
 						alt="Picture of the author"
-						width={1000}
-						height={800}
-						layout="responsive"
+						width={500}
+						height={300}
+					
 					/>
 				</div>
 				<div className="w-full md:w-1/2  px-5 md:px-0 md:pr-20 flex flex-col justify-center">

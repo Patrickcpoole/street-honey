@@ -34,8 +34,6 @@ type Props = {
 };
 
 const imageStyle = {
-
-	maxWidth: "38em",
 	boxShadow: "0px 5px 17px rgba(0,0,0,0.3)",
 };
 
@@ -84,9 +82,9 @@ const ProductDetails = ({ product }: Props) => {
 						src={imageUrl}
 						style={imageStyle}
 						alt="Picture of the author"
-						width={800}
-						height={800}
-						layout="responsive"
+						width={600}
+						height={400}
+				
 					/>
 				</div>
 
