@@ -29,9 +29,12 @@ const imageStyle = {
 };
 
 const MerchDetails = ({ merch }: Props) => {
-	
+	console.log("Merch data: ", merch);
+
 
 	const { image, name, price, description} = merch;
+
+	console.log("Image data: ", image);
 
 	const { onAddMerch } = useStateContext();
 
