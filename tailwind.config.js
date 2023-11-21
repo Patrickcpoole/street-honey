@@ -12,6 +12,11 @@ module.exports = {
   },
   theme: {
     extend: {
+      animation: {
+        'ping-slow': 'ping 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;'
+
+       
+      },
       colors: {
         "primary-color": "var(--primary-color)",
           offWhite: '#FAF9F6',

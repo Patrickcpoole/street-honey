@@ -82,6 +82,26 @@ function NavDrawer() {
 						</h2>
 					</Link>
 					<Link
+						href={{
+							pathname: "/prints/",
+							query: {
+								tag: "best-seller",
+							},
+						}}
+						style={{
+							textDecoration: "none",
+							color: "#333",
+							marginRight: "10px",
+						}}
+					>
+						<h2
+							className="print-category-main-item"
+							onClick={() => setToggleNavDrawer(false)}
+						>
+							Best Sellers
+						</h2>
+					</Link>
+					<Link
 						href={"/merch"}
 						style={{
 							textDecoration: "none",
@@ -145,8 +165,8 @@ function NavDrawer() {
 					</Link>
 				</div>
 				</div>
-				{/* <Divider /> */}
-				{/* <div className="flex flex-col mx-5 mt-3">
+				<Divider /> 
+				 <div className="flex flex-col mx-5 mt-3">
 					<h3 style={{ fontSize: "1.55em" }}>Shop By Theme</h3>
 					<ul className="flex flex-col my-2">
 						<Link
@@ -173,7 +193,7 @@ function NavDrawer() {
 							href={{
 								pathname: "/prints/",
 								query: {
-									tag: "mountains",
+									tag: "mountain",
 								},
 							}}
 							style={{
@@ -186,7 +206,7 @@ function NavDrawer() {
 								className="print-category-item"
 								onClick={() => setToggleNavDrawer(false)}
 							>
-								Mountains
+								Mountain
 							</li>
 						</Link>
 						<Link
@@ -246,7 +266,6 @@ function NavDrawer() {
 								className="print-category-item"
 								onClick={() => setToggleNavDrawer(false)}
 							>
-								{" "}
 								Minimal/Abstract
 							</li>
 						</Link>
@@ -254,7 +273,7 @@ function NavDrawer() {
 							href={{
 								pathname: "/prints/",
 								query: {
-									tag: "portraits",
+									tag: "portrait",
 								},
 							}}
 							style={{
@@ -267,20 +286,22 @@ function NavDrawer() {
 								className="print-category-item"
 								onClick={() => setToggleNavDrawer(false)}
 							>
-								Portraits
+								
+								Portrait
 							</li>
 						</Link>
+					
 					</ul>
-				</div> */}
+				</div>
 				<Divider />
-				{/* <div className="flex flex-col mx-5 mt-3"> */}
-					{/* <h3 style={{ fontSize: "1.55em" }}>Shop By Region</h3>
+				<div className="flex flex-col mx-5 mt-3"> 
+			 <h3 style={{ fontSize: "1.55em" }}>Shop By Region</h3>
 					<ul className="flex flex-col mt-2 mb-2">
-						<Link
+					<Link
 							href={{
 								pathname: "/prints/",
 								query: {
-									tag: "bay-area",
+									tag: "west-coast",
 								},
 							}}
 							style={{
@@ -293,47 +314,7 @@ function NavDrawer() {
 								className="print-category-item"
 								onClick={() => setToggleNavDrawer(false)}
 							>
-								Bay Area
-							</li>
-						</Link>
-						<Link
-							href={{
-								pathname: "/prints/",
-								query: {
-									tag: "mid-west",
-								},
-							}}
-							style={{
-								textDecoration: "none",
-								color: "#333",
-								marginRight: "10px",
-							}}
-						>
-							<li
-								className="print-category-item"
-								onClick={() => setToggleNavDrawer(false)}
-							>
-								Mid West
-							</li>
-						</Link>
-						<Link
-							href={{
-								pathname: "/prints/",
-								query: {
-									tag: "south-west",
-								},
-							}}
-							style={{
-								textDecoration: "none",
-								color: "#333",
-								marginRight: "10px",
-							}}
-						>
-							<li
-								className="print-category-item"
-								onClick={() => setToggleNavDrawer(false)}
-							>
-								South West
+								West Coast
 							</li>
 						</Link>
 						<Link
@@ -356,11 +337,11 @@ function NavDrawer() {
 								East Coast
 							</li>
 						</Link>
-						<Link
+					<Link
 							href={{
 								pathname: "/prints/",
 								query: {
-									tag: "southern-ca",
+									tag: "southwest",
 								},
 							}}
 							style={{
@@ -373,14 +354,16 @@ function NavDrawer() {
 								className="print-category-item"
 								onClick={() => setToggleNavDrawer(false)}
 							>
-								Southern CA
+								South West
 							</li>
 						</Link>
+					
+				
 						<Link
 							href={{
 								pathname: "/prints/",
 								query: {
-									tag: "europe",
+									tag: "southern",
 								},
 							}}
 							style={{
@@ -393,14 +376,15 @@ function NavDrawer() {
 								className="print-category-item"
 								onClick={() => setToggleNavDrawer(false)}
 							>
-								Europe
+								Southern
 							</li>
 						</Link>
+						
 						<Link
 							href={{
 								pathname: "/prints/",
 								query: {
-									tag: "asia",
+									tag: "international",
 								},
 							}}
 							style={{
@@ -413,11 +397,12 @@ function NavDrawer() {
 								className="print-category-item"
 								onClick={() => setToggleNavDrawer(false)}
 							>
-								Asia
+								International
 							</li>
 						</Link>
+						
 					</ul>
-				</div> */}
+				</div> 
 			</Drawer>
 		</>
 	);
