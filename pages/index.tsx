@@ -16,7 +16,7 @@ const Home = ({ products, bannerData}: Props) => {
   const [filteredProducts, setFilteredProducts] = useState(products)
 
   useEffect(() => {
-  
+    
     let newFilteredProducts: ProductTyping[] = []
       console.log('these are the products in the main page', products)
       products.forEach(product => {

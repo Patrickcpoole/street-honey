@@ -1,13 +1,11 @@
 import React, {
 	ReactNode,
-	createContext,
 	useContext,
 	useState,
-	useEffect,
 } from "react";
-import { ContextTyping, ProductTyping, CartTyping, MerchTyping } from "../typings";
+import { ContextTyping, ProductTyping, MerchTyping } from "../typings";
 import { toast } from "react-hot-toast";
-import product from "../sanity-street-honey/schemas/product";
+
 
 interface Props {
 	children?: ReactNode;
