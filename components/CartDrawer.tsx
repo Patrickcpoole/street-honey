@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
+import { useRouter } from "next/router";
 import Drawer from "@mui/material/Drawer";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -46,6 +47,21 @@ const CartDrawer = () => {
 
 		stripe.redirectToCheckout({ sessionId: data.id });
 	};
+
+	const router = useRouter();
+
+  useEffect(() => {
+    const { cancelled } = router.query;
+
+    if (cancelled === "true") {
+			router.back();
+      // Handle the cancellation logic here
+      // For example, display a message to the user
+      console.log("Payment was cancelled.");
+			toast.error('payment cancelled')
+			
+    }
+  }, [router.query]);
 
 	const {
 		totalPrice,
