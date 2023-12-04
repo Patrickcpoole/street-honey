@@ -205,7 +205,7 @@ const FooterBanner = () => {
 			</Link>
 
 			<div className="w-full md:w-1/5 h-full pb-1 flex flex-col bg-FAF9F6 justify-center items-center">
-				<h3 className="mt-3 mb-2 text-2xl">Contact Us</h3>
+				<h3 className="md:mt-3 mb-2 text-2xl">Contact Us</h3>
 				<div
 					style={{
 						listStyleType: "none",

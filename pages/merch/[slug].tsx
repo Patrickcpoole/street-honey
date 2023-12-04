@@ -60,7 +60,7 @@ const MerchDetails = ({ merch }: Props) => {
 					<div className="flex flex-col justify-center items-center md:items-stretch">
 					<h5 style={{fontSize:'1.2em'}}><span className="font-semibold text-2xl">Price:</span> ${price}</h5>
           <h5 style={{fontSize:'1.2em'}}><span className="font-semibold text-2xl">Size:</span> One size fits all</h5>
-          <p className="mt-5">{description}</p>
+     
 						<button
 							type="button"
 							className="event-button"
