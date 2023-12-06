@@ -1,6 +1,6 @@
 # Street Honey
 
-Welcome to my Street Honey. Street Honey is a online e-commerce platform that was built for a film photography brand. The site allows users to by prints from a group of photographers, learn more about the specific photographer, 
+Welcome to my Street Honey. Street Honey is an online e-commerce platform that was built for a film photography brand. The site allows users to buy prints from a group of photographers, learn more about the specific photographer, 
 and also learn about community photo events in their area. 
 
 ## Table of Contents
