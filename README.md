@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Street Honey
 
-## Getting Started
+Welcome to my Street Honey. Street Honey is a online e-commerce platform that was built for a film photography brand. The site allows users to by prints from a group of photographers, learn more about the specific photographer, 
+and also learn about community photo events in their area. 
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- [Main Features](#features)
+- [Technologies Used](#technologies-used)
+- [Libraries Used](#technologies-used)
+- [Contributing](#contributing)
+- [Testing](#testing)
+- [Screenshots](#screenshots)
+- [Live Link](#live-link)
+- [Contact Information](#contact-information)
+- [Conclusion](#conclusion)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Deployment Status
+![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=vercel.com/patrickcpoole/street-honey)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Main Features
+- **Shop:** Browse the collection of photos and easily navigate through categories by selecting topics related to photographic themes and locations.
+- **Events:** Discover local community events that are in your local geographic area.
+- **Team:** Meet the team behind Street Honey and learn more about the photographers.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Technologies Used
+- Next.js
+- React.js
+- Typescript
+- GraphQL
+- Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Libraries Used
+- Stripe API for payments
+- Tailwind CSS
+- Framer Motion
+- Sanity
+- Moment.js
+- Heroicons
+- Various React libraries
 
-## Learn More
+## Contributing
+This project is not open for contributions.
 
-To learn more about Next.js, take a look at the following resources:
+## Testing
+Testing is not implemented yet but will be using Jest.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Screenshots
+![image](https://amplify-venu20-dev-131644-deployment.s3.amazonaws.com/portfolio-screenshots/Street+Honey+Screen+Shot+2023-12-05+at+12.56.51+PM.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Live Link
+Visit the live website at [patrickcpoole.com](https://www.streethoney.co/).
 
-## Deploy on Vercel
+## Contact Information
+Feel free to reach out to me at [patrickcpoole@gmail.com](mailto:patrickcpoole@gmail.com).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Conclusion
+Thank you for checking out Street Honey!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
