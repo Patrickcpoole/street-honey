@@ -27,7 +27,7 @@ const AboutUs = ({ about }: Props) => {
 			<div className="group relative flex flex-col md:flex-row w-full justify-center items-center mb-10">
 				<Link
 					href="photographer/jimmy-mac"
-					className="group relative"
+					className="group relative my-4"
 					style={{ textDecoration: "none" }}
 				>
 					<Image
@@ -45,7 +45,7 @@ const AboutUs = ({ about }: Props) => {
 				<Link
 					href="photographer/mickail-cain"
 					style={{ textDecoration: "none" }}
-					className="group relative mx-20"
+					className="group relative my-4"
 				>
 					<Image
 						src={urlFor(about[0].mickImage).url()}
@@ -61,7 +61,7 @@ const AboutUs = ({ about }: Props) => {
 				<Link
 					href="photographer/patrick-poole"
 					style={{ textDecoration: "none"}}
-					className="group relative"
+					className="group relative my-4"
 				>
 					<Image
 						src={urlFor(about[0].patImage).url()}

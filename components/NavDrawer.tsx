@@ -28,12 +28,13 @@ function NavDrawer() {
 				onClose={() => setToggleNavDrawer(false)}
 			>
 				<div className="flex justify-center">
-					<Image
-						src="/street-honey-transparent-website-logo.png"
-						alt="Street Honey Logo"
-						width={175}
-						height={175}
-					/>
+						<Image
+							src="/street-honey-transparent-website-logo.png"
+							alt="Street Honey Logo"
+							width={175}
+							height={175}
+						/>
+
 					<div className="absolute top-0 right-0 pt-4 pr-4">
 						<button
 							onClick={() => setToggleNavDrawer(false)}
@@ -45,7 +46,7 @@ function NavDrawer() {
 				</div>
 				<Divider />
 				<div className="flex flex-row">
-				<div className="flex flex-col mx-5 my-3">
+				<div className="flex flex-col md:mx-5 mx-3 my-3">
 					<Link
 						href={"/prints"}
 						style={{
@@ -101,7 +102,7 @@ function NavDrawer() {
 							Best Sellers
 						</h2>
 					</Link>
-					<Link
+					{/* <Link
 						href={"/merch"}
 						style={{
 							textDecoration: "none",
@@ -115,9 +116,9 @@ function NavDrawer() {
 						>
 							Merch
 						</h2>
-					</Link>
+					</Link> */}
 				</div>
-				<div className="md:hidden flex flex-col mx-5 my-3">
+				<div className="flex flex-col md:mx-5 mx-3 my-3">
 					<Link
 						href={"/about-us"}
 						style={{
@@ -166,7 +167,7 @@ function NavDrawer() {
 				</div>
 				</div>
 				<Divider /> 
-				 <div className="flex flex-col mx-5 mt-3">
+				<div className="flex flex-col md:mx-5 mx-3 my-3">
 					<h3 style={{ fontSize: "1.55em" }}>Shop By Theme</h3>
 					<ul className="flex flex-col my-2">
 						<Link
@@ -294,7 +295,7 @@ function NavDrawer() {
 					</ul>
 				</div>
 				<Divider />
-				<div className="flex flex-col mx-5 mt-3"> 
+				<div className="flex flex-col md:mx-5 mx-3 my-3">
 			 <h3 style={{ fontSize: "1.55em" }}>Shop By Region</h3>
 					<ul className="flex flex-col mt-2 mb-2">
 					<Link
