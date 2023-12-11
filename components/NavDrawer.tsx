@@ -46,7 +46,7 @@ function NavDrawer() {
 				</div>
 				<Divider />
 				<div className="flex flex-row">
-				<div className="flex flex-col md:mx-5 mx-3 my-3">
+				<div className="flex flex-col md:mx-2 mx-3 my-3">
 					<Link
 						href={"/prints"}
 						style={{
@@ -118,7 +118,7 @@ function NavDrawer() {
 						</h2>
 					</Link> */}
 				</div>
-				<div className="flex flex-col md:mx-5 mx-3 my-3">
+				<div className="md:hidden flex flex-col  mx-3 my-3">
 					<Link
 						href={"/about-us"}
 						style={{
