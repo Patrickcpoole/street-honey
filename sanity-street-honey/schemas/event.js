@@ -13,7 +13,7 @@ export default {
     },
     {
       name: 'title',
-      title: 'title',
+      title: 'Title',
       type: 'string',
     },
     {
@@ -24,6 +24,11 @@ export default {
     {
       name: 'longDesc',
       title: 'Long Description',
+      type: 'string',
+    },
+    {
+      name: 'location',
+      title: 'Location',
       type: 'string',
     },
     {

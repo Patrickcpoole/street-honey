@@ -15,7 +15,8 @@ const Merch: React.FC<Props> = ({ merch }) => {
 
 
 	const imageStyle = {
-		width: "initial",
+		width: "400px",
+		height: "400px",
 		boxShadow: "0px 5px 17px rgba(0,0,0,0.3)",
 	};
 

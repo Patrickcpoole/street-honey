@@ -25,7 +25,7 @@ function EventCard({ pastEvent, eventData }: Props) {
 
 	return (
 		<>
-			<div className="w-90 h-250 my-10 flex flex-col md:flex-row rounded-5 shadow-lg md:w-full">
+			<div className="w-90 h-200 my-10 flex flex-col md:flex-row rounded-5 shadow-lg md:w-full">
 				<div className="relative flex items-center justify-center bg-cover bg-center rounded-bl-5 rounded-tl-5 md:h-80 md:w-96 bg-red-500">
 					<Image
 						src={urlFor(eventData.image.asset._ref).url()}
@@ -35,7 +35,7 @@ function EventCard({ pastEvent, eventData }: Props) {
 						height={800}
 					/>
 				</div>
-				<div className="w-full h-250 flex flex-col justify-center items-center text-center text-gray-700 md:mt-0 mt-10">
+				<div className="w-full h-200 flex flex-col justify-center items-center text-center text-gray-700 md:mt-0 mt-10">
 					<h3 className="text-3xl" style={{ marginBottom: "2.5%" }}>
 						{eventData.title}
 					</h3>
@@ -44,7 +44,7 @@ function EventCard({ pastEvent, eventData }: Props) {
 						{moment(eventData.dateTime).format("dddd, MMM Do h:mm A")}
 					</h3>
 					<h3 className="text-lg">
-						<span className="font-semibold mr-3">Where:</span>Union Station
+						<span className="font-semibold mr-3">Where:</span>{eventData.location}
 					</h3>
 					{!pastEvent && (
 						<button

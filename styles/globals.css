@@ -93,7 +93,7 @@ background-color: 	#FAF9F6;
   margin-bottom: 5px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1000px) {
 
 .print-category-main-item:before {
   content:"→";

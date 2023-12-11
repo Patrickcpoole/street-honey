@@ -32,6 +32,7 @@ export interface EventTyping extends SanityBody {
 	_type: "Event";
 	image: Image;
 	title: string;
+	location: string;
 	shortDesc: string;
 	longDesc: string;
 	geopoint: Geopoint;

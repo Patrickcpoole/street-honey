@@ -35,7 +35,7 @@ const PhotographerDetails = ({ photographer }: Props) => {
 
 	return (
 		<>
-			<div className="flex flex-col md:flex-row text-gray-800 mt-10 border-b border-gray-800 pb-10 ">
+			<div className="flex flex-col md:flex-row text-gray-800 mt-10 pb-10 w-full ">
 				<div className="flex flex-col items-center justify-start relative w-full md:w-1/2">
 					<Image
 						src={urlFor(image && image[0]).url()}
@@ -64,8 +64,8 @@ const PhotographerDetails = ({ photographer }: Props) => {
 				</div>
 				
 			</div>
-			<h1 style={{fontSize: '2.5em', textAlign: 'center', paddingTop: '2%', paddingBottom: '1%', fontWeight: '600', color: '#333'}}>Photographer Gallery</h1>
-			<div className='products-container'>
+			<h1 style={{fontSize: '2em', textAlign: 'center', paddingTop: '2%', paddingBottom: '50px', marginRight: '2%', marginLeft: '2%', fontWeight: '600', color: '#333'}}>Photographer Gallery</h1>
+			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-8 px-2 md:px-0 pb-5'>
 			
       {photoData && photoData.length > 0 ? (
   photoData.map((filteredProduct) => (

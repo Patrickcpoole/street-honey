@@ -30,7 +30,7 @@ const HeroBanner = ({ heroBanner }: Props) => {
 
 					return (
 						<Carousel.Item key={banner._id}>
-							<div className="text-center position-relative block px-4 w-full height-auto overflow-hidden bg-offWhite">
+							<div className="text-center position-relative block md:px-4 w-full height-auto overflow-hidden bg-offWhite">
 								<h3
 									className="text-4xl drop-shadow-2xl md:text-5xl lg:text-6xl sm:text-4xl absolute z-999 text-offWhite top-1/2 left-1/2 -translate-x-1/2 
           -translate-y-1/2 text-shadow block custom-text-shadow"
