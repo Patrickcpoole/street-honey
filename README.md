@@ -1,6 +1,6 @@
 # Street Honey
 
-Welcome to Street Honey. Street Honey is an online e-commerce platform that was built for a film photography brand. The site allows users to buy prints from a group of photographers, learn more about the specific photographer, 
+Welcome to Street Honey! Street Honey is an online e-commerce platform that was built for a film photography brand. The site allows users to buy prints from a group of photographers, learn more about the specific photographer, 
 and also learn about community photo events in their area. The brand is currently no longer selling prints but users can still test the Stripe checkout functionality by using 4242 continuously in the credit card inputs.
 
 ## Table of Contents
